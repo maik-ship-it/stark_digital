@@ -1,0 +1,264 @@
+@import "tailwindcss";
+
+@theme {
+  /* ── Backgrounds ─────────────────────────────── */
+  --color-canvas:    #FAFAF7;
+  --color-surface:   #F4F0EA;
+  --color-surface-2: #E8E3D8;
+  --color-surface-3: #DBD5C8;
+
+  /* ── Accent ──────────────────────────────────── */
+  --color-amber:      #C07A08;
+  --color-amber-dim:  #9A6106;
+  --color-amber-glow: rgba(192,122,8,0.10);
+
+  /* ── Text ────────────────────────────────────── */
+  --color-white:          #1C1916;
+  --color-text-secondary: #6B6158;
+  --color-text-muted:     #A9A29A;
+
+  /* ── Ink (dark section backgrounds) ──────────── */
+  --color-ink:        #1C1916;
+  --color-ink-raised: #272320;
+
+  /* ── Keep for compatibility ───────────────────── */
+  --color-navy:       #1C1916;
+  --color-navy-light: #272320;
+  --color-gold:       #C07A08;
+  --color-gold-light: #D98F0E;
+  --color-text-primary: #1C1916;
+
+  /* ── Typography ──────────────────────────────── */
+  --font-display: var(--font-space-grotesk), system-ui, sans-serif;
+  --font-serif:   var(--font-cormorant), Georgia, 'Times New Roman', serif;
+  --font-body:    var(--font-dm-sans), system-ui, sans-serif;
+  --font-mono:    var(--font-dm-mono), monospace;
+
+  /* ── Display sizes ───────────────────────────── */
+  --text-hero:       clamp(56px, 9vw, 140px);
+  --text-display-xl: clamp(44px, 7vw, 110px);
+  --text-display-lg: clamp(36px, 5vw, 72px);
+  --text-display-md: clamp(28px, 3.5vw, 48px);
+
+  /* ── Shadows ─────────────────────────────────── */
+  --shadow-card:       0 1px 3px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.06);
+  --shadow-card-hover: 0 4px 24px rgba(0,0,0,0.12), 0 16px 56px rgba(0,0,0,0.08);
+  --shadow-glow-amber: 0 0 40px rgba(192,122,8,0.15), 0 0 80px rgba(192,122,8,0.06);
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-white);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: rgba(192, 122, 8, 0.18);
+    color: var(--color-white);
+  }
+
+  /* ── Blog / MDX prose ────────────────────────── */
+  .prose-stark {
+    color: var(--color-text-secondary);
+    line-height: 1.75;
+  }
+  .prose-stark h2 {
+    font-family: var(--font-serif);
+    font-size: var(--text-display-md);
+    font-weight: 600;
+    color: var(--color-white);
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+  }
+  .prose-stark h3 {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: var(--color-white);
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+  .prose-stark p {
+    margin-bottom: 1.5rem;
+    font-size: 1.125rem;
+    line-height: 1.85;
+  }
+  .prose-stark a {
+    color: var(--color-amber);
+    text-decoration: underline;
+    text-decoration-color: rgba(192,122,8,0.35);
+    text-underline-offset: 3px;
+  }
+  .prose-stark a:hover {
+    color: var(--color-amber-dim);
+  }
+  .prose-stark strong {
+    color: var(--color-white);
+    font-weight: 600;
+  }
+  .prose-stark ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 1.5rem;
+  }
+  .prose-stark ul li::before {
+    content: '—';
+    color: var(--color-amber);
+    margin-right: 0.75rem;
+  }
+}
+
+@layer utilities {
+  .label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+  }
+
+  /* Label variant for dark/ink sections */
+  .label-on-dark {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+  }
+
+  .label-muted {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+
+  /* Serif utility for section headlines */
+  .font-serif {
+    font-family: var(--font-serif);
+  }
+
+  /* ── Amber underline hover ─────────────────────── */
+  .hover-amber {
+    position: relative;
+  }
+  .hover-amber::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 1px;
+    background: var(--color-amber);
+    transition: width 0.3s ease;
+  }
+  .hover-amber:hover::after {
+    width: 100%;
+  }
+}
+
+/* ── Marquee ─────────────────────────────────────── */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+  will-change: transform;
+}
+
+/* ── Subtle grid texture ──────────────────────────── */
+.bg-grid-dark {
+  background-image:
+    linear-gradient(rgba(0,0,0,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.025) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+/* ── Ink section grid (for dark CTA) ─────────────── */
+.bg-grid-ink {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+/* ── Clip-path reveal ─────────────────────────────── */
+.clip-hidden {
+  clip-path: inset(0 100% 0 0);
+}
+.clip-visible {
+  clip-path: inset(0 0% 0 0);
+}
+
+/* ── Mobile touch improvements ────────────────────── */
+@media (max-width: 768px) {
+  /* Larger tap targets */
+  a, button {
+    -webkit-tap-highlight-color: rgba(192, 122, 8, 0.12);
+  }
+
+  /* Prevent text size inflation on iOS */
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  /* Smoother momentum scrolling on iOS */
+  body {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* ── Smooth GSAP will-change hints ───────────────── */
+.gsap-reveal {
+  will-change: transform, opacity;
+}
+
+/* ── Line mask for text reveals (Cormorant needs deep clearance) ── */
+.line-mask {
+  overflow: hidden;
+  padding-bottom: 0.18em;
+}
+
+/* ── Amber glow on elements ───────────────────────── */
+.glow-amber {
+  box-shadow: var(--shadow-glow-amber);
+}
+
+/* ── Legacy compatibility ─────────────────────────── */
+.gold-line {
+  height: 1px;
+  background: var(--color-amber);
+  opacity: 0.35;
+  transform-origin: left center;
+}
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+/* ── Paper grain overlay (subtle texture for warmth) ── */
+.grain::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  pointer-events: none;
+  z-index: 0;
+}
