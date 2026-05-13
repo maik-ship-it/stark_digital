@@ -5,7 +5,7 @@ import { gsap, ScrollTrigger } from '@/lib/gsap'
 
 export default function TestimonialV2() {
   const sectionRef = useRef<HTMLElement>(null)
-  const quoteRef = useRef<HTMLDivElement>(null)
+  const quoteRef = useRef<HTMLQuoteElement>(null)
   const imageRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
