@@ -6,7 +6,7 @@ export default function LocalBusinessSchema() {
     description:
       'Google Ads agency in Dublin specialising in performance marketing for professional service businesses across Ireland.',
     url: 'https://starkdigital.ie',
-    email: 'hello@starkdigital.ie',
+    email: 'maik@starkdigital.ie',
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Dublin',

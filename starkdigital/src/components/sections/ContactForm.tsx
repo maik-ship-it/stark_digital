@@ -72,10 +72,10 @@ export default function ContactForm() {
             <p className="text-sm text-text-secondary">
               Prefer email?{' '}
               <a
-                href="mailto:hello@starkdigital.ie"
+                href="mailto:maik@starkdigital.ie"
                 className="text-amber underline decoration-amber/30 underline-offset-2 hover:decoration-amber/60 transition-colors duration-200"
               >
-                hello@starkdigital.ie
+                maik@starkdigital.ie
               </a>
             </p>
           </div>

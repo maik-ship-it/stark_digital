@@ -47,10 +47,10 @@ export default function Footer() {
               Dublin and across Ireland.
             </p>
             <a
-              href="mailto:hello@starkdigital.ie"
+              href="mailto:maik@starkdigital.ie"
               className="text-sm text-text-secondary hover:text-amber transition-colors duration-200"
             >
-              hello@starkdigital.ie
+              maik@starkdigital.ie
             </a>
           </div>
 

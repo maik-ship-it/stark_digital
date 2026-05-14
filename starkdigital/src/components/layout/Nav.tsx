@@ -151,8 +151,8 @@ export default function Nav() {
           <div className="mt-auto pt-10 flex gap-6">
             <span className="label-muted text-[10px]">Max. 8 clients</span>
             <span className="label-muted text-[10px]">Dublin, Ireland</span>
-            <a href="mailto:hello@starkdigital.ie" className="label-muted text-[10px] hover:text-amber transition-colors">
-              hello@starkdigital.ie
+            <a href="mailto:maik@starkdigital.ie" className="label-muted text-[10px] hover:text-amber transition-colors">
+              maik@starkdigital.ie
             </a>
           </div>
         </div>

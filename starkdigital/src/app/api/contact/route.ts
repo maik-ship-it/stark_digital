@@ -12,8 +12,8 @@ export async function POST(req: NextRequest) {
     }
 
     await resend.emails.send({
-      from: 'Stark Digital Contact <hello@starkdigital.ie>',
-      to: 'hello@starkdigital.ie',
+      from: 'Stark Digital Contact <onboarding@resend.dev>',
+      to: 'maik@starkdigital.ie',
       replyTo: email,
       subject: `New enquiry from ${name}${business ? ` — ${business}` : ''}`,
       text: [
@@ -29,6 +29,6 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ success: true })
   } catch (err) {
     console.error('[contact/route]', err)
-    return NextResponse.json({ error: 'Something went wrong. Please email hello@starkdigital.ie directly.' }, { status: 500 })
+    return NextResponse.json({ error: 'Something went wrong. Please email maik@starkdigital.ie directly.' }, { status: 500 })
   }
 }
