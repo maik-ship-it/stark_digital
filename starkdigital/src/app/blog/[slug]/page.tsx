@@ -1,10 +1,18 @@
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import * as runtime from 'react/jsx-runtime'
 import { blog as posts } from '../../../../.velite'
 import BlogPostSchema from '@/components/seo/BlogPostSchema'
 
 type Props = { params: Promise<{ slug: string }> }
+
+function MDXContent({ code }: { code: string }) {
+  // eslint-disable-next-line @typescript-eslint/no-implied-eval
+  const fn = new Function('runtime', `${code}; return { default: default_export }`)
+  const { default: Component } = fn(runtime) as { default: React.ComponentType }
+  return <Component />
+}
 
 export function generateStaticParams() {
   return posts.filter((p) => p.published).map((p) => ({ slug: p.slug }))
@@ -61,7 +69,7 @@ export default async function BlogPostPage({ params }: Props) {
 
         {/* Content */}
         <div className="max-w-2xl mx-auto prose-stark">
-          {/* MDX body rendered via velite compile output */}
+          <MDXContent code={post.body} />
         </div>
 
         {/* End CTA */}

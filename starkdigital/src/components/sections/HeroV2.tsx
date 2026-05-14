@@ -160,6 +160,24 @@ export default function HeroV2() {
               </Link>
             </div>
 
+            {/* Mobile-only result card */}
+            <div className="lg:hidden mb-8 inline-flex items-center gap-4 bg-surface border border-surface-2 rounded-sm px-5 py-3.5 shadow-card self-start">
+              <div>
+                <p
+                  className="font-serif font-bold text-amber leading-none"
+                  style={{ fontSize: 'clamp(22px, 5vw, 28px)' }}
+                >
+                  +112%
+                </p>
+                <p className="label-muted text-[10px] mt-1">Client enquiries</p>
+              </div>
+              <div className="h-8 w-px bg-surface-2" />
+              <div>
+                <p className="label-muted text-[10px]">Anthony Joyce Solicitors</p>
+                <p className="label-muted text-[9px] mt-0.5" style={{ opacity: 0.6 }}>90 days</p>
+              </div>
+            </div>
+
             {/* Trust strip */}
             <div ref={trustRef} className="flex flex-wrap gap-4 md:gap-7 border-t border-surface-2 pt-6 md:pt-8">
               {[
@@ -183,12 +201,11 @@ export default function HeroV2() {
             <div ref={imageWrapRef} className="relative w-full overflow-hidden rounded-sm bg-surface-2" style={{ aspectRatio: '3/4' }}>
               <div ref={imageRef} className="absolute inset-0">
                 <Image
-                  src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&q=80"
-                  alt="Professional services office — Dublin"
+                  src="/images/Maik.webp"
+                  alt="Maik — Google Ads Specialist, Dublin"
                   fill
                   className="object-cover object-center"
                   priority
-                  unoptimized
                 />
                 {/* Warm overlay */}
                 <div

@@ -11,6 +11,7 @@ const blog = defineCollection({
     tags: s.array(s.string()).optional(),
     published: s.boolean().default(true),
     readingTime: s.number().optional(),
+    body: s.mdx(),
   }).transform(data => ({
     ...data,
     permalink: `/blog/${data.slug}`,

@@ -11,7 +11,7 @@ const CASE_STUDIES = [
     client: 'Anthony Joyce Solicitors Co',
     industry: 'Legal / Solicitors',
     location: 'Dublin 8, Ireland',
-    published: false,
+    published: true,
     metrics: [
       { label: 'Return on Ad Spend', value: '3.4×' },
       { label: 'Cost per Lead', value: '−38%' },

@@ -6,6 +6,7 @@ import ResultsV2 from '@/components/sections/ResultsV2'
 import ServicesV2 from '@/components/sections/ServicesV2'
 import CaseStudyFeature from '@/components/sections/CaseStudyFeature'
 import ProcessV2 from '@/components/sections/ProcessV2'
+import Pricing from '@/components/sections/Pricing'
 import TestimonialV2 from '@/components/sections/TestimonialV2'
 import FAQ from '@/components/sections/FAQ'
 import CtaV2 from '@/components/sections/CtaV2'
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
 const homeFAQs = [
   {
     q: 'How much does Google Ads management cost in Ireland?',
-    a: 'Management fees start at €500/month depending on ad spend and campaign complexity. No hidden setup fees, no long-term lock-in.',
+    a: 'Management fees start at €1,000/month depending on ad spend and campaign complexity. No hidden setup fees, no long-term lock-in.',
   },
   {
     q: 'How quickly can I see results from Google Ads?',
@@ -67,13 +68,16 @@ export default function HomePage() {
       {/* 7. Process — 4 steps */}
       <ProcessV2 />
 
-      {/* 8. Testimonial — one large editorial quote */}
+      {/* 8. Pricing — transparent investment section */}
+      <Pricing />
+
+      {/* 9. Testimonial — one large editorial quote */}
       <TestimonialV2 />
 
-      {/* 9. FAQ */}
+      {/* 10. FAQ */}
       <FAQ faqs={homeFAQs} />
 
-      {/* 10. CTA — full amber section */}
+      {/* 11. CTA — full amber section */}
       <CtaV2 />
     </>
   )
