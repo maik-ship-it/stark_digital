@@ -4,6 +4,7 @@ import Link from 'next/link'
 import * as runtime from 'react/jsx-runtime'
 import { blog as posts } from '../../../../.velite'
 import BlogPostSchema from '@/components/seo/BlogPostSchema'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
 
 type Props = { params: Promise<{ slug: string }> }
 
@@ -44,6 +45,11 @@ export default async function BlogPostPage({ params }: Props) {
         slug={post.slug}
         readingTime={post.readingTime}
       />
+      <BreadcrumbSchema crumbs={[
+        { name: 'Home', url: 'https://starkdigital.ie' },
+        { name: 'Blog', url: 'https://starkdigital.ie/blog' },
+        { name: post.title, url: `https://starkdigital.ie/blog/${post.slug}` },
+      ]} />
       <div className="max-w-6xl mx-auto px-6">
 
         {/* Header */}

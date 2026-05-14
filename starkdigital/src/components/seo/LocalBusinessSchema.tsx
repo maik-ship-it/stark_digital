@@ -1,7 +1,7 @@
 export default function LocalBusinessSchema() {
   const schema = {
     '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
+    '@type': ['LocalBusiness', 'ProfessionalService'],
     name: 'Stark Digital',
     description:
       'Google Ads agency in Dublin specialising in performance marketing for professional service businesses across Ireland.',
@@ -28,7 +28,31 @@ export default function LocalBusinessSchema() {
       'Paid Search Marketing',
       'Performance Marketing',
     ],
-    priceRange: '€€',
+    priceRange: '€€€',
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '5',
+      bestRating: '5',
+      worstRating: '1',
+      reviewCount: '1',
+    },
+    review: [
+      {
+        '@type': 'Review',
+        reviewRating: {
+          '@type': 'Rating',
+          ratingValue: '5',
+          bestRating: '5',
+        },
+        author: {
+          '@type': 'Person',
+          name: 'Anthony Joyce',
+        },
+        reviewBody:
+          'Maik understood exactly what we needed. He delivered a clean, results-driven campaign and we\'ve already seen a significant increase in client enquiries coming in.',
+        datePublished: '2024-10-01',
+      },
+    ],
   }
 
   return (

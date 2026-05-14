@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { industries } from '@/lib/industries'
 import FAQSchema from '@/components/seo/FAQSchema'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
 import CtaV2 from '@/components/sections/CtaV2'
 
 export const metadata: Metadata = {
@@ -30,6 +31,10 @@ export default function GoogleAdsDublinPage() {
   return (
     <>
       <FAQSchema faqs={serviceFAQs} />
+      <BreadcrumbSchema crumbs={[
+        { name: 'Home', url: 'https://starkdigital.ie' },
+        { name: 'Google Ads Dublin', url: 'https://starkdigital.ie/google-ads-dublin' },
+      ]} />
 
       {/* Hero */}
       <section className="bg-canvas pt-36 pb-20">

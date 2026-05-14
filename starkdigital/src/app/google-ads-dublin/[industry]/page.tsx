@@ -3,6 +3,8 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { industries } from '@/lib/industries'
 import FAQSchema from '@/components/seo/FAQSchema'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import ServiceSchema from '@/components/seo/ServiceSchema'
 import CtaV2 from '@/components/sections/CtaV2'
 
 type Props = { params: Promise<{ industry: string }> }
@@ -32,6 +34,16 @@ export default async function IndustryPage({ params }: Props) {
   return (
     <>
       {ind.faqs.length > 0 && <FAQSchema faqs={ind.faqs} />}
+      <BreadcrumbSchema crumbs={[
+        { name: 'Home', url: 'https://starkdigital.ie' },
+        { name: 'Google Ads Dublin', url: 'https://starkdigital.ie/google-ads-dublin' },
+        { name: ind.title, url: `https://starkdigital.ie/google-ads-dublin/${ind.slug}` },
+      ]} />
+      <ServiceSchema
+        name={ind.title}
+        description={ind.metaDescription}
+        url={`https://starkdigital.ie/google-ads-dublin/${ind.slug}`}
+      />
 
       {/* Hero */}
       <section className="bg-canvas pt-36 pb-20">
