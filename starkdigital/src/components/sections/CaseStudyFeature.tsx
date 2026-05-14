@@ -92,15 +92,14 @@ export default function CaseStudyFeature() {
         {/* Main content */}
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-0 border border-surface-2 rounded-sm overflow-hidden shadow-card">
 
-          {/* Left: Photo */}
-          <div ref={imageRef} className="relative bg-surface-2 min-h-[340px] lg:min-h-[520px]">
+          {/* Left: Photo — constrained to native resolution (523×462) */}
+          <div ref={imageRef} className="relative bg-surface-2 min-h-[300px] lg:min-h-0 lg:aspect-[523/462] lg:max-h-[420px]">
             <Image
               src="/images/anthony-joyce.png"
               alt="Anthony Joyce — Managing Partner, Anthony Joyce Solicitors"
               fill
-              sizes="(max-width: 1024px) 100vw, 55vw"
-              className="object-cover"
-              style={{ objectPosition: '60% top' }}
+              sizes="(max-width: 1024px) 100vw, 45vw"
+              className="object-cover object-top"
             />
             {/* Subtle warm overlay */}
             <div

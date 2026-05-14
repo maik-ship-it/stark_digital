@@ -1,6 +1,5 @@
 'use client'
 import { useEffect, useRef } from 'react'
-import Image from 'next/image'
 import { gsap, ScrollTrigger } from '@/lib/gsap'
 
 const POINTS = [
@@ -158,48 +157,33 @@ export default function RealityCheck() {
             </div>
           ))}
 
-          {/* Photo card — Maik */}
+          {/* Promise card — full width */}
           <div
             data-rc-card
-            className="relative bg-surface-2 overflow-hidden min-h-[380px] md:min-h-[420px]"
-          >
-            <Image
-              src="/images/Maik.webp"
-              alt="Maik Stark — Google Ads Specialist, Stark Digital"
-              fill
-              sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-cover object-top"
-            />
-            {/* Overlay gradient */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-            {/* Caption */}
-            <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
-              <p className="font-display font-bold text-white text-base md:text-lg">Maik Stark</p>
-              <p className="font-mono text-[10px] tracking-[0.18em] uppercase mt-1" style={{ color: 'rgba(255,255,255,0.6)' }}>
-                Founder · Google Ads Specialist · Dublin
-              </p>
-            </div>
-          </div>
-
-          {/* Fifth card — promise */}
-          <div
-            data-rc-card
-            className="group bg-amber/8 border-l-2 border-amber p-8 md:p-10 relative overflow-hidden cursor-default"
+            className="md:col-span-2 group border-l-2 border-amber p-8 md:p-12 relative overflow-hidden cursor-default"
             style={{ background: 'rgba(192,122,8,0.05)' }}
           >
-            <p
-              className="font-serif font-bold text-white leading-tight mb-3"
-              style={{ fontSize: 'clamp(22px, 2.5vw, 32px)' }}
-            >
-              &ldquo;We earn your business every single month.&rdquo;
-            </p>
-            <p className="text-text-secondary text-sm leading-relaxed">
-              No retainer lock-in. No 12-month contracts. If the results aren&apos;t
-              there, you&apos;re free to leave — and we&apos;ll help you transition cleanly.
-            </p>
-            <div className="mt-6 pt-5 border-t border-surface-2 flex items-center gap-3">
-              <span className="w-1 h-1 rounded-full bg-amber inline-block" />
-              <span className="label-muted text-[10px]">Month-to-month · No hidden fees</span>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              <p
+                className="font-serif font-bold text-white leading-tight"
+                style={{ fontSize: 'clamp(24px, 3vw, 44px)' }}
+              >
+                &ldquo;We earn your business every single month.&rdquo;
+              </p>
+              <div>
+                <p className="text-text-secondary text-base leading-relaxed mb-6">
+                  No retainer lock-in. No 12-month contracts. If the results aren&apos;t
+                  there, you&apos;re free to leave — and we&apos;ll help you transition cleanly.
+                </p>
+                <div className="flex flex-wrap items-center gap-5">
+                  {['Month-to-month', 'No hidden fees', 'Cancel anytime'].map((t) => (
+                    <span key={t} className="flex items-center gap-2">
+                      <span className="w-1 h-1 rounded-full bg-amber inline-block" />
+                      <span className="label-muted text-[10px]">{t}</span>
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
