@@ -2,15 +2,15 @@ import type { Metadata } from 'next'
 import HeroV2 from '@/components/sections/HeroV2'
 import MetricsTicker from '@/components/sections/MetricsTicker'
 import RealityCheck from '@/components/sections/RealityCheck'
-import ResultsV2 from '@/components/sections/ResultsV2'
 import ServicesV2 from '@/components/sections/ServicesV2'
 import CaseStudyFeature from '@/components/sections/CaseStudyFeature'
 import ProcessV2 from '@/components/sections/ProcessV2'
 import Pricing from '@/components/sections/Pricing'
-import TestimonialV2 from '@/components/sections/TestimonialV2'
+import BlogTeaser from '@/components/sections/BlogTeaser'
 import FAQ from '@/components/sections/FAQ'
 import CtaV2 from '@/components/sections/CtaV2'
 import FAQSchema from '@/components/seo/FAQSchema'
+import { blog as allPosts } from '../../.velite'
 
 export const metadata: Metadata = {
   title: 'Google Ads Agency Dublin | Stark Digital',
@@ -43,6 +43,11 @@ const homeFAQs = [
 ]
 
 export default function HomePage() {
+  const teaserPosts = allPosts
+    .filter((p) => p.published)
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .slice(0, 3)
+
   return (
     <>
       <FAQSchema faqs={homeFAQs} />
@@ -56,28 +61,25 @@ export default function HomePage() {
       {/* 3. Reality check — boutique statement */}
       <RealityCheck />
 
-      {/* 4. Results — big animated numbers */}
-      <ResultsV2 />
-
-      {/* 5. Services — numbered industry list */}
+      {/* 4. Services — who we help */}
       <ServicesV2 />
 
-      {/* 6. Featured case study — editorial layout */}
+      {/* 5. Case study — social proof, one clean presentation */}
       <CaseStudyFeature />
 
-      {/* 7. Process — 4 steps */}
+      {/* 6. Process — 4 steps */}
       <ProcessV2 />
 
-      {/* 8. Pricing — transparent investment section */}
+      {/* 7. Pricing — transparent investment section */}
       <Pricing />
 
-      {/* 9. Testimonial — one large editorial quote */}
-      <TestimonialV2 />
+      {/* 8. Blog teaser — thought leadership + internal linking */}
+      <BlogTeaser posts={teaserPosts} />
 
-      {/* 10. FAQ */}
+      {/* 9. FAQ */}
       <FAQ faqs={homeFAQs} />
 
-      {/* 11. CTA — full amber section */}
+      {/* 10. CTA */}
       <CtaV2 />
     </>
   )

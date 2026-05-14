@@ -164,7 +164,7 @@ export default function RealityCheck() {
             className="relative bg-surface-2 overflow-hidden min-h-[380px] md:min-h-[420px]"
           >
             <Image
-              src="/images/maik.jpg"
+              src="/images/Maik.webp"
               alt="Maik Stark — Google Ads Specialist, Stark Digital"
               fill
               sizes="(max-width: 768px) 100vw, 50vw"

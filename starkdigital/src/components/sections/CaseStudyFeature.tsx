@@ -78,14 +78,14 @@ export default function CaseStudyFeature() {
 
         {/* Section label */}
         <div className="mb-12 md:mb-16" data-cs-header>
-          <p className="label mb-3">Featured case study</p>
+          <p className="label mb-3">Client results · Dublin</p>
           <h2
             className="font-serif font-bold text-white leading-[0.92] tracking-[-0.01em]"
             style={{ fontSize: 'var(--text-display-lg)' }}
           >
-            How a Dublin law firm got
+            Real numbers.
             <br />
-            <em className="text-amber not-italic">112% more enquiries.</em>
+            <em className="text-amber not-italic">One Dublin campaign.</em>
           </h2>
         </div>
 
