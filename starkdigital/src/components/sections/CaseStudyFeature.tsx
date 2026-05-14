@@ -111,13 +111,12 @@ export default function CaseStudyFeature() {
             ))}
           </div>
 
-          <div className="p-6 md:p-10 lg:p-12">
-            <div className="flex flex-col lg:flex-row lg:items-start gap-8 lg:gap-12">
-              {/* Small portrait — fixed pixel width in DOM, no stretched fill layout */}
-              <div ref={imageRef} className="flex flex-col items-center lg:items-start shrink-0">
-                <figure className="relative">
+          <div className="p-5 md:p-8">
+            <div className="flex flex-col lg:flex-row lg:items-start gap-6 lg:gap-10">
+              <div ref={imageRef} className="flex justify-center lg:justify-start shrink-0">
+                <figure className="m-0">
                   <div
-                    className="rounded-sm overflow-hidden ring-1 ring-white/12 shadow-[0_16px_40px_rgba(0,0,0,0.45)] bg-surface-2"
+                    className="rounded-sm overflow-hidden ring-1 ring-white/12 shadow-[0_12px_32px_rgba(0,0,0,0.4)] bg-surface-2"
                     style={{ width: IMG_W, maxWidth: 'min(262px, 86vw)' }}
                   >
                     <Image
@@ -130,29 +129,27 @@ export default function CaseStudyFeature() {
                       priority={false}
                     />
                   </div>
-                  <figcaption className="mt-4 text-center lg:text-left max-w-[262px]">
-                    <span className="font-display font-bold text-white text-sm md:text-base block">Anthony Joyce</span>
-                    <span className="font-mono text-[9px] sm:text-[10px] tracking-[0.16em] uppercase mt-1.5 text-text-secondary leading-snug block">
-                      Managing Partner · Anthony Joyce Solicitors · Dublin
-                    </span>
-                  </figcaption>
                 </figure>
               </div>
 
-              <div ref={quoteRef} className="flex-1 min-w-0 flex flex-col justify-between gap-8">
-                <blockquote className="text-text-secondary text-[15px] md:text-lg leading-relaxed italic font-serif border-l-2 border-amber/50 pl-5 md:pl-6">
+              <div ref={quoteRef} className="flex-1 min-w-0 flex flex-col gap-5">
+                <blockquote
+                  className="m-0 font-serif italic text-white/95 border-l-[3px] border-amber pl-5 md:pl-6 leading-[1.38]"
+                  style={{ fontSize: 'clamp(1.1875rem, 2.35vw, 1.6875rem)' }}
+                >
                   &ldquo;Maik understood what we needed right away. We&apos;ve seen more client enquiries since
                   launching our new campaign.&rdquo;
                 </blockquote>
 
-                <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 pt-2 border-t border-surface-2">
-                  <div>
-                    <p className="text-white font-medium text-sm">Anthony Joyce</p>
-                    <p className="label-muted mt-1">Managing Partner, Anthony Joyce Solicitors</p>
-                  </div>
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pt-4 border-t border-surface-2">
+                  <p className="text-sm md:text-[15px] text-text-secondary leading-snug">
+                    <span className="font-medium text-white">Anthony Joyce</span>
+                    <span className="mx-2 text-surface-2">·</span>
+                    Managing Partner, Anthony Joyce Solicitors
+                  </p>
                   <Link
                     href="/case-studies/anthony-joyce-solicitors"
-                    className="inline-flex shrink-0 items-center justify-center sm:justify-start gap-2 border border-surface-2 text-text-secondary text-sm font-medium px-5 py-2.5 rounded-sm hover:border-amber/40 hover:text-amber transition-all duration-200"
+                    className="inline-flex shrink-0 items-center justify-center gap-2 border border-surface-2 text-text-secondary text-sm font-medium px-5 py-2.5 rounded-sm hover:border-amber/40 hover:text-amber transition-all duration-200"
                   >
                     Read full case study →
                   </Link>
