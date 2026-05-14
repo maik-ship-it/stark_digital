@@ -109,10 +109,96 @@
     padding-left: 0;
     margin-bottom: 1.5rem;
   }
+  .prose-stark ul li {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.125rem;
+    line-height: 1.75;
+  }
   .prose-stark ul li::before {
     content: '—';
     color: var(--color-amber);
-    margin-right: 0.75rem;
+    flex-shrink: 0;
+  }
+  .prose-stark ol {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 1.5rem;
+    counter-reset: ol-counter;
+  }
+  .prose-stark ol li {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+    font-size: 1.125rem;
+    line-height: 1.75;
+    counter-increment: ol-counter;
+  }
+  .prose-stark ol li::before {
+    content: counter(ol-counter, decimal-leading-zero);
+    color: var(--color-amber);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+    padding-top: 0.35rem;
+  }
+  .prose-stark table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+    font-size: 0.9375rem;
+  }
+  .prose-stark thead th {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+    border-bottom: 1px solid var(--color-surface-3);
+    padding: 0.625rem 1rem;
+    text-align: left;
+    background: var(--color-surface);
+  }
+  .prose-stark tbody td {
+    border-bottom: 1px solid var(--color-surface-2);
+    padding: 0.75rem 1rem;
+    color: var(--color-text-secondary);
+    vertical-align: top;
+  }
+  .prose-stark tbody tr:last-child td {
+    border-bottom: none;
+  }
+  .prose-stark tbody td strong {
+    color: var(--color-white);
+    font-weight: 600;
+  }
+  .prose-stark blockquote {
+    border-left: 2px solid var(--color-amber);
+    padding-left: 1.5rem;
+    margin: 2rem 0;
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: var(--color-white);
+    font-style: italic;
+  }
+  .prose-stark hr {
+    border: none;
+    border-top: 1px solid var(--color-surface-2);
+    margin: 2.5rem 0;
+  }
+  .prose-stark code:not(pre code) {
+    font-family: var(--font-mono);
+    font-size: 0.875em;
+    background: var(--color-surface);
+    border: 1px solid var(--color-surface-2);
+    padding: 0.15em 0.4em;
+    border-radius: 3px;
+    color: var(--color-amber);
   }
 }
 
