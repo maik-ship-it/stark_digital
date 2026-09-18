@@ -13,7 +13,7 @@ export default function CaseStudy() {
             className="display max-w-[18ch]"
             style={{ fontSize: 'var(--text-display-lg)' }}
           >
-            A Dublin law firm that was invisible on the searches that mattered.
+            Four practice areas is four problems, not one account.
           </h2>
         </Reveal>
 
@@ -39,7 +39,7 @@ export default function CaseStudy() {
                 Anthony Joyce &amp; Co. Solicitors
               </p>
               <p className="text-on-ink text-lg md:text-xl font-semibold leading-snug max-w-sm">
-                Immigration law, Dublin 8
+                Immigration, notary and injury law
               </p>
             </div>
           </Reveal>
@@ -47,21 +47,25 @@ export default function CaseStudy() {
           <Reveal className="panel bg-paper-2 p-7 md:p-10 lg:p-12 flex flex-col">
             <div className="space-y-5 text-text-soft text-base md:text-lg leading-relaxed">
               <p>
-                The firm had a steady name in Dublin and almost nothing to show for
-                it online. Enquiries came from referrals and the occasional walk-in,
-                which meant a good month and a bad month looked nothing alike and
-                neither was anyone&rsquo;s doing.
+                Anthony Joyce &amp; Co. work across personal injury, medical
+                negligence, immigration and notary services. On paper that is one
+                firm. In search terms it is four separate problems, and running
+                them as one account is the usual reason legal advertising
+                disappoints.
               </p>
               <p>
-                We started with the searches people use when they have already
-                decided to talk to a solicitor, built a page for each of the three
-                practice areas worth paying for, and put call tracking on every one
-                of them so the firm could see which search produced which phone call.
+                We started with immigration and notary rather than the
+                highest-value work, because those are the two where somebody
+                searching knows exactly what they want and where the copy can say
+                plainly what the service is. Each got its own landing page and its
+                own campaign.
               </p>
               <p>
-                The ads were the smaller half of the work. Most of the gain came
-                from sending people to a page written for the thing they searched
-                for, instead of a homepage that asked them to go hunting.
+                The notary page is the sharper example. Not &ldquo;notary public
+                Dublin&rdquo;, but Irish nurses and doctors who need documents
+                certified the exact way AHPRA requires before they can register in
+                Australia. A small audience, on a deadline, with almost no
+                alternatives. I have run the account for close to a year now.
               </p>
             </div>
 

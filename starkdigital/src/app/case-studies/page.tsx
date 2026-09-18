@@ -39,10 +39,10 @@ export default function CaseStudiesPage() {
               One client, written up properly.
             </h1>
             <p className="text-on-ink-soft text-base md:text-lg leading-relaxed max-w-2xl">
-              There is one case study here rather than twelve, because there is one
-              account I can write up in full with the client&rsquo;s agreement. Every
-              figure carries the basis it was measured on, so you can judge whether
-              it means anything for your business.
+              One case study rather than twelve, because there is one account I can
+              write up in full with the client&rsquo;s agreement. Close to a year of
+              Google Ads for a Dublin practice with four practice areas, and every
+              figure carries the basis it was measured on.
             </p>
           </div>
         </div>

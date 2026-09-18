@@ -110,6 +110,43 @@ export default async function CaseStudyPage({ params }: Props) {
         </div>
       </section>
 
+      {/* ── The two pages the account was built on ───── */}
+      <section className="px-3 sm:px-4 pt-14 md:pt-20">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6">
+          <p className="eyebrow mb-6">The pages behind it</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              {
+                src: '/images/v3/case-notary.jpg',
+                url: 'notary.anthonyjoyce.ie',
+                line: 'AHPRA document certification for nurses and doctors moving to Australia',
+              },
+              {
+                src: '/images/v3/work-1.jpg',
+                url: 'immigration.anthonyjoyce.ie',
+                line: 'Citizenship, work permits and IRP renewals, built around the phone number',
+              },
+            ].map((s) => (
+              <figure key={s.url}>
+                <div className="relative panel aspect-[4/3] bg-paper-2 mb-4">
+                  <Image
+                    src={s.src}
+                    alt={`Screenshot of ${s.url}`}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover"
+                  />
+                </div>
+                <figcaption>
+                  <p className="label mb-2">{s.url}</p>
+                  <p className="text-text-soft text-[15px] leading-relaxed">{s.line}</p>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── Body ─────────────────────────────────────── */}
       <section className="px-3 sm:px-4 py-14 md:py-20">
         <div className="max-w-3xl mx-auto px-3 sm:px-6">
