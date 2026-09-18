@@ -1,22 +1,32 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import { terms } from '@/lib/proof'
+import { services } from '@/lib/services'
 
 const FOOTER_LINKS = [
   {
     heading: 'Services',
     links: [
-      { label: 'Google Ads Dublin', href: '/google-ads-dublin' },
-      { label: 'For Solicitors', href: '/google-ads-dublin/solicitors' },
-      { label: 'For Accountants', href: '/google-ads-dublin/accountants' },
-      { label: 'For Financial Advisors', href: '/google-ads-dublin/financial-advisors' },
+      { label: 'Google Ads, Dublin', href: '/google-ads-dublin' },
+      ...services.map((s) => ({ label: s.nav, href: `/${s.slug}` })),
     ],
   },
   {
-    heading: 'Company',
+    heading: 'Google Ads by industry',
     links: [
-      { label: 'About', href: '/about' },
-      { label: 'Case Studies', href: '/case-studies' },
+      { label: 'For solicitors', href: '/google-ads-dublin/solicitors' },
+      { label: 'For accountants', href: '/google-ads-dublin/accountants' },
+      { label: 'For financial advisors', href: '/google-ads-dublin/financial-advisors' },
+      { label: 'For dental clinics', href: '/google-ads-dublin/dental-clinics' },
+      { label: 'For tradespeople', href: '/google-ads-dublin/tradespeople' },
+    ],
+  },
+  {
+    heading: 'Elsewhere',
+    links: [
+      { label: 'Case studies', href: '/case-studies' },
       { label: 'Blog', href: '/blog' },
+      { label: 'About', href: '/about' },
       { label: 'Contact', href: '/contact' },
     ],
   },
@@ -24,46 +34,40 @@ const FOOTER_LINKS = [
 
 export default function Footer() {
   return (
-    <footer className="bg-surface border-t border-surface-2">
-      <div className="max-w-7xl mx-auto px-6 pt-16 pb-10">
-
-        {/* Top row */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-14">
-
-          {/* Brand */}
+    <footer className="px-3 sm:px-4 pb-4">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 pt-16 md:pt-20 pb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.2fr_1fr_1fr_1fr] gap-10 md:gap-12 mb-14">
           <div>
-            <Link href="/" className="inline-flex mb-5">
+            <Link href="/" className="inline-flex mb-6">
               <Image
                 src="/images/logo-stark.png"
                 alt="Stark Digital"
-                width={110}
-                height={37}
+                width={120}
+                height={41}
                 className="h-9 w-auto"
               />
             </Link>
-
-            <p className="text-sm leading-relaxed text-text-secondary max-w-xs mb-5">
-              Performance-first Google Ads for professional services in
+            <p className="text-text-soft text-[15px] leading-relaxed max-w-xs mb-6">
+              Search advertising, SEO, AI search and landing pages for businesses in
               Dublin and across Ireland.
             </p>
             <a
-              href="mailto:maik@starkdigital.ie"
-              className="text-sm text-text-secondary hover:text-amber transition-colors duration-200"
+              href={`mailto:${terms.email}`}
+              className="text-text font-medium hover-amber inline-block"
             >
-              maik@starkdigital.ie
+              {terms.email}
             </a>
           </div>
 
-          {/* Nav columns */}
           {FOOTER_LINKS.map((col) => (
             <div key={col.heading}>
               <p className="label mb-5">{col.heading}</p>
-              <ul className="space-y-3 text-sm">
+              <ul className="space-y-3">
                 {col.links.map(({ label, href }) => (
                   <li key={href}>
                     <Link
                       href={href}
-                      className="text-text-secondary hover:text-white transition-colors duration-200"
+                      className="text-text-soft text-[15px] hover:text-orange transition-colors duration-200"
                     >
                       {label}
                     </Link>
@@ -74,14 +78,9 @@ export default function Footer() {
           ))}
         </div>
 
-        {/* Bottom row */}
-        <div className="border-t border-surface-2 pt-8 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-xs text-text-muted">
-            © {new Date().getFullYear()} Stark Digital. All rights reserved.
-          </p>
-          <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-text-muted">
-            Dublin, Ireland
-          </p>
+        <div className="border-t border-paper-3 pt-7 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <p className="label-muted">© {new Date().getFullYear()} Stark Digital</p>
+          <p className="label-muted">{terms.location}</p>
         </div>
       </div>
     </footer>

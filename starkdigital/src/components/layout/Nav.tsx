@@ -1,10 +1,17 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { services } from '@/lib/services'
+import { terms } from '@/lib/proof'
+
+/** Google Ads sits first: it is the strongest page and the usual entry point. */
+const SERVICE_LINKS = [
+  { label: 'Google Ads', href: '/google-ads-dublin' },
+  ...services.map((s) => ({ label: s.nav, href: `/${s.slug}` })),
+]
 
 const NAV_LINKS = [
-  ['Services', '/google-ads-dublin'],
   ['Case Studies', '/case-studies'],
   ['Blog', '/blog'],
   ['About', '/about'],
@@ -13,6 +20,8 @@ const NAV_LINKS = [
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [servicesOpen, setServicesOpen] = useState(false)
+  const servicesRef = useRef<HTMLLIElement>(null)
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 40)
@@ -20,42 +29,98 @@ export default function Nav() {
     return () => window.removeEventListener('scroll', handler)
   }, [])
 
-  // Lock body scroll when menu is open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
   }, [menuOpen])
 
+  // Close the dropdown on outside click and on Escape
+  useEffect(() => {
+    if (!servicesOpen) return
+    const onClick = (e: MouseEvent) => {
+      if (!servicesRef.current?.contains(e.target as Node)) setServicesOpen(false)
+    }
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setServicesOpen(false)
+    }
+    document.addEventListener('mousedown', onClick)
+    document.addEventListener('keydown', onKey)
+    return () => {
+      document.removeEventListener('mousedown', onClick)
+      document.removeEventListener('keydown', onKey)
+    }
+  }, [servicesOpen])
+
   return (
     <>
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled
-            ? 'bg-canvas/92 backdrop-blur-xl border-b border-surface-2 py-3.5'
-            : 'bg-canvas/0 py-5 md:py-6'
+          scrolled ? 'bg-paper/90 backdrop-blur-xl py-3' : 'py-4 md:py-5'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
-
-          {/* Logo */}
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 flex items-center justify-between gap-6">
           <Link href="/" className="flex items-center z-10 shrink-0">
             <Image
               src="/images/logo-stark.png"
               alt="Stark Digital"
               width={140}
               height={48}
-              className="h-9 md:h-11 w-auto"
+              className="h-8 md:h-10 w-auto"
               priority
             />
           </Link>
 
-          {/* Desktop links */}
           <ul className="hidden md:flex items-center gap-8 lg:gap-10">
+            <li
+              ref={servicesRef}
+              className="relative"
+              onMouseEnter={() => setServicesOpen(true)}
+              onMouseLeave={() => setServicesOpen(false)}
+            >
+              <button
+                onClick={() => setServicesOpen((o) => !o)}
+                aria-expanded={servicesOpen}
+                className="flex items-center gap-1.5 text-[15px] font-medium text-text-soft hover:text-text transition-colors duration-200"
+              >
+                Services
+                <span
+                  className="text-[10px] transition-transform duration-200"
+                  style={{ transform: servicesOpen ? 'rotate(180deg)' : 'none' }}
+                  aria-hidden
+                >
+                  ▾
+                </span>
+              </button>
+
+              <div
+                className="absolute left-0 top-full pt-4 transition-all duration-200"
+                style={{
+                  opacity: servicesOpen ? 1 : 0,
+                  visibility: servicesOpen ? 'visible' : 'hidden',
+                  transform: servicesOpen ? 'translateY(0)' : 'translateY(-6px)',
+                }}
+              >
+                <ul className="bg-paper rounded-[14px] p-2 shadow-card min-w-[15rem] border border-paper-3">
+                  {SERVICE_LINKS.map((s) => (
+                    <li key={s.href}>
+                      <Link
+                        href={s.href}
+                        onClick={() => setServicesOpen(false)}
+                        className="block px-4 py-2.5 rounded-[9px] text-[15px] font-medium text-text-soft hover:text-text hover:bg-paper-2 transition-colors duration-150"
+                      >
+                        {s.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </li>
+
             {NAV_LINKS.map(([label, href]) => (
               <li key={href}>
                 <Link
                   href={href}
-                  className="font-body text-sm text-text-secondary hover-amber hover:text-white transition-colors duration-200"
+                  className="text-[15px] font-medium text-text-soft hover-amber hover:text-text transition-colors duration-200"
                 >
                   {label}
                 </Link>
@@ -63,34 +128,32 @@ export default function Nav() {
             ))}
           </ul>
 
-          {/* Desktop CTA */}
-          <Link
-            href="/contact"
-            className="hidden md:inline-flex items-center gap-2 bg-amber text-canvas text-sm font-semibold px-5 py-2.5 rounded-sm hover:bg-amber-dim transition-colors duration-200"
-          >
-            Let&apos;s Talk →
-          </Link>
+          {/* Wrapped: the .btn utility sets display, which would beat `hidden` */}
+          <div className="hidden md:block">
+            <Link href="/contact" className="btn btn-ink !py-2.5 !px-5 !text-sm">
+              Book a call
+            </Link>
+          </div>
 
-          {/* Mobile hamburger */}
           <button
-            className="md:hidden relative z-10 p-2 -mr-1 flex flex-col gap-[5px] items-end"
+            className="md:hidden relative z-10 p-2 -mr-2 flex flex-col gap-[6px] items-end"
             onClick={() => setMenuOpen((o) => !o)}
             aria-label="Toggle menu"
             aria-expanded={menuOpen}
           >
             <span
-              className={`block h-px bg-white transition-all duration-300 ${
-                menuOpen ? 'w-6 rotate-45 translate-y-[6px]' : 'w-6'
+              className={`block h-[2px] bg-ink rounded-full transition-all duration-300 ${
+                menuOpen ? 'w-6 rotate-45 translate-y-[8px]' : 'w-6'
               }`}
             />
             <span
-              className={`block h-px bg-white transition-all duration-300 ${
-                menuOpen ? 'opacity-0 w-4' : 'w-4'
+              className={`block h-[2px] bg-ink rounded-full transition-all duration-300 ${
+                menuOpen ? 'opacity-0 w-5' : 'w-5'
               }`}
             />
             <span
-              className={`block h-px bg-white transition-all duration-300 ${
-                menuOpen ? 'w-6 -rotate-45 -translate-y-[6px]' : 'w-5'
+              className={`block h-[2px] bg-ink rounded-full transition-all duration-300 ${
+                menuOpen ? 'w-6 -rotate-45 -translate-y-[8px]' : 'w-4'
               }`}
             />
           </button>
@@ -99,38 +162,32 @@ export default function Nav() {
 
       {/* Mobile fullscreen menu */}
       <div
-        className={`fixed inset-0 z-40 md:hidden transition-all duration-400 ${
+        className={`fixed inset-0 z-40 md:hidden overflow-y-auto transition-all duration-300 bg-paper ${
           menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
-        style={{ background: 'var(--color-canvas)' }}
       >
-        <div className="flex flex-col justify-center h-full px-6 pt-20 pb-10">
+        <div className="flex flex-col min-h-full px-6 pt-24 pb-10">
+          <p className="label mb-4">Services</p>
+          <nav className="flex flex-col mb-9">
+            {SERVICE_LINKS.map((s) => (
+              <Link
+                key={s.href}
+                href={s.href}
+                className="display py-3 border-b border-paper-3 transition-colors duration-200 hover:text-orange"
+                style={{ fontSize: 'clamp(24px, 6.5vw, 36px)' }}
+                onClick={() => setMenuOpen(false)}
+              >
+                {s.label}
+              </Link>
+            ))}
+          </nav>
 
-          {/* Logo in mobile menu */}
-          <Link href="/" onClick={() => setMenuOpen(false)} className="mb-10">
-            <Image
-              src="/images/logo-stark.png"
-              alt="Stark Digital"
-              width={120}
-              height={41}
-              className="h-9 w-auto"
-            />
-          </Link>
-
-          {/* Links */}
-          <nav className="flex flex-col gap-1 mb-10">
-            {NAV_LINKS.map(([label, href], i) => (
+          <nav className="flex flex-col mb-9">
+            {NAV_LINKS.map(([label, href]) => (
               <Link
                 key={href}
                 href={href}
-                className="font-serif font-bold text-white py-3 border-b border-surface-2 last:border-0 transition-colors duration-200 hover:text-amber"
-                style={{
-                  fontSize: 'clamp(28px, 8vw, 48px)',
-                  transitionDelay: menuOpen ? `${i * 50}ms` : '0ms',
-                  transform: menuOpen ? 'translateX(0)' : 'translateX(-12px)',
-                  opacity: menuOpen ? 1 : 0,
-                  transition: `transform 0.4s ease ${i * 0.05}s, opacity 0.4s ease ${i * 0.05}s, color 0.2s ease`,
-                }}
+                className="py-3 text-lg font-medium text-text-soft border-b border-paper-3 last:border-0 hover:text-orange transition-colors duration-200"
                 onClick={() => setMenuOpen(false)}
               >
                 {label}
@@ -138,21 +195,19 @@ export default function Nav() {
             ))}
           </nav>
 
-          {/* CTA */}
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 bg-amber text-canvas font-semibold px-7 py-4 rounded-sm w-fit text-base"
+            className="btn btn-orange w-fit"
             onClick={() => setMenuOpen(false)}
           >
-            Let&apos;s Talk →
+            Book a call
+            <span aria-hidden>→</span>
           </Link>
 
-          {/* Footer micro */}
-          <div className="mt-auto pt-10 flex gap-6">
-            <span className="label-muted text-[10px]">Max. 8 clients</span>
-            <span className="label-muted text-[10px]">Dublin, Ireland</span>
-            <a href="mailto:maik@starkdigital.ie" className="label-muted text-[10px] hover:text-amber transition-colors">
-              maik@starkdigital.ie
+          <div className="mt-auto pt-10 flex flex-col gap-2">
+            <span className="label-muted">{terms.intakeShort}</span>
+            <a href={`mailto:${terms.email}`} className="label-muted hover:text-orange transition-colors">
+              {terms.email}
             </a>
           </div>
         </div>
