@@ -5,7 +5,7 @@ export async function POST(req: NextRequest) {
   const resend = new Resend(process.env.RESEND_API_KEY)
   try {
     const body = await req.json()
-    const { name, email, business, message } = body
+    const { name, email, website, need, business, message } = body
 
     if (!name || !email) {
       return NextResponse.json({ error: 'Name and email are required.' }, { status: 400 })
@@ -15,11 +15,13 @@ export async function POST(req: NextRequest) {
       from: 'Stark Digital Contact <onboarding@resend.dev>',
       to: 'maik@starkdigital.ie',
       replyTo: email,
-      subject: `New enquiry from ${name}${business ? ` — ${business}` : ''}`,
+      subject: `New enquiry from ${name}${business ? `, ${business}` : ''}`,
       text: [
         `Name: ${name}`,
         `Email: ${email}`,
-        `Business type: ${business || '—'}`,
+        `Website: ${website || 'not given'}`,
+        `Looking for: ${need || 'not given'}`,
+        `Business type: ${business || 'not given'}`,
         ``,
         `Message:`,
         message || '(no message)',
