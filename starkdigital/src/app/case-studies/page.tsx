@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import CTA from '@/components/v3/CTA'
 import Reveal from '@/components/v3/Reveal'
+import Testimonial from '@/components/v3/Testimonial'
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
 import { buildMetadata } from '@/lib/seo'
 import { claims } from '@/lib/proof'
@@ -75,24 +76,7 @@ export default function CaseStudiesPage() {
               </div>
             </div>
 
-            <div className="panel bg-paper-2 p-7 md:p-10 lg:p-12 flex flex-col justify-center">
-              <blockquote
-                className="display mb-7"
-                style={{ fontSize: 'clamp(20px, 2.4vw, 30px)', lineHeight: 1.25 }}
-              >
-                Working with Maik was incredibly smooth. He understood what we needed
-                right away and we have already noticed more client enquiries coming in.
-              </blockquote>
-              <p className="text-text font-semibold">Eoin Gallagher</p>
-              <p className="label-muted mt-1.5">Managing Director · Legal Services · Dublin 8</p>
-
-              <div className="mt-9">
-                <Link href="/case-studies/anthony-joyce-solicitors" className="btn btn-ink">
-                  Read the full breakdown
-                  <span aria-hidden>→</span>
-                </Link>
-              </div>
-            </div>
+            <Testimonial />
           </Reveal>
 
           <Reveal

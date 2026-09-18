@@ -58,3 +58,20 @@ export const terms = {
   location: 'Dublin, Ireland',
   email: 'maik@starkdigital.ie',
 } as const
+
+/**
+ * The client testimonial, in one place because it appears on the case study
+ * index and inside the case study itself.
+ *
+ * The previous site attributed this to "Eoin Gallagher, Managing Director".
+ * Confirmed with Maik: the words are Anthony Joyce's, the firm's owner. Photo
+ * use is cleared with the client.
+ */
+export const testimonial = {
+  quote:
+    'Working with Maik was incredibly smooth. He understood what we needed right away and we have already noticed more client enquiries coming in.',
+  name: 'Anthony Joyce',
+  role: 'Owner',
+  firm: 'Anthony Joyce & Co. Solicitors',
+  portrait: '/images/anthony-joyce-portrait.png',
+} as const

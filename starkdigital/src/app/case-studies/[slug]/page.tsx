@@ -5,6 +5,7 @@ import Image from 'next/image'
 import * as runtime from 'react/jsx-runtime'
 import { caseStudies } from '../../../../.velite'
 import CTA from '@/components/v3/CTA'
+import Testimonial from '@/components/v3/Testimonial'
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
 import { buildMetadata } from '@/lib/seo'
 
@@ -153,6 +154,13 @@ export default async function CaseStudyPage({ params }: Props) {
           <div className="prose-stark">
             <MDXContent code={cs.body} />
           </div>
+        </div>
+      </section>
+
+      <section className="px-3 sm:px-4 pb-16 md:pb-24">
+        <div className="max-w-3xl mx-auto px-3 sm:px-6">
+          <p className="eyebrow mb-6">In their words</p>
+          <Testimonial />
         </div>
       </section>
 
