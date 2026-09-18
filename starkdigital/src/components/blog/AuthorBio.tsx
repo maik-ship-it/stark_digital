@@ -3,9 +3,9 @@ import Link from 'next/link'
 
 export default function AuthorBio() {
   return (
-    <div className="max-w-2xl mx-auto mt-16 pt-12 border-t border-surface-2">
+    <div className="mt-16 pt-12 border-t border-paper-3">
       <div className="flex items-start gap-5">
-        <div className="relative flex-shrink-0 w-14 h-14 rounded-full overflow-hidden border border-surface-2">
+        <div className="relative flex-shrink-0 w-14 h-14 rounded-full overflow-hidden border border-paper-3">
           <Image
             src="/images/Maik.webp"
             alt="Maik Stark"
@@ -15,17 +15,15 @@ export default function AuthorBio() {
           />
         </div>
         <div className="flex-1 min-w-0">
-          <p className="label mb-1">Written by</p>
-          <p className="font-display text-base font-semibold text-white">Maik Stark</p>
-          <p className="text-sm text-text-secondary mt-1 leading-relaxed">
-            Google Ads specialist for professional services in Dublin and Ireland.
-            Founder of Stark Digital — no generalist fluff, just results.
+          <p className="label mb-1.5">Written by</p>
+          <p className="display text-lg">Maik Stark</p>
+          <p className="text-[15px] text-text-soft mt-2 leading-relaxed max-w-xl">
+            Search advertising, SEO and landing pages for businesses in Dublin and
+            across Ireland. One person, two new clients a month, and an unusual
+            willingness to tell people not to advertise.
           </p>
-          <Link
-            href="/about"
-            className="inline-block mt-3 text-xs font-mono tracking-widest uppercase text-amber hover:text-amber-dim transition-colors duration-200"
-          >
-            About Maik →
+          <Link href="/about" className="inline-block mt-4 text-[15px] font-medium hover-amber">
+            More about me
           </Link>
         </div>
       </div>

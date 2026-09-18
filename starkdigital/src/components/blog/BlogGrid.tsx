@@ -1,4 +1,5 @@
 import BlogCard from './BlogCard'
+import Reveal from '@/components/v3/Reveal'
 
 interface Post {
   title: string
@@ -24,43 +25,40 @@ export default function BlogGrid({ posts, activeTag }: BlogGridProps) {
     ? allPublished.filter((p) => p.tags?.includes(activeTag))
     : allPublished
 
-  if (filtered.length === 0) {
+  if (allPublished.length === 0) {
     return (
-      <div className="text-center py-20">
-        <p className="label mb-4">No articles found</p>
-        <div className="h-px bg-surface-2 w-16 mx-auto mb-6" />
-        <p className="text-text-secondary">Try a different filter.</p>
+      <div className="panel bg-paper-2 py-20 px-8 text-center">
+        <p className="eyebrow justify-center mb-4">Coming soon</p>
+        <p className="text-text-soft">Articles are on the way.</p>
       </div>
     )
   }
 
-  if (allPublished.length === 0) {
+  if (filtered.length === 0) {
     return (
-      <div className="text-center py-20">
-        <p className="label mb-4">Coming soon</p>
-        <div className="h-px bg-surface-2 w-16 mx-auto mb-6" />
-        <p className="text-text-secondary">Articles launching shortly.</p>
+      <div className="panel bg-paper-2 py-20 px-8 text-center">
+        <p className="eyebrow justify-center mb-4">Nothing under that tag</p>
+        <p className="text-text-soft">Try another one, or go back to all.</p>
       </div>
     )
   }
 
   const [featured, ...rest] = filtered
+  const grid = activeTag ? filtered : rest
 
   return (
-    <div className="space-y-8">
-      {/* Featured article */}
+    <div className="space-y-4">
       {featured && !activeTag && (
-        <div className="max-w-2xl">
-          <BlogCard key={featured.slug} {...featured} featured />
-        </div>
+        <Reveal>
+          <BlogCard {...featured} featured />
+        </Reveal>
       )}
 
-      {/* Rest of the articles */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {(activeTag ? filtered : rest).map((post) => (
+      <Reveal stagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {grid.map((post) => (
           <BlogCard key={post.slug} {...post} />
         ))}
-      </div>
+      </Reveal>
     </div>
   )
 }

@@ -12,6 +12,7 @@ import RelatedPosts from '@/components/blog/RelatedPosts'
 import Callout from '@/components/blog/mdx/Callout'
 import StatBlock from '@/components/blog/mdx/StatBlock'
 import FAQ from '@/components/blog/mdx/FAQ'
+import CTA from '@/components/v3/CTA'
 
 type Props = { params: Promise<{ slug: string }> }
 
@@ -48,9 +49,14 @@ export default async function BlogPostPage({ params }: Props) {
   if (!post) notFound()
 
   const publishedPosts = posts.filter((p) => p.published)
+  const formatted = new Date(post.date).toLocaleDateString('en-IE', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  })
 
   return (
-    <article className="pt-36 pb-24 bg-canvas">
+    <article>
       <ReadingProgress />
       <BlogPostSchema
         title={post.title}
@@ -59,108 +65,97 @@ export default async function BlogPostPage({ params }: Props) {
         slug={post.slug}
         readingTime={post.readingTime}
       />
-      <BreadcrumbSchema crumbs={[
-        { name: 'Home', url: 'https://starkdigital.ie' },
-        { name: 'Blog', url: 'https://starkdigital.ie/blog' },
-        { name: post.title, url: `https://starkdigital.ie/blog/${post.slug}` },
-      ]} />
+      <BreadcrumbSchema
+        crumbs={[
+          { name: 'Home', url: 'https://starkdigital.ie' },
+          { name: 'Blog', url: 'https://starkdigital.ie/blog' },
+          { name: post.title, url: `https://starkdigital.ie/blog/${post.slug}` },
+        ]}
+      />
 
-      <div className="max-w-6xl mx-auto px-6">
+      {/* ── Header panel ─────────────────────────────── */}
+      <section className="px-3 sm:px-4 pt-20 md:pt-24 pb-3 sm:pb-4">
+        <div className="relative panel bg-ink overflow-hidden">
+          <div className="absolute inset-0 bg-grid-ink" />
+          <div className="relative max-w-4xl mx-auto px-6 sm:px-10 lg:px-14 pt-14 md:pt-20 pb-12 md:pb-16">
+            <nav aria-label="Breadcrumb" className="mb-10">
+              <ol className="flex flex-wrap items-center gap-2.5">
+                <li>
+                  <Link href="/" className="label hover:text-orange transition-colors" style={{ color: 'var(--color-on-ink-faint)' }}>
+                    Home
+                  </Link>
+                </li>
+                <li className="label" style={{ color: 'var(--color-on-ink-faint)' }}>/</li>
+                <li>
+                  <Link href="/blog" className="label hover:text-orange transition-colors" style={{ color: 'var(--color-on-ink-faint)' }}>
+                    Blog
+                  </Link>
+                </li>
+              </ol>
+            </nav>
 
-        {/* Breadcrumb nav */}
-        <nav className="flex items-center gap-2 mb-12 text-xs font-mono tracking-wider uppercase text-text-muted">
-          <Link href="/" className="hover:text-amber transition-colors duration-200">Home</Link>
-          <span>/</span>
-          <Link href="/blog" className="hover:text-amber transition-colors duration-200">Blog</Link>
-          <span>/</span>
-          <span className="text-text-secondary truncate max-w-[200px]">{post.title}</span>
-        </nav>
-
-        {/* Header */}
-        <header className="max-w-2xl mb-16">
-          <div className="flex flex-wrap items-center gap-3 mb-6">
-            <p className="label">
-              {new Date(post.date).toLocaleDateString('en-IE', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-              })}
-            </p>
-            {post.readingTime && (
-              <span className="font-mono text-[10px] text-text-muted tracking-wide">
-                — {post.readingTime} min read
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-2 mb-7">
+              <span className="label" style={{ color: 'var(--color-on-ink-soft)' }}>
+                {formatted}
               </span>
-            )}
-            {post.tags && post.tags.length > 0 && (
-              <>
-                <span className="font-mono text-[10px] text-text-muted">—</span>
-                {post.tags.slice(0, 2).map((tag) => (
-                  <span
-                    key={tag}
-                    className="font-mono text-[9px] tracking-widest uppercase text-text-muted border border-surface-2 px-2 py-0.5 rounded-sm"
-                  >
-                    {tag}
+              {post.readingTime && (
+                <>
+                  <span className="w-1 h-1 rounded-full bg-orange shrink-0" aria-hidden />
+                  <span className="label" style={{ color: 'var(--color-on-ink-faint)' }}>
+                    {post.readingTime} min
                   </span>
-                ))}
-              </>
-            )}
-          </div>
-          <h1
-            className="font-serif font-bold text-white leading-[0.95] tracking-[-0.01em] mb-6"
-            style={{ fontSize: 'var(--text-display-lg)' }}
-          >
-            {post.title}
-          </h1>
-          <p className="text-lg text-text-secondary leading-relaxed">
-            {post.description}
-          </p>
-          <div className="h-px bg-surface-2 mt-10" />
-        </header>
-
-        {/* Two-column layout: content + ToC sidebar */}
-        <div className="flex gap-16 items-start">
-          {/* Main content */}
-          <div className="min-w-0 flex-1">
-            <div className="prose-stark">
-              <MDXContent code={post.body} />
+                </>
+              )}
+              {post.tags?.slice(0, 2).map((tag) => (
+                <span
+                  key={tag}
+                  className="label-muted px-2.5 py-1 rounded-full border"
+                  style={{ borderColor: 'var(--color-ink-line)', color: 'var(--color-on-ink-faint)' }}
+                >
+                  {tag}
+                </span>
+              ))}
             </div>
 
-            <AuthorBio />
-
-            <RelatedPosts
-              currentSlug={post.slug}
-              currentTags={post.tags ?? []}
-              allPosts={publishedPosts}
-            />
-
-            {/* End CTA */}
-            <div className="mt-16 pt-12 border-t border-surface-2">
-              <p className="label mb-6">Free consultation</p>
-              <h3
-                className="font-serif font-bold text-white mb-4"
-                style={{ fontSize: 'clamp(24px, 3vw, 36px)' }}
-              >
-                Ready to see what&apos;s possible?
-              </h3>
-              <p className="text-text-secondary mb-8 leading-relaxed">
-                We&apos;ll review your current setup and show you exactly what a well-run
-                Google Ads campaign could achieve for your business.
-              </p>
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 bg-amber text-canvas text-sm font-semibold px-6 py-3 rounded-sm hover:bg-amber-dim transition-colors duration-200"
-              >
-                Let&apos;s Talk →
-              </Link>
-            </div>
+            <h1
+              className="display text-on-ink mb-6"
+              style={{ fontSize: 'var(--text-display-lg)' }}
+            >
+              {post.title}
+            </h1>
+            <p className="text-on-ink-soft text-base md:text-lg leading-relaxed max-w-2xl">
+              {post.description}
+            </p>
           </div>
-
-          {/* Sticky ToC sidebar — desktop only */}
-          <aside className="hidden xl:block w-56 flex-shrink-0 sticky top-32 self-start">
-            <TableOfContents />
-          </aside>
         </div>
-      </div>
+      </section>
+
+      {/* ── Body ─────────────────────────────────────── */}
+      <section className="px-3 sm:px-4 py-14 md:py-20">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6">
+          <div className="flex gap-16 items-start justify-center">
+            <div className="min-w-0 flex-1 max-w-3xl">
+              <div className="prose-stark">
+                <MDXContent code={post.body} />
+              </div>
+
+              <AuthorBio />
+
+              <RelatedPosts
+                currentSlug={post.slug}
+                currentTags={post.tags ?? []}
+                allPosts={publishedPosts}
+              />
+            </div>
+
+            <aside className="hidden xl:block w-56 flex-shrink-0 sticky top-28 self-start">
+              <TableOfContents />
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <CTA />
     </article>
   )
 }

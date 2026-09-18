@@ -28,28 +28,29 @@ export default function RelatedPosts({ currentSlug, currentTags, allPosts }: Rel
   if (related.length === 0) return null
 
   return (
-    <div className="max-w-2xl mx-auto mt-16 pt-12 border-t border-surface-2">
+    <div className="mt-16 pt-12 border-t border-paper-3">
       <p className="label mb-6">Continue reading</p>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {related.map((post) => (
           <Link
             key={post.slug}
             href={`/blog/${post.slug}`}
-            className="group block bg-surface border border-surface-2 rounded-sm p-5 hover:shadow-card-hover hover:-translate-y-0.5 transition-all duration-300"
+            className="group block bg-paper-2 rounded-[18px] p-6 hover:bg-paper-3 transition-colors duration-300"
           >
             <div className="flex items-center gap-2 mb-3">
               <p className="label">{new Date(post.date).toLocaleDateString('en-IE', { year: 'numeric', month: 'short' })}</p>
               {post.readingTime && (
-                <span className="font-mono text-[10px] text-text-muted tracking-wide">
+                <span className="label-muted">
                   {post.readingTime} min
                 </span>
               )}
             </div>
-            <h4 className="text-sm font-semibold text-white leading-snug group-hover:text-amber transition-colors duration-200 line-clamp-2">
+            <h4 className="display text-[17px] leading-snug group-hover:text-orange transition-colors duration-200">
               {post.title}
             </h4>
-            <p className="mt-1 text-xs text-text-muted group-hover:text-amber transition-colors duration-200">
-              Read →
+            <p className="mt-2.5 text-[14px] text-text-soft flex items-center gap-1.5">
+              Read
+              <span className="text-orange transition-transform duration-300 group-hover:translate-x-1" aria-hidden>→</span>
             </p>
           </Link>
         ))}

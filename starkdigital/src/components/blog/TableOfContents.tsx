@@ -53,7 +53,7 @@ export default function TableOfContents() {
   return (
     <nav aria-label="Table of contents">
       <p className="label mb-4">On this page</p>
-      <div className="h-px bg-surface-2 mb-4" />
+      <div className="h-px bg-paper-3 mb-4" />
       <ul className="space-y-1">
         {headings.map((h) => (
           <li key={h.id} style={{ paddingLeft: h.level === 3 ? '0.875rem' : '0' }}>

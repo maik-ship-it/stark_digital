@@ -26,10 +26,10 @@ function TagButtons({ tags }: BlogTagFilterProps) {
     <div className="flex flex-wrap gap-2">
       <button
         onClick={() => setTag('')}
-        className={`font-mono text-[10px] tracking-widest uppercase px-3 py-1.5 rounded-sm border transition-colors duration-200 ${
+        className={`label px-4 py-2 rounded-full border transition-colors duration-200 ${
           active === ''
-            ? 'border-amber text-amber bg-amber-glow'
-            : 'border-surface-2 text-text-muted hover:border-surface-3 hover:text-text-secondary'
+            ? 'border-orange text-orange'
+            : 'border-paper-3 text-text-soft hover:border-ink hover:text-text'
         }`}
       >
         All
@@ -38,10 +38,10 @@ function TagButtons({ tags }: BlogTagFilterProps) {
         <button
           key={tag}
           onClick={() => setTag(tag)}
-          className={`font-mono text-[10px] tracking-widest uppercase px-3 py-1.5 rounded-sm border transition-colors duration-200 ${
+          className={`label px-4 py-2 rounded-full border transition-colors duration-200 ${
             active === tag
-              ? 'border-amber text-amber bg-amber-glow'
-              : 'border-surface-2 text-text-muted hover:border-surface-3 hover:text-text-secondary'
+              ? 'border-orange text-orange'
+              : 'border-paper-3 text-text-soft hover:border-ink hover:text-text'
           }`}
         >
           {tag}
