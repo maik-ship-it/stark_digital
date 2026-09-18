@@ -32,6 +32,7 @@ const caseStudies = defineCollection({
       value: s.string(),
     })),
     published: s.boolean().default(true),
+    body: s.mdx(),
   })
 })
 

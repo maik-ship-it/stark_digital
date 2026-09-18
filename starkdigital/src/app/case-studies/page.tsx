@@ -1,93 +1,115 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import CTA from '@/components/v3/CTA'
+import Reveal from '@/components/v3/Reveal'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import { buildMetadata } from '@/lib/seo'
+import { claims } from '@/lib/proof'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: 'Case Studies',
   description:
-    'Real results from real clients — see how Stark Digital has helped professional service businesses in Dublin grow through Google Ads.',
-  alternates: { canonical: 'https://starkdigital.ie/case-studies' },
-}
+    'Numbers from real campaigns run by Stark Digital in Dublin, with the measurement basis printed alongside each figure.',
+  path: '/case-studies',
+})
+
+const METRICS = [claims.enquiries, claims.costPerLead, claims.roas]
 
 export default function CaseStudiesPage() {
   return (
     <>
-      {/* Hero */}
-      <section className="bg-canvas pt-36 pb-20">
-        <div className="max-w-6xl mx-auto px-6">
-          <p className="label mb-6">Results</p>
-          <h1
-            className="font-serif font-bold text-white leading-[0.92] tracking-[-0.01em] max-w-2xl mb-6"
-            style={{ fontSize: 'var(--text-display-xl)' }}
-          >
-            Real results from{' '}
-            <em className="italic text-amber">real clients.</em>
-          </h1>
-          <p className="text-lg text-text-secondary max-w-md leading-relaxed">
-            Numbers from actual campaigns — no projections, no estimates.
-          </p>
+      <BreadcrumbSchema
+        crumbs={[
+          { name: 'Home', url: 'https://starkdigital.ie' },
+          { name: 'Case Studies', url: 'https://starkdigital.ie/case-studies' },
+        ]}
+      />
+
+      {/* ── Hero ─────────────────────────────────────── */}
+      <section className="px-3 sm:px-4 pt-20 md:pt-24 pb-3 sm:pb-4">
+        <div className="relative panel bg-ink overflow-hidden">
+          <div className="absolute inset-0 bg-grid-ink" />
+          <div className="relative max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 pt-16 md:pt-24 pb-14 md:pb-20">
+            <p className="eyebrow eyebrow-on-ink mb-7">Results</p>
+            <h1
+              className="display text-on-ink max-w-[15ch] mb-8"
+              style={{ fontSize: 'var(--text-display-xl)' }}
+            >
+              One client, written up properly.
+            </h1>
+            <p className="text-on-ink-soft text-base md:text-lg leading-relaxed max-w-2xl">
+              There is one case study here rather than twelve, because there is one
+              account I can write up in full with the client&rsquo;s agreement. Every
+              figure carries the basis it was measured on, so you can judge whether
+              it means anything for your business.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* Anthony Joyce teaser */}
-      <section className="bg-surface py-20 border-t border-surface-2">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="bg-canvas border border-surface-2 shadow-card rounded-sm overflow-hidden">
-            <div className="grid grid-cols-1 lg:grid-cols-2">
-
-              {/* Metrics */}
-              <div className="p-10 border-b lg:border-b-0 lg:border-r border-surface-2">
-                <p className="label mb-6">Anthony Joyce Solicitors</p>
-                <div className="grid grid-cols-2 gap-8">
-                  {[
-                    { value: '+112%', label: 'Client enquiries' },
-                    { value: '−38%', label: 'Cost per lead' },
-                    { value: '3.4×', label: 'Return on ad spend' },
-                    { value: '90 days', label: 'Timeframe' },
-                  ].map(({ value, label }) => (
-                    <div key={label}>
-                      <p
-                        className="font-serif font-bold text-amber mb-1"
-                        style={{ fontSize: 'clamp(28px, 3vw, 40px)' }}
-                      >
-                        {value}
-                      </p>
-                      <p className="label-muted">{label}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Quote */}
-              <div className="p-10 flex flex-col justify-between">
-                <div>
-                  <p
-                    className="font-serif text-amber leading-none mb-2"
-                    style={{ fontSize: '3rem' }}
-                  >
-                    &ldquo;
-                  </p>
-                  <blockquote className="font-serif text-xl text-white leading-snug mb-6">
-                    Working with Maik was incredibly smooth. He understood what
-                    we needed right away and we&apos;ve already noticed more
-                    client enquiries coming in.
-                  </blockquote>
-                  <p className="text-sm font-medium text-white">Eoin Gallagher</p>
-                  <p className="label-muted mt-1">
-                    Managing Director · Legal Services · Dublin 8
-                  </p>
-                </div>
-                <div className="mt-8">
-                  <Link
-                    href="/case-studies/anthony-joyce-solicitors"
-                    className="inline-flex items-center gap-2 border border-surface-2 text-text-secondary text-sm font-medium px-6 py-3 rounded-sm hover:border-amber/40 hover:text-amber transition-all duration-200"
-                  >
-                    Read full case study →
-                  </Link>
-                </div>
+      {/* ── The case study ───────────────────────────── */}
+      <section className="px-3 sm:px-4 py-16 md:py-24">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6">
+          <Reveal className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
+            <div className="relative panel bg-ink min-h-[300px] lg:min-h-[460px]">
+              <Image
+                src="/images/v3/case-study.jpg"
+                alt="Anthony Joyce Solicitors campaign"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-grid-ink" />
+              <div className="absolute bottom-0 left-0 right-0 p-7 md:p-10">
+                <p className="label mb-2" style={{ color: 'var(--color-on-ink-faint)' }}>
+                  Dublin 1 · Legal
+                </p>
+                <p className="display text-on-ink" style={{ fontSize: 'clamp(22px, 2.6vw, 32px)' }}>
+                  Anthony Joyce &amp; Co. Solicitors
+                </p>
               </div>
             </div>
-          </div>
+
+            <div className="panel bg-paper-2 p-7 md:p-10 lg:p-12 flex flex-col justify-center">
+              <blockquote
+                className="display mb-7"
+                style={{ fontSize: 'clamp(20px, 2.4vw, 30px)', lineHeight: 1.25 }}
+              >
+                Working with Maik was incredibly smooth. He understood what we needed
+                right away and we have already noticed more client enquiries coming in.
+              </blockquote>
+              <p className="text-text font-semibold">Eoin Gallagher</p>
+              <p className="label-muted mt-1.5">Managing Director · Legal Services · Dublin 8</p>
+
+              <div className="mt-9">
+                <Link href="/case-studies/anthony-joyce-solicitors" className="btn btn-ink">
+                  Read the full breakdown
+                  <span aria-hidden>→</span>
+                </Link>
+              </div>
+            </div>
+          </Reveal>
+
+          <Reveal
+            stagger
+            className="grid grid-cols-1 md:grid-cols-3 gap-px bg-paper-3 rounded-[18px] overflow-hidden"
+          >
+            {METRICS.map((m) => (
+              <div key={m.label} className="bg-paper-2 p-7 md:p-9 flex flex-col">
+                <p
+                  className="display text-orange mb-3"
+                  style={{ fontSize: 'clamp(36px, 4.5vw, 58px)' }}
+                >
+                  {m.value}
+                </p>
+                <p className="label mb-5">{m.label}</p>
+                <p className="text-text-soft text-[13px] leading-relaxed mt-auto">
+                  {m.basis}
+                </p>
+              </div>
+            ))}
+          </Reveal>
         </div>
       </section>
 

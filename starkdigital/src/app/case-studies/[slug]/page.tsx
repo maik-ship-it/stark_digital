@@ -1,81 +1,125 @@
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
+import * as runtime from 'react/jsx-runtime'
+import { caseStudies } from '../../../../.velite'
+import CTA from '@/components/v3/CTA'
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
+import { buildMetadata } from '@/lib/seo'
 
 type Props = { params: Promise<{ slug: string }> }
 
-const CASE_STUDIES = [
-  {
-    slug: 'anthony-joyce-solicitors',
-    title: 'How Anthony Joyce Solicitors Increased Client Enquiries by 112%',
-    client: 'Anthony Joyce Solicitors Co',
-    industry: 'Legal / Solicitors',
-    location: 'Dublin 8, Ireland',
-    published: true,
-    metrics: [
-      { label: 'Return on Ad Spend', value: '3.4×' },
-      { label: 'Cost per Lead', value: '−38%' },
-      { label: 'Client Enquiries', value: '+112%' },
-      { label: 'Timeframe', value: '90 days' },
-    ],
-  },
-]
+function MDXContent({ code }: { code: string }) {
+  // eslint-disable-next-line @typescript-eslint/no-implied-eval
+  const fn = new Function('runtime', `${code}; return { default: default_export }`)
+  const { default: Component } = fn(runtime) as { default: React.ComponentType }
+  return <Component />
+}
 
 export function generateStaticParams() {
-  return CASE_STUDIES.filter((c) => c.published).map((c) => ({ slug: c.slug }))
+  return caseStudies.filter((c) => c.published).map((c) => ({ slug: c.slug }))
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
-  const cs = CASE_STUDIES.find((c) => c.slug === slug)
+  const cs = caseStudies.find((c) => c.slug === slug)
   if (!cs) return {}
-  return { title: cs.title }
+  return buildMetadata({
+    title: cs.title,
+    description: `${cs.client}, ${cs.industry}, ${cs.location}. What 90 days of paid search changed, with the measurement basis for every figure.`,
+    path: `/case-studies/${cs.slug}`,
+    type: 'article',
+  })
 }
 
 export default async function CaseStudyPage({ params }: Props) {
   const { slug } = await params
-  const cs = CASE_STUDIES.find((c) => c.slug === slug)
-  if (!cs || !cs.published) notFound()
+  const cs = caseStudies.find((c) => c.slug === slug && c.published)
+  if (!cs) notFound()
 
   return (
-    <article className="bg-canvas pt-36 pb-24">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="max-w-2xl mx-auto">
-          <p className="label mb-6">{cs.industry} · {cs.location}</p>
-          <h1
-            className="font-serif font-bold text-white leading-[0.92] tracking-[-0.01em] mb-12"
-            style={{ fontSize: 'var(--text-display-lg)' }}
-          >
-            {cs.title}
-          </h1>
+    <article>
+      <BreadcrumbSchema
+        crumbs={[
+          { name: 'Home', url: 'https://starkdigital.ie' },
+          { name: 'Case Studies', url: 'https://starkdigital.ie/case-studies' },
+          { name: cs.client, url: `https://starkdigital.ie/case-studies/${cs.slug}` },
+        ]}
+      />
 
-          {/* Metrics */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 p-8 bg-surface border border-surface-2 rounded-sm mb-16">
-            {cs.metrics.map(({ label, value }) => (
-              <div key={label} className="text-center">
-                <p
-                  className="font-serif font-bold text-amber mb-1"
-                  style={{ fontSize: 'clamp(24px, 2.5vw, 36px)' }}
-                >
-                  {value}
-                </p>
-                <p className="label-muted">{label}</p>
-              </div>
-            ))}
-          </div>
+      {/* ── Header panel ─────────────────────────────── */}
+      <section className="px-3 sm:px-4 pt-20 md:pt-24 pb-3 sm:pb-4">
+        <div className="relative panel bg-ink overflow-hidden">
+          <Image
+            src="/images/v3/case-study.jpg"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover opacity-45"
+          />
+          <div
+            className="absolute inset-0"
+            style={{ background: 'linear-gradient(120deg, rgba(7,21,40,0.95) 40%, rgba(7,21,40,0.72) 100%)' }}
+          />
+          <div className="absolute inset-0 bg-grid-ink" />
 
-          <p className="text-text-secondary">Full case study coming soon.</p>
+          <div className="relative max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 pt-14 md:pt-20 pb-12 md:pb-16">
+            <nav aria-label="Breadcrumb" className="mb-10">
+              <ol className="flex flex-wrap items-center gap-2.5">
+                <li>
+                  <Link href="/" className="label hover:text-orange transition-colors" style={{ color: 'var(--color-on-ink-faint)' }}>Home</Link>
+                </li>
+                <li className="label" style={{ color: 'var(--color-on-ink-faint)' }}>/</li>
+                <li>
+                  <Link href="/case-studies" className="label hover:text-orange transition-colors" style={{ color: 'var(--color-on-ink-faint)' }}>Case Studies</Link>
+                </li>
+              </ol>
+            </nav>
 
-          <div className="mt-16 pt-12 border-t border-surface-2">
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 bg-amber text-canvas text-sm font-semibold px-6 py-3 rounded-sm hover:bg-amber-dim transition-colors duration-200"
+            <p className="eyebrow eyebrow-on-ink mb-7">
+              {cs.industry} · {cs.location}
+            </p>
+            <h1
+              className="display text-on-ink max-w-[20ch] mb-10"
+              style={{ fontSize: 'var(--text-display-lg)' }}
             >
-              Let&apos;s Talk →
-            </Link>
+              {cs.title}
+            </h1>
+
+            <div
+              className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-8 border-t"
+              style={{ borderColor: 'var(--color-ink-line)' }}
+            >
+              {cs.metrics.map(({ label, value }) => (
+                <div key={label}>
+                  <p
+                    className="display text-orange mb-2"
+                    style={{ fontSize: 'clamp(28px, 3.2vw, 46px)' }}
+                  >
+                    {value}
+                  </p>
+                  <p className="label" style={{ color: 'var(--color-on-ink-faint)' }}>
+                    {label}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* ── Body ─────────────────────────────────────── */}
+      <section className="px-3 sm:px-4 py-14 md:py-20">
+        <div className="max-w-3xl mx-auto px-3 sm:px-6">
+          <div className="prose-stark">
+            <MDXContent code={cs.body} />
+          </div>
+        </div>
+      </section>
+
+      <CTA />
     </article>
   )
 }
