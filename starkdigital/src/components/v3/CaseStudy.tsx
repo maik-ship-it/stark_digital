@@ -21,12 +21,16 @@ export default function CaseStudy() {
           <Reveal className="relative panel bg-ink min-h-[340px] lg:min-h-[520px]">
             <Image
               src="/images/v3/case-study.jpg"
-              alt="Anthony Joyce Solicitors campaign"
+              alt="A Dublin city-centre solicitor's office at dusk, desk beside a sash window overlooking the street"
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover"
             />
             <div className="absolute inset-0 bg-grid-ink" />
+            <div
+              className="absolute inset-x-0 bottom-0 h-1/2"
+              style={{ background: 'linear-gradient(to top, rgba(7,21,40,0.92) 0%, rgba(7,21,40,0.55) 45%, rgba(7,21,40,0) 100%)' }}
+            />
             <div className="absolute bottom-0 left-0 right-0 p-7 md:p-10">
               <p
                 className="label mb-2"

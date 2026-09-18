@@ -39,11 +39,14 @@ export default function Services() {
           alt=""
           fill
           sizes="100vw"
-          className="object-cover opacity-30"
+          className="object-cover opacity-55"
         />
+        {/* The wash has to stay heavy enough for body text to sit on it, but the
+            previous 0.92 to 0.97 over a 30% image left roughly 1.5% of the
+            photograph visible, which is the same as having no photograph. */}
         <div
           className="absolute inset-0"
-          style={{ background: 'linear-gradient(140deg, rgba(7,21,40,0.92), rgba(7,21,40,0.97))' }}
+          style={{ background: 'linear-gradient(140deg, rgba(7,21,40,0.80), rgba(7,21,40,0.93))' }}
         />
         <div className="absolute inset-0 bg-grid-ink" />
 

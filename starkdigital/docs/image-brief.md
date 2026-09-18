@@ -121,6 +121,23 @@ lohnt sich das Generieren nicht.
 
 ---
 
+## Stand
+
+Vier von acht sind eingebaut: `hero.jpg`, `case-study.jpg`, `cta.jpg` und
+`services.jpg`, alle 2000 x 1091. Offen sind noch `work-1/2/3.jpg`, und die
+sollten ohnehin echte Screenshots deiner Landingpages werden statt generierter
+Bilder.
+
+Bei `hero.jpg` und `cta.jpg` laufen 2000 px über die volle Fensterbreite. Auf
+einem Retina-Display fehlt damit rund ein Drittel der Auflösung. Wenn du grössere
+Versionen ziehen kannst, tausch sie unter demselben Namen.
+
+**Beim Austausch im Dev-Modus:** Next cached die optimierten Varianten unter
+`.next/dev/cache/images`, und zwar pro Breite. Nach dem Überschreiben einer Datei
+kann eine einzelne Grösse veraltet bleiben, während die anderen schon neu sind.
+Ordner löschen und Dev-Server neu starten, dann stimmt es. Im Produktions-Build
+tritt das nicht auf.
+
 ## Einbauen
 
 Alle sieben v3-Dateien überschreiben und dabei die Namen behalten:

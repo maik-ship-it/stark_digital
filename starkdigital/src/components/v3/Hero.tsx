@@ -100,12 +100,24 @@ export default function Hero() {
           />
         </div>
 
-        {/* Legibility wash: dark at the bottom where the type sits */}
+        {/* Legibility wash, two layers.
+            Vertical alone was not enough: the headline sits around 60 to 75% up
+            the panel, which is exactly where a bottom-weighted gradient is at its
+            weakest, so the orange line landed on the brightest part of the photo.
+            The horizontal layer protects the text column and leaves the right
+            side of the image alone. */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              'linear-gradient(to top, rgba(7,21,40,0.94) 0%, rgba(7,21,40,0.72) 38%, rgba(7,21,40,0.24) 68%, rgba(7,21,40,0.35) 100%)',
+              'linear-gradient(to top, rgba(7,21,40,0.94) 0%, rgba(7,21,40,0.70) 34%, rgba(7,21,40,0.30) 70%, rgba(7,21,40,0.40) 100%)',
+          }}
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              'linear-gradient(to right, rgba(7,21,40,0.88) 0%, rgba(7,21,40,0.70) 32%, rgba(7,21,40,0.25) 58%, rgba(7,21,40,0) 78%)',
           }}
         />
         <div className="absolute inset-0 bg-grid-ink opacity-60" />
