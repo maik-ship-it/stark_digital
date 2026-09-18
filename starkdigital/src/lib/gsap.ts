@@ -5,7 +5,7 @@ if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger)
 }
 
-/** Elegant fade up — used for most section elements */
+/** Elegant fade up : used for most section elements */
 export function fadeUp(elements: string | Element | Element[], delay = 0) {
   gsap.fromTo(
     elements,
@@ -31,7 +31,7 @@ export function fadeUp(elements: string | Element | Element[], delay = 0) {
   )
 }
 
-/** Gold line reveal — for decorative dividers */
+/** Gold line reveal : for decorative dividers */
 export function revealLine(element: Element) {
   gsap.fromTo(
     element,
@@ -49,7 +49,7 @@ export function revealLine(element: Element) {
   )
 }
 
-/** Counter animation — for stats */
+/** Counter animation : for stats */
 export function animateCounter(element: Element, target: number, suffix = '') {
   const obj = { val: 0 }
   gsap.to(obj, {

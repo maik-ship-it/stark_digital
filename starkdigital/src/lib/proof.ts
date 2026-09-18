@@ -5,7 +5,7 @@
  * `basis` string that explains how it was measured. If you cannot write the
  * basis, the number does not go on the site.
  *
- * ⚠️ CONFIRM BEFORE LAUNCH — the entries marked `confirmed: false` carry a
+ * ⚠️ CONFIRM BEFORE LAUNCH : the entries marked `confirmed: false` carry a
  * placeholder basis written from the old site's figures. Check each against
  * the actual Google Ads / GA4 / WhatConverts data and set `confirmed: true`.
  */
