@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next'
 import { blog as posts } from '../../.velite'
 import { industries } from '@/lib/industries'
+import { services } from '@/lib/services'
 
 const BASE = 'https://starkdigital.ie'
 
@@ -16,6 +17,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/blog`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
     { url: `${BASE}/case-studies/anthony-joyce-solicitors`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
   ]
+
+  const serviceRoutes: MetadataRoute.Sitemap = services.map((s) => ({
+    url: `${BASE}/${s.slug}`,
+    lastModified: now,
+    changeFrequency: 'monthly',
+    priority: 0.9,
+  }))
 
   const industryRoutes: MetadataRoute.Sitemap = industries.map((i) => ({
     url: `${BASE}/google-ads-dublin/${i.slug}`,
@@ -33,5 +41,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     }))
 
-  return [...staticRoutes, ...industryRoutes, ...blogRoutes]
+  return [...staticRoutes, ...serviceRoutes, ...industryRoutes, ...blogRoutes]
 }
