@@ -15,8 +15,18 @@ export default function Hero() {
   useEffect(() => {
     if (!sectionRef.current) return
 
+    // The intro hides the headline and clips the panel before revealing them.
+    // If rAF never runs (background tab on load, throttling, a script error) the
+    // page would sit on that hidden start state forever, so reduced motion skips
+    // it and a guard forces the end state if the timeline has not finished.
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    let guard: number | undefined
+
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ defaults: { ease: 'power4.out' } })
+      const tl = gsap.timeline({
+        defaults: { ease: 'power4.out' },
+        onComplete: () => { if (guard) window.clearTimeout(guard) },
+      })
 
       tl.fromTo(
         '[data-hero-panel]',
@@ -54,9 +64,19 @@ export default function Hero() {
           scrub: true,
         },
       })
+      if (reduced) {
+        tl.progress(1)
+      } else {
+        guard = window.setTimeout(() => {
+          if (tl.progress() < 1) tl.progress(1)
+        }, 3000)
+      }
     }, sectionRef)
 
-    return () => ctx.revert()
+    return () => {
+      if (guard) window.clearTimeout(guard)
+      ctx.revert()
+    }
   }, [])
 
   void ScrollTrigger
