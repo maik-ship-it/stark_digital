@@ -18,6 +18,8 @@ export type Service = {
   limits: { title: string; body: string }[]
   faqs: Faq[]
   image: string
+  /** Render the five industry pages as a grid. Only the Google Ads page does. */
+  showIndustries?: boolean
 }
 
 export const services: Service[] = [
@@ -256,6 +258,95 @@ export const services: Service[] = [
   },
 ]
 
+
+/**
+ * Google Ads lives outside the `services` array because its URL predates the
+ * others and carries the site's strongest rankings. It uses the same template.
+ */
+export const googleAds: Service = {
+  slug: 'google-ads-dublin',
+  nav: 'Google Ads',
+  metaTitle: 'Google Ads Agency Dublin',
+  metaDescription:
+    'Google Ads management for businesses in Dublin and across Ireland. Campaigns built around the searches that end in a hire, with tracking that proves which ones did.',
+  eyebrow: 'Google Ads \u00b7 Dublin & Ireland',
+  headline: ['You are not buying', 'clicks. You are buying', 'the phone ringing.'],
+  accent: 'the phone ringing.',
+  intro:
+    'Paid search management for Irish businesses, including the landing pages the campaigns point at. Most accounts I take over are losing money in three predictable places, and fixing those comes before anything clever.',
+  take: {
+    heading: 'What I find in almost every account I inherit',
+    body: [
+      'Broad match running with a negative keyword list that was written once at setup and never touched again. This is the expensive one. It quietly funds clicks from people searching for jobs, for courses, for free advice, and for competitors by name.',
+      'Conversions counted more than once. A form submission fires a conversion, the thank-you page fires another, and the phone call fires a third. The account reports triple the leads it produced, everyone is pleased, and the reported cost per lead is fiction. You cannot make a good decision on top of that.',
+      'Budget spread evenly across keywords that are not evenly valuable. A handful of searches produce almost all the revenue in most accounts, and they are usually not the ones with the highest volume. Pointing the money at them is less exciting than a new campaign type and works considerably better.',
+    ],
+  },
+  work: [
+    {
+      title: 'Take the account apart first',
+      body: 'Before any spend changes, I go through what is already there: search terms, conversion setup, wasted spend, which keywords have ever produced a customer. Most of the first month\u2019s value is here rather than in anything new.',
+    },
+    {
+      title: 'Tracking that can be trusted',
+      body: 'One conversion per enquiry, call tracking that attributes a phone call to the keyword that caused it, and values attached where the business can attach them. Without this, every later decision is a guess with a chart next to it.',
+    },
+    {
+      title: 'Campaigns built around intent, not volume',
+      body: 'Tightly themed groups around the searches people make when they have decided to buy, with the research-stage terms either separated or excluded. Fewer keywords, better ones.',
+    },
+    {
+      title: 'The landing page, not just the ad',
+      body: 'Sending a specific search to a generic homepage wastes most of what you paid for the click. I build the page too, so there is no argument about which half underperformed.',
+    },
+    {
+      title: 'Negatives as ongoing work',
+      body: 'The search terms report gets read every week, not every quarter. This is unglamorous and it is where a meaningful share of the saving comes from.',
+    },
+    {
+      title: 'A report a human wrote',
+      body: 'What changed, what I did about it, what I am trying next, in a page you can read in five minutes. Written by the person who did the work.',
+    },
+  ],
+  limits: [
+    {
+      title: 'It cannot make the maths work',
+      body: 'If a click in your sector costs EUR 12 and your average job is worth EUR 200, you need a conversion rate almost nobody achieves. Better to find that out on a call than after six months.',
+    },
+    {
+      title: 'It stops the day you stop paying',
+      body: 'Unlike SEO, there is no residue. That is the trade: immediate results, no accumulation. Most businesses should be building the organic side in parallel for exactly this reason.',
+    },
+    {
+      title: 'It will not fix a weak offer',
+      body: 'If your price, your reviews or how long you take to answer the phone are the real problem, more traffic just means more people discovering that.',
+    },
+  ],
+  faqs: [
+    {
+      q: 'What does Google Ads management cost?',
+      a: 'Management starts at EUR 1,500 a month and goes up with spend and with how many campaigns and pages are in play. Your ad budget is separate and goes to Google directly from your own card, so you can see exactly what is media and what is management. You get the number before you commit to anything.',
+    },
+    {
+      q: 'How much should I spend on ads themselves?',
+      a: 'For most Dublin professional services firms, somewhere between EUR 800 and EUR 2,500 a month makes the data readable and the results steady rather than lumpy. Below about EUR 500 there is rarely enough volume for anyone to optimise anything, and the money is usually better spent on your site first.',
+    },
+    {
+      q: 'How long before it works?',
+      a: 'First enquiries usually inside two weeks. Judging the account properly takes 60 to 90 days, which is how long it takes to gather enough conversions to act on rather than react to.',
+    },
+    {
+      q: 'Who owns the account?',
+      a: 'You do, from day one, in your own name. The tracking sits in your analytics property and the landing pages belong to you. If you leave you take all of it and I will help hand it over cleanly.',
+    },
+  ],
+  image: '/images/v3/hero.jpg',
+  showIndustries: true,
+}
+
+/** Everything under the Services menu, Google Ads first. */
+export const allServices: Service[] = [googleAds, ...services]
+
 export function getService(slug: string): Service | undefined {
-  return services.find((s) => s.slug === slug)
+  return allServices.find((s) => s.slug === slug)
 }

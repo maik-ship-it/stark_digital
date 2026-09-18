@@ -2,14 +2,11 @@
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { services } from '@/lib/services'
+import { allServices } from '@/lib/services'
 import { terms } from '@/lib/proof'
 
 /** Google Ads sits first: it is the strongest page and the usual entry point. */
-const SERVICE_LINKS = [
-  { label: 'Google Ads', href: '/google-ads-dublin' },
-  ...services.map((s) => ({ label: s.nav, href: `/${s.slug}` })),
-]
+const SERVICE_LINKS = allServices.map((s) => ({ label: s.nav, href: `/${s.slug}` }))
 
 const NAV_LINKS = [
   ['Case Studies', '/case-studies'],

@@ -1,15 +1,12 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { terms } from '@/lib/proof'
-import { services } from '@/lib/services'
+import { allServices } from '@/lib/services'
 
 const FOOTER_LINKS = [
   {
     heading: 'Services',
-    links: [
-      { label: 'Google Ads, Dublin', href: '/google-ads-dublin' },
-      ...services.map((s) => ({ label: s.nav, href: `/${s.slug}` })),
-    ],
+    links: allServices.map((s) => ({ label: s.nav, href: `/${s.slug}` })),
   },
   {
     heading: 'Google Ads by industry',

@@ -1,7 +1,8 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import type { Service } from '@/lib/services'
-import { services } from '@/lib/services'
+import { allServices } from '@/lib/services'
+import { industries } from '@/lib/industries'
 import { terms } from '@/lib/proof'
 import Reveal from './Reveal'
 import FAQList from './FAQList'
@@ -13,7 +14,7 @@ import FAQSchema from '@/components/seo/FAQSchema'
 const BASE = 'https://starkdigital.ie'
 
 export default function ServicePage({ service }: { service: Service }) {
-  const others = services.filter((s) => s.slug !== service.slug)
+  const others = allServices.filter((s) => s.slug !== service.slug)
   const url = `${BASE}/${service.slug}`
 
   return (
@@ -231,6 +232,44 @@ export default function ServicePage({ service }: { service: Service }) {
         </div>
       </section>
 
+      {/* ── Industry pages (Google Ads only) ─────────── */}
+      {service.showIndustries && (
+        <section className="px-3 sm:px-4 pb-16 md:pb-24">
+          <div className="max-w-7xl mx-auto px-3 sm:px-6">
+            <Reveal className="mb-10 md:mb-14 max-w-3xl">
+              <p className="eyebrow mb-6">By industry</p>
+              <h2 className="display" style={{ fontSize: 'var(--text-display-lg)' }}>
+                Five markets I know well enough to be useful on day one.
+              </h2>
+            </Reveal>
+
+            <Reveal stagger className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {industries.map((ind) => (
+                <Link
+                  key={ind.slug}
+                  href={`/google-ads-dublin/${ind.slug}`}
+                  className="panel bg-paper-2 p-7 md:p-8 group hover:bg-ink transition-colors duration-300 flex flex-col"
+                >
+                  <h3
+                    className="display mb-3.5 group-hover:text-orange transition-colors"
+                    style={{ fontSize: 'clamp(19px, 2vw, 24px)' }}
+                  >
+                    {ind.title}
+                  </h3>
+                  <p className="text-text-soft text-[15px] leading-relaxed group-hover:text-on-ink-soft transition-colors">
+                    {ind.subheadline}
+                  </p>
+                  <span className="mt-auto pt-6 text-orange text-[15px] font-medium flex items-center gap-2">
+                    Read more
+                    <span className="transition-transform duration-300 group-hover:translate-x-1" aria-hidden>→</span>
+                  </span>
+                </Link>
+              ))}
+            </Reveal>
+          </div>
+        </section>
+      )}
+
       {/* ── Where it fits ────────────────────────────── */}
       <section className="px-3 sm:px-4 pb-16 md:pb-24">
         <div className="max-w-7xl mx-auto px-3 sm:px-6">
@@ -243,18 +282,11 @@ export default function ServicePage({ service }: { service: Service }) {
           </Reveal>
 
           <Reveal stagger className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            {[
-              ...others.map((o) => ({
-                href: `/${o.slug}`,
-                nav: o.nav,
-                line: o.metaTitle,
-              })),
-              {
-                href: '/google-ads-dublin',
-                nav: 'Google Ads',
-                line: 'Google Ads Agency Dublin',
-              },
-            ].map((o) => (
+            {others.map((o) => ({
+              href: `/${o.slug}`,
+              nav: o.nav,
+              line: o.metaTitle,
+            })).map((o) => (
               <Link
                 key={o.href}
                 href={o.href}

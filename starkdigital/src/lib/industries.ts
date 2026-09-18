@@ -1,379 +1,331 @@
-export const industries = [
+import type { Faq } from './faqs'
+
+export type Industry = {
+  slug: string
+  /** Short label for grids and breadcrumbs. */
+  nav: string
+  title: string
+  metaDescription: string
+  eyebrow: string
+  headline: string[]
+  accent: string
+  subheadline: string
+  /**
+   * The part that is actually specific to this market. Deliberately a different
+   * shape and length per industry: these are observations, not a template with
+   * the nouns swapped.
+   */
+  observation: { heading: string; body: string[] }
+  /** Varying count on purpose. Some markets need six points, some need three. */
+  specifics: { title: string; body: string }[]
+  faqs: Faq[]
+  caseStudy: string | null
+  blogLinks: { slug: string; title: string }[]
+}
+
+export const industries: Industry[] = [
   {
     slug: 'solicitors',
+    nav: 'Solicitors',
     title: 'Google Ads for Solicitors Dublin',
     metaDescription:
-      'Targeted Google Ads campaigns for solicitors and law firms across Dublin. We specialise in legal services PPC — high-intent keywords, proper tracking, real results.',
-    headline: 'More client enquiries\nfor your law firm.',
+      'Google Ads for solicitors and law firms in Dublin. Built around the split between urgent legal searches and research searches, and around what Irish advertising rules allow you to say.',
+    eyebrow: 'Google Ads · Solicitors',
+    headline: ['Two kinds of legal', 'search. Only one of', 'them hires you today.'],
+    accent: 'them hires you today.',
     subheadline:
-      'We specialise in Google Ads for solicitors and law firms in Dublin. High-intent keywords, compliant ad copy, and campaigns built around how people actually search for legal services in Ireland.',
-    keywords: [
-      'google ads solicitors dublin',
-      'ppc law firm ireland',
-      'google ads legal services dublin',
+      'Paid search for law firms in Dublin and across Ireland, built around the searches that end in a phone call rather than the ones that end in a blog post.',
+    observation: {
+      heading: 'The split that decides whether a legal account works',
+      body: [
+        'Legal search divides cleanly into two groups that look similar in a keyword tool and behave nothing alike. There is the person whose tenancy is being terminated on Friday, who has just been arrested, or whose sale is falling through, and there is the person reading about what probate involves because a relative is ill. Both type things containing the word solicitor. One of them will ring three firms this afternoon.',
+        'Most accounts I look at spend the majority of their budget on the second group, because that is where the search volume is. The research terms are cheaper per click and they feel productive in a report. They convert at a fraction of the rate, and in a practice area where a file is worth four figures, that difference is the whole account.',
+        'The other thing shaping this work is what you are allowed to say. Legal services advertising in Ireland sits under the Legal Services Regulation Act 2015, and the constraints are real enough that copy needs checking before it runs rather than after somebody complains. It does not stop you advertising. It does mean the version of the ad that a marketer would write first is often not the version that can go live.',
+      ],
+    },
+    specifics: [
+      {
+        title: 'Urgent terms get the budget',
+        body: 'Ad groups are built around intent rather than around practice area alone. The searches that carry urgency get the spend and the best position. Research terms either sit in a separate campaign with its own small budget or get excluded entirely.',
+      },
+      {
+        title: 'A page per practice area',
+        body: 'Conveyancing, employment, family and probate are different buyers with different worries. One page covering all of them converts worse than four pages covering one each, and it is usually the single biggest gain available.',
+      },
+      {
+        title: 'Copy checked against the rules before launch',
+        body: 'Every headline and description reviewed against Irish legal advertising requirements, with anything that cannot be substantiated taken out. Slower to launch and considerably less stressful afterwards.',
+      },
+      {
+        title: 'Calls tracked back to the search',
+        body: 'Most legal enquiries arrive by phone, which means an account without call tracking is an account nobody can evaluate. Every call is attributed to the keyword and page that produced it.',
+      },
+      {
+        title: 'Negatives for a noisy market',
+        body: 'Legal terms attract people looking for law jobs, law courses, free advice and the Citizens Information website. That list is maintained weekly, not written once.',
+      },
+    ],
+    faqs: [
+      {
+        q: 'What should a Dublin law firm budget for Google Ads?',
+        a: 'For most practices, EUR 800 to EUR 2,000 a month in ad spend is a workable starting point. Legal clicks are expensive by Irish standards, often EUR 4 to EUR 15 depending on the practice area, but a single conveyancing or probate file is worth enough that the arithmetic still works comfortably. What matters more than the number is whether you can answer the phone when it rings.',
+      },
+      {
+        q: 'Which practice areas work best?',
+        a: 'Conveyancing, employment law, family law and probate all perform well, because they are services people search for with a decision already made. Areas where people expect to be referred rather than to search tend to work less well, and commercial work with long relationship-driven sales cycles is usually better served by other channels.',
+      },
+      {
+        q: 'What about advertising personal injury work?',
+        a: 'This is the area where the Irish rules bite hardest, and it is worth getting specific advice on your own situation rather than relying on a general answer from an agency website. I will tell you what I understand the constraints to be, and where it is genuinely unclear I will say that rather than guess on your behalf.',
+      },
+      {
+        q: 'How quickly would we see enquiries?',
+        a: 'Usually within the first one to two weeks of launch. Getting to a stable, predictable cost per enquiry takes about 60 to 90 days, because that is how long it takes to accumulate enough conversions to make decisions on rather than react to.',
+      },
     ],
     caseStudy: 'anthony-joyce-solicitors',
-    stats: [
-      { label: 'Avg. increase in enquiries', value: '+112%' },
-      { label: 'Reduction in cost per lead', value: '−38%' },
-    ],
-    painPoints: [
-      'Your enquiry pipeline depends on referrals — unpredictable and impossible to scale',
-      'Competitors appear above your firm when potential clients search for legal services in Dublin',
-      'You\'ve run Google Ads before but wasted budget on irrelevant clicks with no clear ROI',
-      'You\'re unsure what compliant ad copy looks like for a regulated legal practice',
-    ],
-    whatWeDo: [
-      {
-        title: 'Conveyancing & Practice-Area Keywords',
-        description: 'We map the exact searches your ideal clients use — from "conveyancing solicitor Dublin" to "employment law advice Ireland" — and build tightly themed ad groups for each practice area.',
-      },
-      {
-        title: 'Compliance-First Ad Copy',
-        description: 'Every headline and description is reviewed against Irish legal advertising guidelines before launch. No claims you can\'t back up; no language that could draw a complaint.',
-      },
-      {
-        title: 'Call Tracking & Enquiry Attribution',
-        description: 'We track every phone call and contact form submission back to the keyword that triggered it. You know exactly which searches drive real client enquiries — and which don\'t.',
-      },
-      {
-        title: 'Tight Geographic Targeting',
-        description: 'Most Dublin solicitors need clients within a defined radius. We target the right postcodes and exclude searches from outside your service area so no budget is wasted.',
-      },
-      {
-        title: 'Negative Keyword Management',
-        description: 'Legal search terms attract a lot of irrelevant traffic — people looking for legal jobs, studying law, or searching abroad. We build and maintain negative keyword lists from day one.',
-      },
-    ],
     blogLinks: [
-      {
-        slug: 'google-ads-for-solicitors-ireland',
-        title: 'Google Ads for Solicitors in Ireland: A Complete Guide',
-      },
-      {
-        slug: 'how-to-choose-google-ads-agency-dublin',
-        title: 'How to Choose a Google Ads Agency in Dublin: 7 Questions to Ask',
-      },
-    ],
-    faqs: [
-      {
-        q: 'How much does Google Ads cost for a solicitor in Dublin?',
-        a: 'For most Dublin law firms, a budget of €800–€2,000/month in ad spend is a solid starting point. Legal keywords are competitive, but the value per client is high — making the ROI very strong.',
-      },
-      {
-        q: 'What types of legal services work best with Google Ads?',
-        a: 'Conveyancing, personal injury, family law, and employment law all perform well. These are services people search for urgently and with high intent — exactly where Google Ads excels.',
-      },
-      {
-        q: 'Do you understand compliance requirements for legal advertising?',
-        a: 'Yes. We understand the guidelines around legal services advertising in Ireland and ensure all ad copy is appropriate and compliant.',
-      },
-      {
-        q: 'How long before our firm starts receiving enquiries?',
-        a: 'Most campaigns generate first enquiries within 1–2 weeks of launch. It typically takes 60–90 days to fully optimise for consistent, predictable cost per lead.',
-      },
+      { slug: 'google-ads-for-solicitors-ireland', title: 'Google Ads for Solicitors in Ireland' },
+      { slug: 'how-to-choose-google-ads-agency-dublin', title: 'How to Choose a Google Ads Agency in Dublin' },
     ],
   },
+
   {
     slug: 'accountants',
+    nav: 'Accountants',
     title: 'Google Ads for Accountants Dublin',
     metaDescription:
-      'Google Ads management for accounting firms and independent accountants in Dublin. We track every enquiry back to spend — no wasted budget.',
-    headline: 'Get in front of businesses\nlooking for an accountant.',
+      'Google Ads for accounting firms in Dublin. Built around the Irish filing calendar and around the searches that signal a business is changing accountant, not shopping on price.',
+    eyebrow: 'Google Ads · Accountants',
+    headline: ['Your best client is', 'not searching for', 'a cheap accountant.'],
+    accent: 'a cheap accountant.',
     subheadline:
-      'Targeted Google Ads campaigns for accounting firms across Dublin. We focus on the keywords your ideal business clients actually use — and track every enquiry back to spend.',
-    keywords: [
-      'google ads accountants dublin',
-      'ppc accounting firm ireland',
-      'google ads for accountants ireland',
-    ],
-    caseStudy: null,
-    stats: [
-      { label: 'Avg. CPC for accountancy terms', value: '€4–€12' },
-      { label: 'Recommended starting ad spend', value: '€800+' },
-    ],
-    painPoints: [
-      'New client flow is feast or famine — packed in January, quiet by March',
-      'Your firm relies almost entirely on referrals with no predictable lead source',
-      'Competitor accountants are appearing above you on Google for searches your ideal clients are making',
-      'You\'ve tried Google Ads but didn\'t see results — likely because the account wasn\'t built for accounting\'s longer decision cycle',
-    ],
-    whatWeDo: [
+      'Paid search for accounting practices in Dublin and across Ireland, aimed at business owners who are switching rather than price-shopping.',
+    observation: {
+      heading: 'Two things about this market that change how the account is built',
+      body: [
+        'The first is the calendar. Accounting demand is not flat and pretending otherwise wastes money. Searches climb through September and October ahead of the income tax deadline, spike again around company filing dates, and go quiet in the stretches between. An account running the same daily budget all year underspends when it matters and overspends when nothing is happening. Budget should move with the calendar, and it can be scheduled months ahead because the dates do not change.',
+        'The second is which searches are worth having. "Cheap accountant Dublin" and "accountant near me" attract people optimising for price, which is a race you can only win by charging less. The searches worth owning are the ones that signal a business is already moving: changing accountant, setting up a limited company, needing someone who handles a specific thing their current accountant does not. Lower volume, considerably better clients, and most accounts ignore them because a keyword tool ranks them near the bottom.',
+      ],
+    },
+    specifics: [
       {
-        title: 'Seasonal Campaign Strategy',
-        description: 'Accounting demand spikes around self-assessment deadlines and year-end. We increase budgets at the right times and pull back during quieter months — so your spend matches the opportunity.',
+        title: 'Budget scheduled against the filing calendar',
+        body: 'Spend increases ahead of the deadlines that drive demand and drops back in the quiet weeks. Planned in advance rather than reacted to in the last fortnight when competition is at its most expensive.',
       },
       {
-        title: 'B2B Audience Layering',
-        description: 'We overlay business-owner and decision-maker signals on top of keyword targeting. This means your ads reach the people who are actually looking to hire an accountant, not employees searching on their employer\'s behalf.',
+        title: 'Switching intent over price intent',
+        body: 'Campaigns aimed at business owners already looking to move, plus company formation and specialist service searches. Price-comparison terms get excluded rather than optimised.',
       },
       {
-        title: 'Remarketing for Long Decision Cycles',
-        description: 'Businesses take weeks to decide on an accountant. We run targeted Display and YouTube remarketing to stay visible to firms that visited your site but didn\'t make contact — keeping you top of mind until they\'re ready.',
+        title: 'Separate treatment for business and personal',
+        body: 'A sole trader wanting a tax return and a company needing full compliance work are different budgets and different pages. Running them together makes both perform worse and makes the reporting useless.',
       },
       {
-        title: 'Service-Level Campaign Structure',
-        description: 'Separate campaigns for tax returns, payroll, company formation, and bookkeeping mean each search matches a highly relevant ad and landing page — dramatically improving conversion rates.',
-      },
-      {
-        title: 'ROI Reporting Per Client Value',
-        description: 'We report on cost per lead alongside your average client value. This makes the business case clear — not just clicks and impressions, but what each euro of ad spend is actually generating.',
-      },
-    ],
-    blogLinks: [
-      {
-        slug: 'google-ads-for-accountants-dublin',
-        title: 'Google Ads for Accountants in Dublin: What Actually Works',
-      },
-      {
-        slug: 'how-much-do-google-ads-cost-ireland',
-        title: 'How Much Do Google Ads Cost in Ireland? (2026 Guide)',
+        title: 'Enquiry value, not enquiry count',
+        body: 'A retained limited company client and a one-off tax return are both one conversion in a standard setup. Where the practice can put a value on them, the account optimises toward the ones worth having.',
       },
     ],
     faqs: [
       {
-        q: 'When is the best time to run Google Ads for an accounting firm?',
-        a: 'Year-round for business clients, but increase budget around January–April (tax season) and September–October (year-end for many Irish SMEs).',
+        q: 'When should we start, given the seasonality?',
+        a: 'Ideally six to eight weeks before the period you care about, because the account needs time to gather data before the expensive weeks arrive. Starting in mid-October for the income tax deadline means paying peak prices while the campaign is still learning. If you are reading this in October, it is not too late to be useful, it is just a more expensive way to begin.',
       },
       {
-        q: 'Can you target specific types of businesses with Google Ads?',
-        a: 'Yes — we can layer audience targeting to focus on business owners and decision-makers, not just anyone searching for accounting help.',
+        q: 'What does an enquiry cost?',
+        a: 'For most Dublin practices, somewhere between EUR 40 and EUR 120 per enquiry depending on the service and the time of year. The figure on its own means nothing until you put it next to what a client is worth over the years they stay with you, which for a retained company client is usually a comfortable multiple of it.',
       },
       {
-        q: 'How do you handle the longer sales cycle for accounting services?',
-        a: 'We combine search campaigns with remarketing — so even if a prospect visits your site and doesn\'t make contact immediately, your firm stays visible to them across Google\'s network until they\'re ready to decide.',
-      },
-      {
-        q: 'What\'s a realistic cost per lead for an accountancy firm in Dublin?',
-        a: 'With a well-managed campaign, a cost per lead of €40–€100 is achievable for most general accountancy services. For specialist or high-value services, CPLs can be higher — but so is the client value. We track this from day one.',
+        q: 'Is Google Ads better than referrals for us?',
+        a: 'It is not competing with referrals, it is filling the months when referrals do not arrive. Most practices I speak to have a good year and a bad year and no real idea why. Paid search is the part of the pipeline you can actually turn up or down, which makes the rest of it easier to plan around.',
       },
     ],
+    caseStudy: null,
+    blogLinks: [
+      { slug: 'google-ads-for-accountants-dublin', title: 'Google Ads for Accountants in Dublin' },
+      { slug: 'how-much-do-google-ads-cost-ireland', title: 'What Google Ads Actually Costs in Ireland' },
+    ],
   },
+
   {
     slug: 'financial-advisors',
-    title: 'Google Ads for Financial Advisors Dublin',
+    nav: 'Financial Advisors',
+    title: 'Google Ads for Financial Advisors Ireland',
     metaDescription:
-      'Google Ads campaigns for IFAs, mortgage brokers and financial planning firms in Dublin. Compliant ad copy, high-intent targeting, full conversion tracking.',
-    headline: 'Attract high-value clients\nactively seeking financial advice.',
+      'Google Ads for financial advisors, IFAs and mortgage brokers in Ireland. Low volume, high value, and every word of copy sitting under Central Bank advertising requirements.',
+    eyebrow: 'Google Ads · Financial Advice',
+    headline: ['Fifteen clicks a', 'month can be a', 'very good month.'],
+    accent: 'very good month.',
     subheadline:
-      'Google Ads campaigns built for IFAs, mortgage brokers, and financial planning firms in Dublin. Compliant ad copy, high-intent targeting, and full conversion tracking.',
-    keywords: [
-      'google ads financial advisors dublin',
-      'ppc ifa ireland',
-      'financial advisor google ads ireland',
-    ],
-    caseStudy: null,
-    stats: [
-      { label: 'Avg. CPC: pension advisor terms', value: '€6–€15' },
-      { label: 'Client lifetime value (typical IFA)', value: '€5k+' },
-    ],
-    painPoints: [
-      'You\'re authorised by the CBI but unsure how to run ads that are fully compliant with financial services advertising rules',
-      'Generalist agencies write ad copy that makes claims your firm legally can\'t back up',
-      'Your landing pages aren\'t converting — visitors arrive but don\'t enquire',
-      'Google applies extra scrutiny to financial services content; your ads keep getting disapproved',
-    ],
-    whatWeDo: [
+      'Paid search for IFAs, mortgage brokers and financial planners in Ireland, where the economics and the compliance both work differently from everything else on this site.',
+    observation: {
+      heading: 'Why this market breaks the usual rules of paid search',
+      body: [
+        'Almost everything written about Google Ads assumes volume. Gather enough conversions, let the algorithm learn, optimise toward a cost per lead. Financial advice does not play along. The searches are genuinely scarce, the sales cycle runs in months rather than days, and a single pension transfer or protection case can be worth more than an entire quarter of spend. An account producing fifteen clicks and two conversations a month can be performing excellently, and it will look like a failure in any standard report.',
+        'That changes what you optimise for. Automated bidding needs conversion volume that this market will not supply, so a lot of the usual advice actively hurts. Manual control, a tight keyword list and patience produce better results than letting a system learn from thirty data points a quarter.',
+        'Then there is the regulation. Advertising by regulated firms in Ireland sits under Central Bank requirements, and the parts that matter most for search advertising are the ones about claims, about balance, and about not implying an outcome. An ad headline that would be unremarkable for a plumber can be a problem here. The practical effect is that copy goes through a compliance step before it goes live, and the agency that treats that as an annoyance is the wrong agency.',
+      ],
+    },
+    specifics: [
       {
-        title: 'CBI-Compliant Ad Copy from Day One',
-        description: 'We write ad copy that reflects Irish financial services regulations — no guaranteed return claims, appropriate disclaimers where required, and language your compliance officer won\'t flag.',
+        title: 'Manual bidding, deliberately',
+        body: 'Smart bidding needs conversion volume this market does not produce. Manual control over a small, well-chosen keyword list beats an automated strategy learning from almost nothing.',
       },
       {
-        title: 'Service-Level Campaign Structure',
-        description: 'Separate campaigns for pensions, mortgages, investments, and protection mean your ads are hyper-relevant to each search. A person searching "pension advisor dublin" sees a pension ad — not a generic financial services page.',
+        title: 'Copy written to be compliant first',
+        body: 'Every headline and description drafted with the Central Bank requirements in mind and sent to you for sign-off before it runs. No performance claims, no implied outcomes, nothing that would need defending.',
       },
       {
-        title: 'YMYL Landing Page Guidance',
-        description: 'Google classifies financial advice as "Your Money or Your Life" content — held to higher E-E-A-T standards. We advise on what your landing pages need: credentials, CBI registration, disclaimers, and clear CTAs that convert.',
+        title: 'Timed to the moments people actually look',
+        body: 'People search for advice after a job change, around a mortgage approval, and in the weeks after a Budget. Campaigns lean into those windows instead of spending evenly across a year.',
       },
       {
-        title: 'Google Financial Services Certification',
-        description: 'Certain financial product categories require pre-certification with Google before ads can run. We handle this as part of onboarding — so your campaigns launch without unnecessary delays or disapprovals.',
-      },
-      {
-        title: 'Remarketing for Considered Purchases',
-        description: 'Financial advice is a high-consideration purchase. Most people visit multiple times before reaching out. We run compliant remarketing campaigns that keep your firm visible through that decision process.',
-      },
-    ],
-    blogLinks: [
-      {
-        slug: 'google-ads-for-financial-advisors-ireland',
-        title: 'Google Ads for Financial Advisors in Ireland: CBI-Compliant Campaigns That Convert',
-      },
-      {
-        slug: 'google-ads-vs-facebook-ads-professional-services-dublin',
-        title: 'Google Ads vs Facebook Ads for Professional Services: Which Wins?',
+        title: 'Measured on conversations, not clicks',
+        body: 'With volume this low, click-through rate and cost per click are nearly meaningless. The report is a short list of who enquired and what they were searching for when they did.',
       },
     ],
     faqs: [
       {
-        q: 'Are there restrictions on advertising financial services on Google?',
-        a: 'Yes — financial services advertisers must be authorised by the Central Bank of Ireland. We understand these requirements and ensure campaigns are fully compliant before any ad goes live.',
+        q: 'Is there even enough search volume to bother?',
+        a: 'Often not much, and that is genuinely a reason some advisors should not do this. Where it works is when a single client is worth enough that a handful of enquiries a year pays for everything several times over, which is common in pensions, protection and mortgage broking. Where it does not work is general wealth management in a small area, and I will tell you if that is what I think you are.',
       },
       {
-        q: 'Can I mention specific products like pensions or mortgages in my ads?',
-        a: 'Yes, with the right approach. Product-specific ads perform very well — but ad copy must avoid implying guaranteed returns or outcomes. We write copy that highlights your expertise and independence rather than product performance.',
+        q: 'Who is responsible for compliance?',
+        a: 'You are, as the regulated firm, and nothing I do changes that. What I can do is write copy that is drafted with the requirements in mind, send everything for your sign-off before it runs, and not argue when your compliance view is that something has to change. I am not a compliance adviser and I will not pretend to be one.',
       },
       {
-        q: 'Why do financial services ads sometimes get disapproved by Google?',
-        a: 'Google applies stricter policies to financial services ads, including requirements for landing page disclaimers, regulated status disclosure, and certain product certifications. We navigate this as standard — accounts we manage don\'t face repeated disapprovals.',
-      },
-      {
-        q: 'Is Google Ads better than LinkedIn for reaching high-net-worth clients?',
-        a: 'For most consumer-facing IFAs targeting individuals with pensions, mortgages, or investment needs, Google Ads outperforms LinkedIn on cost per lead. LinkedIn works better for B2B financial services targeting corporate clients or senior executives.',
+        q: 'What budget makes sense?',
+        a: 'EUR 600 to EUR 1,500 a month in ad spend suits most advisory firms. Clicks in this sector are among the most expensive in Ireland, frequently EUR 8 to EUR 20, so the budget buys fewer visitors than you would expect. That is the correct shape for this market rather than a sign something is wrong.',
       },
     ],
+    caseStudy: null,
+    blogLinks: [
+      { slug: 'google-ads-for-financial-advisors-ireland', title: 'Google Ads for Financial Advisors in Ireland' },
+      { slug: 'google-ads-vs-facebook-ads-professional-services-dublin', title: 'Google Ads or Facebook Ads for Professional Services' },
+    ],
   },
+
   {
     slug: 'dental-clinics',
+    nav: 'Dental Clinics',
     title: 'Google Ads for Dental Clinics Dublin',
     metaDescription:
-      'Google Ads management for dental practices across Dublin. We build campaigns that convert searches into booked appointments — emergency, cosmetic, and general dentistry.',
-    headline: 'Fill your appointment book\nwith new patients.',
+      'Google Ads for dental practices in Dublin. Emergency and routine work and high-value cosmetic work are two different businesses, and running them in one campaign makes both perform worse.',
+    eyebrow: 'Google Ads · Dental',
+    headline: ['One practice.', 'Two completely', 'different businesses.'],
+    accent: 'different businesses.',
     subheadline:
-      'Performance Google Ads for dental practices across Dublin. We know how patients search for dentists — and build campaigns that turn those searches into booked appointments.',
-    keywords: [
-      'google ads dentist dublin',
-      'ppc dental clinic ireland',
-      'dental google ads dublin',
-    ],
-    caseStudy: null,
-    stats: [
-      { label: 'Avg. CPC for dental terms', value: '€2–€6' },
-      { label: 'Typical conversion rate', value: '5–12%' },
-    ],
-    painPoints: [
-      'Appointment slots go unfilled — especially mid-week and outside peak hours',
-      'You\'re spending on Facebook Ads but the enquiry quality is low and bookings are inconsistent',
-      'Emergency dental searches happen every day in your area but your clinic isn\'t showing up',
-      'You have no system to track which marketing is actually generating appointments',
-    ],
-    whatWeDo: [
+      'Paid search for dental clinics in Dublin, separating the work that comes from a toothache at 8am from the work someone spends three months deciding on.',
+    observation: {
+      heading: 'The mistake that costs dental accounts the most',
+      body: [
+        'A dental practice runs two businesses out of one building. There is emergency and routine work, which is local, urgent and decided in minutes: a broken tooth, pain, a check-up somebody finally got around to booking. Then there is cosmetic and restorative work, which is implants, veneers and aligners, where somebody spends weeks reading, compares four clinics, asks about finance and travels past two other practices to reach the one they picked.',
+        'These need opposite campaigns. The urgent side wants tight local radius targeting, phone numbers everywhere and ads running when a person in pain is awake. The cosmetic side wants a considered landing page, finance information, before-and-after evidence and the patience to accept that the enquiry arrives three weeks after the click. Put them in one campaign and the urgent searches eat the budget while the cosmetic searches, which are worth many times more per patient, never get enough impression share to prove anything.',
+        'Worth knowing about the cosmetic side specifically: you are not only competing with other Dublin clinics. Treatment abroad advertises hard against exactly those searches, and pretending that is not happening leads to landing pages that never address the comparison the patient is actually making.',
+      ],
+    },
+    specifics: [
       {
-        title: 'Emergency vs. Elective Campaign Split',
-        description: 'Emergency searches ("emergency dentist dublin", "dentist open now") convert at 2–3× the rate of general terms and need different bidding and ad copy. We run dedicated campaigns for each search type so nothing is blended or diluted.',
+        title: 'Two campaign structures, not one',
+        body: 'Urgent and routine work in one structure with its own budget and its own hours. Cosmetic and high-value treatment in another, with its own pages and a completely different measure of success.',
       },
       {
-        title: 'Local Radius Targeting by Treatment',
-        description: 'Patients travel further for implants than for a check-up. We set targeting radii based on treatment type — 5–8 km for general and emergency care, up to 20 km for cosmetic and specialist treatments.',
+        title: 'Radius targeting that matches the treatment',
+        body: 'Somebody in pain will not travel. Somebody researching implants will. The geography is set per campaign rather than once for the account.',
       },
       {
-        title: 'Appointment Conversion Tracking',
-        description: 'We track completed online bookings, contact form submissions, and phone calls separately. You see exactly how many appointments came from Google Ads each month — and at what cost.',
+        title: 'Ads running when people actually book',
+        body: 'Emergency searches peak early morning and evening. If nobody can take the call, the click is wasted, so scheduling follows when the practice can genuinely answer.',
       },
       {
-        title: 'Treatment-Specific Ad Groups',
-        description: 'Invisalign ads go to an Invisalign page. Implant ads go to an implants page. This match between search, ad, and landing page is the single biggest driver of conversion rate improvement for dental practices.',
+        title: 'Cosmetic pages built for a long decision',
+        body: 'Cost ranges, finance options, what the process involves and what the alternatives are. A page that hides the price loses to a page that answers the question, because the question gets answered somewhere regardless.',
       },
       {
-        title: 'Negative Keyword Management',
-        description: 'Dental searches attract irrelevant traffic — dental nurse jobs, NHS treatment queries, DIY dental fixes. A thorough negative keyword list built from day one prevents 20–35% of budget waste before it happens.',
-      },
-    ],
-    blogLinks: [
-      {
-        slug: 'google-ads-for-dental-clinics-dublin',
-        title: 'Google Ads for Dental Clinics in Dublin: A Practical 2026 Guide',
-      },
-      {
-        slug: 'how-much-do-google-ads-cost-ireland',
-        title: 'How Much Do Google Ads Cost in Ireland? (2026 Guide)',
+        title: 'Bookings tracked, not form fills',
+        body: 'Where the practice management system allows it, enquiries are traced through to booked appointments. An enquiry that never turns up is not a result and should not be counted as one.',
       },
     ],
     faqs: [
       {
-        q: 'How quickly can Google Ads fill my appointment book?',
-        a: 'Most dental clinics start seeing new patient enquiries within the first 2 weeks of a campaign launching. It takes 4–6 weeks to optimise bids and targeting for consistent, predictable bookings.',
+        q: 'Which treatments justify the spend?',
+        a: 'Implants, aligners and full-mouth restorative work carry enough value per patient to absorb a competitive cost per click comfortably. Routine check-ups usually do not on their own, but they are worth running because a check-up patient stays for years, so the honest way to judge them is on the relationship rather than on the first appointment.',
       },
       {
-        q: 'Should I advertise all treatments, or focus on specific ones?',
-        a: 'Start with your highest-margin treatments (implants, Invisalign, cosmetic bonding) and your highest-volume needs (emergency, new patient registration). Spreading budget across too many treatments early means not enough data to optimise any of them effectively.',
+        q: 'What do dental clicks cost in Dublin?',
+        a: 'Emergency and general terms typically EUR 2 to EUR 6. Implant and cosmetic terms are considerably higher, often EUR 8 to EUR 20, because everyone bidding on them knows what the patient is worth. That is normal and it is why the two sides need separate budgets rather than one pot.',
       },
       {
-        q: 'What\'s the difference between Google Ads and Local Services Ads for dentists?',
-        a: 'Local Services Ads (LSAs) appear above standard Google Ads, show a Google Screened badge, and charge per lead rather than per click. We typically recommend running both — LSAs for general and emergency searches, standard Search ads for specific treatments.',
+        q: 'Can you work with our booking system?',
+        a: 'Usually yes, at least to the point of tracking which enquiries became appointments. How deep that goes depends on which system you use and what it will let us connect to. I will tell you what is possible with yours before we start rather than promising integration and discovering later.',
       },
-      {
-        q: 'I\'m already running Facebook Ads. Do I still need Google Ads?',
-        a: 'Facebook and Google serve different purposes. Facebook shows ads to people who weren\'t looking for you — useful for cosmetic treatment awareness. Google captures people actively searching for dental services right now. For immediate appointment bookings, Google Ads consistently outperforms Facebook for dental practices.',
-      },
+    ],
+    caseStudy: null,
+    blogLinks: [
+      { slug: 'google-ads-for-dental-clinics-dublin', title: 'Google Ads for Dental Clinics in Dublin' },
+      { slug: 'how-much-do-google-ads-cost-ireland', title: 'What Google Ads Actually Costs in Ireland' },
     ],
   },
+
   {
     slug: 'tradespeople',
+    nav: 'Tradespeople',
     title: 'Google Ads for Tradespeople Dublin',
     metaDescription:
-      'Google Ads for electricians, plumbers, roofers and builders in Dublin. Local targeting, call-only campaigns, and budgets that make sense for trade businesses.',
-    headline: 'More jobs.\nLess relying on word-of-mouth.',
+      'Google Ads for electricians, plumbers, builders and trade businesses in Dublin. Built around the fact that the job is won on the phone, not on the website.',
+    eyebrow: 'Google Ads · Trades',
+    headline: ['If you cannot answer', 'the phone, do not', 'buy the click.'],
+    accent: 'buy the click.',
     subheadline:
-      'Google Ads for electricians, plumbers, roofers, and builders across Dublin. Local targeting, call-only campaigns, and budgets that make sense for trade businesses.',
-    keywords: [
-      'google ads tradespeople dublin',
-      'ppc plumber ireland',
-      'google ads electrician dublin',
-    ],
-    caseStudy: null,
-    stats: [
-      { label: 'Avg. CPC for emergency trades', value: '€2–€6' },
-      { label: 'Recommended starting budget', value: '€500+' },
-    ],
-    painPoints: [
-      'Work is consistent when it\'s busy but slow months arrive without warning and are hard to recover from',
-      'You rely almost entirely on word-of-mouth — referrals you can\'t control or predict',
-      'Customers in your area are searching for your service right now on Google, but they\'re calling your competitors instead',
-      'You don\'t have time to manage marketing yourself and aren\'t sure which approach is worth the investment',
-    ],
-    whatWeDo: [
+      'Paid search for trade businesses in Dublin and the surrounding counties, built around how the work is actually won.',
+    observation: {
+      heading: 'The thing nobody tells trade businesses before they spend money',
+      body: [
+        'For most trades the job is decided in the first thirty seconds of a phone call, and often before that, by whether the phone was answered at all. Someone with water coming through a ceiling rings three numbers from the top of the results and books whoever picks up. A missed call is not a delayed enquiry, it is a lost job that went to the next listing.',
+        'This is why paid search fails for a lot of trade businesses that are doing everything else right. You are on a roof, or under a sink, or driving between jobs. The ads run, the clicks get paid for, the phone rings out. Before anything is spent, the question worth answering is who answers the phone between nine and five, and if the honest answer is nobody, that gets fixed first or the budget gets scheduled around the hours it is not true.',
+        'The second split worth knowing: emergency work and planned work behave nothing alike. A burst pipe converts almost immediately at almost any price. An extension or a rewire involves three quotes over a fortnight. Both are worth having, they just need different pages, different budgets and different expectations about how long the enquiry takes to appear.',
+      ],
+    },
+    specifics: [
       {
-        title: 'Call-Only Ads for Emergency Work',
-        description: 'When someone has a burst pipe or no heating, they want to call immediately — not fill in a form. Call-Only Ads show only on mobile and dial your number directly, cutting friction to zero. For emergency trades, they convert at 40–60% higher rates than standard text ads.',
+        title: 'Call-only where it fits',
+        body: 'For emergency work, a call-only campaign skips the website entirely and puts the phone number in front of somebody who wants to dial it now. Fewer moving parts and a shorter path to the job.',
       },
       {
-        title: 'Dublin Radius Targeting',
-        description: 'We target a precise radius around your base — typically 10–15 km — so you\'re only paying for searches you can actually respond to quickly. Tight targeting also improves your Quality Score, which reduces your cost per click.',
+        title: 'Scheduling built around who answers',
+        body: 'If calls are only answered between certain hours, ads run in those hours. If an answering service covers the rest, they run wider. Either is fine. Spending into an unanswered phone is not.',
       },
       {
-        title: 'Negative Keywords from Day One',
-        description: 'Trade searches attract huge volumes of irrelevant traffic: job listings, training courses, DIY guides, trade suppliers. We build comprehensive negative keyword lists before launch, preventing 20–35% of budget waste from day one.',
+        title: 'Emergency and planned work separated',
+        body: 'Two campaigns, two sets of pages, two ways of judging whether it is working. Mixed together, the emergency terms consume the budget and the profitable planned jobs never get a fair test.',
       },
       {
-        title: 'Ad Scheduling for Maximum ROI',
-        description: 'Emergency ads run 24/7. Planned project ads run during business hours when you can respond. Weekend budgets increase for emergency-prone searches. Your ads appear when they\'re most likely to generate a call — not at 3am for a bathroom renovation quote.',
-      },
-      {
-        title: 'Local Services Ads Setup',
-        description: 'Google\'s Local Services Ads (LSAs) appear above standard ads, show your rating and a Google Guaranteed badge, and charge per lead rather than per click. We handle the verification process and run LSAs alongside your Search campaigns for maximum coverage.',
-      },
-    ],
-    blogLinks: [
-      {
-        slug: 'google-ads-for-tradespeople-dublin',
-        title: 'Google Ads for Tradespeople in Dublin: Get More Calls, Less Waste',
-      },
-      {
-        slug: 'how-to-choose-google-ads-agency-dublin',
-        title: 'How to Choose a Google Ads Agency in Dublin: 7 Questions to Ask',
+        title: 'A radius that reflects the van',
+        body: 'Time spent driving is money. Targeting is set around where the work is worth taking rather than around a county boundary or the whole of Dublin.',
       },
     ],
     faqs: [
       {
-        q: 'What budget do I need to start getting calls from Google Ads?',
-        a: 'For emergency trades work in Dublin, €500–€800/month in ad spend is enough to generate a consistent flow of calls. CPCs for trade terms are lower than professional services, so your budget goes further. We recommend starting with a single campaign focused on your highest-value service.',
+        q: 'Is Google Ads worth it against the trade directories?',
+        a: 'Different jobs. The directories put you in a list where the customer is comparing you against everyone else on price, and they charge you for the lead either way. Paid search puts you above that list with your own phone number. Most trade businesses I speak to do best with both for a while and then quietly let the directory budget fall away.',
       },
       {
-        q: 'I don\'t have a website. Can I still run Google Ads?',
-        a: 'Yes — Call-Only Ads don\'t require a website. They dial your phone directly from the ad. That said, having a simple, fast landing page significantly improves performance for non-emergency searches and planned project enquiries.',
+        q: 'What is the smallest budget that makes sense?',
+        a: 'Around EUR 400 to EUR 600 a month works for a single-van business covering part of Dublin, mainly because trade clicks are cheaper than professional services and the radius is small. Below that there is not enough volume to learn anything, and you would be better off with a decent website and your Google Business Profile sorted first.',
       },
       {
-        q: 'What are Local Services Ads and should I use them?',
-        a: 'LSAs appear above standard Google Ads and show your Google Guaranteed badge. They charge per lead rather than per click and require a verification and background check process. We recommend running both LSAs and standard Search ads — they complement each other for maximum Dublin visibility.',
+        q: 'I already get plenty of work by word of mouth. Why bother?',
+        a: 'Then possibly do not. Word of mouth is the cheapest lead source there is and no advertising beats it. The reason trade businesses come to me is usually one of two things: the referrals dried up over a quiet winter, or they want a specific kind of work that referrals are not producing. If neither is true for you, keep your money.',
       },
-      {
-        q: 'How do I stop paying for clicks that don\'t turn into jobs?',
-        a: 'The biggest drivers of wasted spend are broad match keywords, poor negative keyword lists, and targeting that\'s too wide. We address all three from day one — most campaigns we take over see immediate improvement in lead quality after the first optimisation pass.',
-      },
+    ],
+    caseStudy: null,
+    blogLinks: [
+      { slug: 'google-ads-for-tradespeople-dublin', title: 'Google Ads for Tradespeople in Dublin' },
+      { slug: 'google-ads-vs-seo-ireland', title: 'Google Ads or SEO for an Irish Business' },
     ],
   },
 ]
 
-export type Industry = (typeof industries)[number]
+export function getIndustry(slug: string): Industry | undefined {
+  return industries.find((i) => i.slug === slug)
+}
