@@ -5,7 +5,7 @@ import { industries } from '@/lib/industries'
 import FAQSchema from '@/components/seo/FAQSchema'
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
 import ServiceSchema from '@/components/seo/ServiceSchema'
-import CtaV2 from '@/components/sections/CtaV2'
+import CTA from '@/components/v3/CTA'
 
 type Props = { params: Promise<{ industry: string }> }
 
@@ -221,7 +221,7 @@ export default async function IndustryPage({ params }: Props) {
         </section>
       )}
 
-      <CtaV2 />
+      <CTA />
     </>
   )
 }

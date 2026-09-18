@@ -115,7 +115,7 @@ export default function CtaV2() {
           style={{ borderColor: 'rgba(244,240,234,0.08)' }}
           data-cta-body
         >
-          {['No long-term contracts', 'Max. 8 active clients', 'Results in 2–4 weeks', 'Direct specialist access'].map((t) => (
+          {['Rolling monthly', 'Two new clients a month', 'First results in 2 to 4 weeks', 'You talk to the specialist'].map((t) => (
             <span
               key={t}
               className="font-mono text-[10px] tracking-[0.2em] uppercase"

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import CtaV2 from '@/components/sections/CtaV2'
+import CTA from '@/components/v3/CTA'
 
 export const metadata: Metadata = {
   title: 'Case Studies',
@@ -91,7 +91,7 @@ export default function CaseStudiesPage() {
         </div>
       </section>
 
-      <CtaV2 />
+      <CTA />
     </>
   )
 }

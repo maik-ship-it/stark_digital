@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import CtaV2 from '@/components/sections/CtaV2'
+import CTA from '@/components/v3/CTA'
 
 export const metadata: Metadata = {
   title: 'About Maik Stark — Google Ads Specialist Dublin',
@@ -120,8 +120,8 @@ export default function AboutPage() {
               </div>
               {/* Floating stat card */}
               <div className="absolute -bottom-6 -left-4 md:-left-8 bg-canvas border border-surface-2 shadow-card rounded-sm px-5 py-4">
-                <p className="font-serif font-bold text-amber leading-none text-2xl md:text-3xl">Max. 8</p>
-                <p className="label-muted mt-1.5">Active clients at a time</p>
+                <p className="font-serif font-bold text-amber leading-none text-2xl md:text-3xl">2</p>
+                <p className="label-muted mt-1.5">New clients a month</p>
               </div>
             </div>
           </div>
@@ -186,7 +186,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <CtaV2 />
+      <CTA />
     </>
   )
 }

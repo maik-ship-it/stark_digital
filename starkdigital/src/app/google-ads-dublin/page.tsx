@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { industries } from '@/lib/industries'
 import FAQSchema from '@/components/seo/FAQSchema'
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
-import CtaV2 from '@/components/sections/CtaV2'
+import CTA from '@/components/v3/CTA'
 
 export const metadata: Metadata = {
   title: 'Google Ads Agency Dublin',
@@ -88,7 +88,7 @@ export default function GoogleAdsDublinPage() {
         </div>
       </section>
 
-      <CtaV2 />
+      <CTA />
     </>
   )
 }
