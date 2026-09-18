@@ -2,33 +2,34 @@ import Image from 'next/image'
 import Reveal from './Reveal'
 
 /**
- * Each image is a screenshot of the live site, taken at 1440px and set on the
- * brand background. Regenerate them if a client redesigns.
+ * Each image is a screenshot of the live page, taken headless at 1440px and set
+ * on the brand background. These are the landing pages themselves, not the
+ * clients' main sites, because the section claims pages I built.
  */
 const PROJECTS = [
   {
     image: '/images/v3/work-1.jpg',
     client: 'Anthony Joyce & Co.',
-    url: 'anthonyjoyce.ie',
-    sector: 'Solicitors, Dublin',
-    built: 'Practice-area landing pages and Google Ads',
-    note: 'A separate page per practice area, each written for the search that brings the visitor, with call tracking wired back to the campaign that produced the call.',
+    url: 'immigration.anthonyjoyce.ie',
+    sector: 'Solicitors, Dublin 8',
+    built: 'Immigration landing page and the campaign behind it',
+    note: 'Citizenship, work permits and IRP renewals, aimed at people who are out of permission and want to talk to somebody today. So the page is built around the phone number rather than a form, and says plainly that a qualified solicitor answers the call.',
   },
   {
     image: '/images/v3/work-2.jpg',
     client: 'Byrock Technologies',
-    url: 'byrocktechnologies.com',
-    sector: 'Equine health, Ireland',
-    built: 'Site build and a Google Ads funnel',
-    note: 'A treatment for laminitis sold to a small, specific audience. When the addressable market is that narrow, the page doing its job matters far more than the size of the budget.',
+    url: 'trial.byrocktechnologies.com',
+    sector: 'Veterinary research, Ohio',
+    built: 'Trial recruitment page and paid search',
+    note: 'Recruiting horse owners for a research evaluation of an investigational laminitis treatment. Nothing about the product can be claimed, which removes every normal persuasion lever and leaves the page to do the work through clarity alone.',
   },
   {
     image: '/images/v3/work-3.jpg',
     client: 'Saloot',
     url: 'saloot.de',
     sector: 'E-commerce, Germany',
-    built: 'Shopify storefront and savings calculator',
-    note: 'Balcony solar kits, sold to people who work out the payback period before they buy. So the shop leads with a calculator that answers that question instead of burying it in a spec table.',
+    built: 'Shopify storefront and category pages',
+    note: 'Battery storage for balcony solar, bought by people who work out the payback before they order. The category page leads with capacity, cell chemistry and entry price, then splits into the four decisions a buyer is actually making.',
   },
 ]
 

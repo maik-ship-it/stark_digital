@@ -67,7 +67,7 @@ export default function CaseStudiesPage() {
               />
               <div className="absolute bottom-0 left-0 right-0 p-7 md:p-10">
                 <p className="label mb-2" style={{ color: 'var(--color-on-ink-faint)' }}>
-                  Dublin 1 · Legal
+                  Dublin 8 · Legal
                 </p>
                 <p className="display text-on-ink" style={{ fontSize: 'clamp(22px, 2.6vw, 32px)' }}>
                   Anthony Joyce &amp; Co. Solicitors

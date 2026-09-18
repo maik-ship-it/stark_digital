@@ -39,7 +39,7 @@ export default function CaseStudy() {
                 Anthony Joyce &amp; Co. Solicitors
               </p>
               <p className="text-on-ink text-lg md:text-xl font-semibold leading-snug max-w-sm">
-                Personal injury and medical negligence, Dublin 1
+                Immigration law, Dublin 8
               </p>
             </div>
           </Reveal>
