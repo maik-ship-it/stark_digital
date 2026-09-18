@@ -63,6 +63,9 @@ export const terms = {
  * The client testimonial, in one place because it appears on the case study
  * index and inside the case study itself.
  *
+ * Portrait is cropped from anthony-joyce.png at left 78, top 0, 300x300, which
+ * centres the head in the round frame and keeps the face readable at 72px.
+ *
  * The previous site attributed this to "Eoin Gallagher, Managing Director".
  * Confirmed with Maik: the words are Anthony Joyce's, the firm's owner. Photo
  * use is cleared with the client.
