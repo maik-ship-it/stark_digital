@@ -57,11 +57,30 @@ keine Details.
 
 ## 3. `case-study.jpg` — 1600 × 1200 (4:3 quer)
 
-Steht neben dem Anthony-Joyce-Text. Anwaltskanzlei, Dublin 1.
+Läuft an drei Stellen, überall mit Anthony Joyce & Co. daneben: Case-Study-Block
+auf der Startseite, `/case-studies` und der Header der Detailseite.
 
-> The corner of an old Dublin solicitor's office: a heavy wooden desk, stacked
-> legal files with worn edges, a brass desk lamp switched on, a window with sheer
-> curtains behind. Nobody in frame. Warm lamplight against cool daylight.
+> A modern Dublin solicitor's office at blue hour. A clean dark desk with a
+> closed laptop, a phone face down and a single glass of water. Behind it a tall
+> Georgian sash window looking onto a wet street, city lights just coming on.
+> Nobody in frame. Absolutely no signage, no nameplates, no lettering and no
+> readable text anywhere in the image. Cool navy tones dominate the room, with
+> one warm orange reflection in the window glass.
+
+**Der erste Versuch ging in die falsche Richtung** und das lag an meinem
+ursprünglichen Prompt, der nach einer altmodischen Kanzlei mit Papierakten und
+Messinglampe gefragt hat. Drei Probleme daran, für den Fall dass eine spätere
+Runde wieder dorthin driftet:
+
+- **Erfundene Schilder.** Das Modell hat ein Messingschild mit einem erfundenen
+  Kanzleinamen an die Wand gesetzt. Auf einer Seite über einen echten Kunden
+  liest sich das wie der Kunde. Deshalb steht das Textverbot jetzt zweimal im
+  Prompt: Bildmodelle überlesen es gern.
+- **Falsche Farben.** Eine grüne Bankerlampe ist das hellste Objekt im Bild und
+  Grün kommt in der Palette nicht vor.
+- **Falsche Aussage.** Gestapelte Papierakten sind das Gegenbild zu einer Seite,
+  die von nachvollziehbarem Tracking handelt, und sie lassen den Kunden
+  rückständig aussehen.
 
 ## 4–6. `work-1.jpg`, `work-2.jpg`, `work-3.jpg` — je 1400 × 1050 (4:3 quer)
 
