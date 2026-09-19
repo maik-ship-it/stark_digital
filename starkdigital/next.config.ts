@@ -15,6 +15,21 @@ const nextConfig: NextConfig = {
         destination: '/google-ads-dublin/accountants',
         permanent: true,
       },
+      {
+        source: '/blog/google-ads-for-dental-clinics-dublin',
+        destination: '/google-ads-dublin/dental-clinics',
+        permanent: true,
+      },
+      {
+        source: '/blog/google-ads-for-tradespeople-dublin',
+        destination: '/google-ads-dublin/tradespeople',
+        permanent: true,
+      },
+      {
+        source: '/blog/google-ads-for-financial-advisors-ireland',
+        destination: '/google-ads-dublin/financial-advisors',
+        permanent: true,
+      },
     ]
   },
 }

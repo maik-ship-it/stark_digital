@@ -226,6 +226,18 @@ export const industries: Industry[] = [
         title: 'Measured on conversations, not clicks',
         body: 'With volume this low, click-through rate and cost per click are nearly meaningless. The report is a short list of who enquired and what they were searching for when they did.',
       },
+      {
+        title: 'What the compliance step actually checks',
+        body: 'No claim about past performance without the disclaimer that belongs with it, nothing that implies a guaranteed return or outcome, no superlatives about being the best or the leading anything, and regulated status stated where it has to be. That is the check every headline and description goes through before it runs, and it is the reason nothing needs defending afterwards.',
+      },
+      {
+        title: 'Pages built to survive the trust test',
+        body: 'Google treats financial advice as a category it scrutinises more heavily, and so do the people reading it. Qualifications and Central Bank registration stated plainly, the required warnings legible rather than buried, real credentials rather than stock reassurance, and one clear next step. Remarketing runs under the same rules as search, because a display ad is not a place where the requirements relax.',
+      },
+      {
+        title: 'One campaign per service line',
+        body: 'Pensions, mortgages, protection and investment advice are different searches, different page requirements and different client values. Run together they share a budget that then tells you nothing about any of them. Separated, each one can be judged on whether it is worth continuing.',
+      },
     ],
     faqs: [
       {
@@ -240,10 +252,22 @@ export const industries: Industry[] = [
         q: 'What budget makes sense?',
         a: 'EUR 600 to EUR 1,500 a month in ad spend suits most advisory firms. Clicks in this sector are among the most expensive in Ireland, frequently EUR 8 to EUR 20, so the budget buys fewer visitors than you would expect. That is the correct shape for this market rather than a sign something is wrong.',
       },
+      {
+        q: 'Can we mention returns or past performance in an ad?',
+        a: 'Not without the disclaimer that has to accompany it, and in the space a search ad gives you that is rarely practical. The copy that works here leans on independence, qualifications and what the first conversation involves, which is also what the people worth having are actually comparing.',
+      },
+      {
+        q: 'Does Google require a certification for this?',
+        a: 'For certain product categories it does, and for general advisory work the burden sits on the landing page and on local regulation instead. It is checked before anything runs, because the alternative is disapprovals or a suspended account rather than a warning.',
+      },
+      {
+        q: 'Would LinkedIn be better for us?',
+        a: 'For advice bought by an individual, pensions, mortgages, protection, search wins, because those people go looking at the moment they need it. LinkedIn earns its place for corporate benefits work and for reaching a specific professional audience. They answer different questions and the money rarely wants to be in both at once.',
+      },
     ],
     caseStudy: null,
     blogLinks: [
-      { slug: 'google-ads-for-financial-advisors-ireland', title: 'Google Ads for Financial Advisors in Ireland' },
+      { slug: 'how-much-do-google-ads-cost-ireland', title: 'What Google Ads Actually Costs in Ireland' },
       { slug: 'google-ads-vs-facebook-ads-professional-services-dublin', title: 'Google Ads or Facebook Ads for Professional Services' },
     ],
   },
@@ -288,6 +312,14 @@ export const industries: Industry[] = [
         title: 'Bookings tracked, not form fills',
         body: 'Where the practice management system allows it, enquiries are traced through to booked appointments. An enquiry that never turns up is not a result and should not be counted as one.',
       },
+      {
+        title: 'Two sets of words, not one',
+        body: 'Somebody in pain searches for a dentist open now, on a Saturday, near them. Somebody considering aligners searches by treatment name and by price. The first wants availability in the headline and a phone number above everything else. The second wants the cost, the finance options and evidence of work already done. Same practice, two vocabularies, and an ad written in the wrong one is money gone.',
+      },
+      {
+        title: 'The negative list that exists before launch, not after',
+        body: 'Job and training searches, dental nurse and technician courses, NHS and other UK terms that reach an Irish account through no fault of anyone, home-remedy searches, and every treatment the practice does not offer. Left out, these are where a dental budget quietly goes, and the search terms report is read weekly in the first month rather than monthly.',
+      },
     ],
     faqs: [
       {
@@ -302,10 +334,22 @@ export const industries: Industry[] = [
         q: 'Can you work with our booking system?',
         a: 'Usually yes, at least to the point of tracking which enquiries became appointments. How deep that goes depends on which system you use and what it will let us connect to. I will tell you what is possible with yours before we start rather than promising integration and discovering later.',
       },
+      {
+        q: 'How quickly does this fill the book?',
+        a: 'First enquiries usually arrive within a week or two, because the demand already exists and the ads simply put you in front of it. Judging the account takes longer, four to six weeks before bids and targeting settle into something steady. The emergency side moves fastest, the cosmetic side slowest, because a patient deciding on implants was always going to take weeks.',
+      },
+      {
+        q: 'What budget makes sense for a clinic?',
+        a: 'It is less about a headline figure than about clearing a floor: enough conversions in a month to tell which treatments and which searches are worth keeping. A single-site practice covering its own part of Dublin clears that on a modest budget because the radius is small. A cosmetic-led clinic needs more, because the clicks cost more and the decision takes longer. I would rather look at your treatment mix and tell you the number than quote one here.',
+      },
+      {
+        q: 'What about Local Services Ads?',
+        a: 'They sit above the standard ads, carry the Google Screened badge and charge per lead instead of per click, which suits general and emergency enquiries. They do not replace search ads for treatment-specific work, where the page has to do the convincing. Running both is usually right, with the split kept under review rather than set once.',
+      },
     ],
     caseStudy: null,
     blogLinks: [
-      { slug: 'google-ads-for-dental-clinics-dublin', title: 'Google Ads for Dental Clinics in Dublin' },
+      { slug: 'how-to-choose-google-ads-agency-dublin', title: 'How to Choose a Google Ads Agency in Dublin' },
       { slug: 'how-much-do-google-ads-cost-ireland', title: 'What Google Ads Actually Costs in Ireland' },
     ],
   },
@@ -346,6 +390,14 @@ export const industries: Industry[] = [
         title: 'A radius that reflects the van',
         body: 'Time spent driving is money. Targeting is set around where the work is worth taking rather than around a county boundary or the whole of Dublin.',
       },
+      {
+        title: 'Postcodes, not a county',
+        body: 'Dublin 6 and Drumcondra are searches in their own right, and they behave differently from the county-wide version of the same job. Targeting is built from the areas where the work is worth the drive, which also means the ad can name the area the person just typed.',
+      },
+      {
+        title: 'The searches that are never a customer',
+        body: 'Apprenticeships and jobs, courses and training, supplier and trade-counter searches, and the how-to-fix-it searches from somebody who intends to do it themselves. Excluded before launch rather than discovered in the first invoice, because in the trades these outnumber the real enquiries.',
+      },
     ],
     faqs: [
       {
@@ -360,10 +412,22 @@ export const industries: Industry[] = [
         q: 'I already get plenty of work by word of mouth. Why bother?',
         a: 'Then possibly do not. Word of mouth is the cheapest lead source there is and no advertising beats it. The reason trade businesses come to me is usually one of two things: the referrals dried up over a quiet winter, or they want a specific kind of work that referrals are not producing. If neither is true for you, keep your money.',
       },
+      {
+        q: 'I do not have a website. Can I still run ads?',
+        a: 'For emergency work, yes. A call-only campaign dials your phone straight from the ad, with no site involved at all. For planned work it is a different answer: somebody choosing who rewires their house will look you up before they ring, and a single honest page with your work on it does more for that than anything I can do in the account.',
+      },
+      {
+        q: 'What about Local Services Ads?',
+        a: 'They appear above the ordinary ads with your rating and the Google Guaranteed badge, and they charge per lead rather than per click. There is a verification and background-check step to get in. For most trades they sit alongside search ads rather than replacing them, and they are worth the paperwork.',
+      },
+      {
+        q: 'My competitor outranks me and I know I am paying more. How?',
+        a: 'Position is not bought outright. Google weighs the bid against how relevant the ad and the page are to what was typed, so a tighter campaign with fewer, better keywords beats a bigger budget spread across everything. It is the most common thing I fix in an account that somebody else set up.',
+      },
     ],
     caseStudy: null,
     blogLinks: [
-      { slug: 'google-ads-for-tradespeople-dublin', title: 'Google Ads for Tradespeople in Dublin' },
+      { slug: 'real-google-ads-costs-irish-law-firm', title: 'What Google Ads Actually Cost an Irish Law Firm' },
       { slug: 'google-ads-vs-seo-ireland', title: 'Google Ads or SEO for an Irish Business' },
     ],
   },
