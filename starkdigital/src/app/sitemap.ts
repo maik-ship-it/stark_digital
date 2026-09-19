@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next'
-import { blog as posts } from '../../.velite'
+import { blog as posts, caseStudies } from '../../.velite'
 import { industries } from '@/lib/industries'
 import { services } from '@/lib/services'
 import { SITE_URL } from '@/lib/seo'
@@ -16,7 +16,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/google-ads-dublin`, lastModified: now, changeFrequency: 'monthly', priority: 0.9 },
     { url: `${BASE}/case-studies`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
     { url: `${BASE}/blog`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
-    { url: `${BASE}/case-studies/anthony-joyce-solicitors`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
   ]
 
   const serviceRoutes: MetadataRoute.Sitemap = services.map((s) => ({
@@ -33,6 +32,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }))
 
+  // Only signed-off case studies. A draft names a client and stays unindexed.
+  const caseStudyRoutes: MetadataRoute.Sitemap = caseStudies
+    .filter((c) => c.published && c.status === 'live')
+    .map((c) => ({
+      url: `${BASE}${c.permalink}`,
+      lastModified: c.updated ? new Date(c.updated) : now,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    }))
+
   const blogRoutes: MetadataRoute.Sitemap = posts
     .filter((p) => p.published)
     .map((p) => ({
@@ -42,5 +51,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     }))
 
-  return [...staticRoutes, ...serviceRoutes, ...industryRoutes, ...blogRoutes]
+  return [...staticRoutes, ...serviceRoutes, ...industryRoutes, ...caseStudyRoutes, ...blogRoutes]
 }

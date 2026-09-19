@@ -12,12 +12,15 @@ import RelatedPosts from '@/components/blog/RelatedPosts'
 import Callout from '@/components/blog/mdx/Callout'
 import StatBlock from '@/components/blog/mdx/StatBlock'
 import FAQ from '@/components/blog/mdx/FAQ'
+import Table from '@/components/blog/mdx/Table'
 import CTA from '@/components/v3/CTA'
 import { buildMetadata, SITE_URL } from '@/lib/seo'
 
 type Props = { params: Promise<{ slug: string }> }
 
-const mdxComponents = { Callout, StatBlock, FAQ }
+// `table` is an element override: every pipe table in a post gets the
+// scrolling wrapper without the post having to ask for it.
+const mdxComponents = { Callout, StatBlock, FAQ, table: Table }
 
 function MDXContent({ code }: { code: string }) {
   // eslint-disable-next-line @typescript-eslint/no-implied-eval
@@ -135,8 +138,8 @@ export default async function BlogPostPage({ params }: Props) {
       {/* ── Body ─────────────────────────────────────── */}
       <section className="px-3 sm:px-4 py-14 md:py-20">
         <div className="max-w-7xl mx-auto px-3 sm:px-6">
-          <div className="flex gap-16 items-start justify-center">
-            <div className="min-w-0 flex-1 max-w-3xl">
+          <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_220px] lg:gap-14 xl:gap-20">
+            <div className="max-w-3xl mx-auto lg:mx-0 w-full min-w-0">
               <div className="prose-stark">
                 <MDXContent code={post.body} />
               </div>
@@ -150,8 +153,10 @@ export default async function BlogPostPage({ params }: Props) {
               />
             </div>
 
-            <aside className="hidden xl:block w-56 flex-shrink-0 sticky top-28 self-start">
-              <TableOfContents />
+            <aside className="hidden lg:block">
+              <div className="sticky top-28">
+                <TableOfContents />
+              </div>
             </aside>
           </div>
         </div>

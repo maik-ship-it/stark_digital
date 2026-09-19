@@ -8,6 +8,10 @@
  * ⚠️ CONFIRM BEFORE LAUNCH : the entries marked `confirmed: false` carry a
  * placeholder basis written from the old site's figures. Check each against
  * the actual Google Ads / GA4 / WhatConverts data and set `confirmed: true`.
+ *
+ * The three Anthony Joyce figures are the first-90-days numbers. They are
+ * restated, with the same basis, in the `first90` set in
+ * src/lib/case-studies/anthony-joyce.ts. If one changes, change both.
  */
 
 export type Claim = {

@@ -281,130 +281,281 @@
   z-index: 0;
 }
 
-/* ── Blog / MDX prose ────────────────────────────── */
-.prose-stark {
-  color: var(--color-text-soft);
-  line-height: 1.75;
-}
-.prose-stark h2 {
-  font-size: var(--text-display-md);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: var(--color-text);
-  margin-top: 3rem;
-  margin-bottom: 1rem;
-}
-.prose-stark h3 {
-  font-weight: 600;
-  font-size: 1.25rem;
-  color: var(--color-text);
-  margin-top: 2rem;
-  margin-bottom: 0.75rem;
-}
-.prose-stark p {
-  margin-bottom: 1.5rem;
-  font-size: 1.125rem;
-  line-height: 1.8;
-}
-.prose-stark a {
-  color: var(--color-orange);
-  text-decoration: underline;
-  text-decoration-color: rgba(255,90,31,0.35);
-  text-underline-offset: 3px;
-}
-.prose-stark a:hover { color: var(--color-orange-dim); }
-.prose-stark strong { color: var(--color-text); font-weight: 600; }
-.prose-stark ul {
-  list-style: none;
-  padding-left: 0;
-  margin-bottom: 1.5rem;
-}
-.prose-stark ul li {
-  display: flex;
-  align-items: baseline;
-  gap: 0.75rem;
-  margin-bottom: 0.5rem;
-  font-size: 1.125rem;
-  line-height: 1.75;
-}
-.prose-stark ul li::before {
-  content: '';
-  width: 6px; height: 6px;
-  border-radius: 999px;
-  background: var(--color-orange);
-  flex-shrink: 0;
-  transform: translateY(-2px);
-}
-.prose-stark ol {
-  list-style: none;
-  padding-left: 0;
-  margin-bottom: 1.5rem;
-  counter-reset: ol-counter;
-}
-.prose-stark ol li {
-  display: flex;
-  align-items: baseline;
-  gap: 1rem;
-  margin-bottom: 0.75rem;
-  font-size: 1.125rem;
-  line-height: 1.75;
-  counter-increment: ol-counter;
-}
-.prose-stark ol li::before {
-  content: counter(ol-counter, decimal-leading-zero);
-  color: var(--color-orange);
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  flex-shrink: 0;
-  padding-top: 0.35rem;
-}
-.prose-stark table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 2rem;
-  font-size: 0.9375rem;
-}
-.prose-stark thead th {
-  font-size: 0.6875rem;
-  font-weight: 600;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--color-text-soft);
-  border-bottom: 1px solid var(--color-paper-3);
-  padding: 0.625rem 1rem;
-  text-align: left;
-  background: var(--color-paper-2);
-}
-.prose-stark tbody td {
-  border-bottom: 1px solid var(--color-paper-2);
-  padding: 0.75rem 1rem;
-  color: var(--color-text-soft);
-  vertical-align: top;
-}
-.prose-stark tbody tr:last-child td { border-bottom: none; }
-.prose-stark tbody td strong { color: var(--color-text); font-weight: 600; }
-.prose-stark blockquote {
-  border-left: 3px solid var(--color-orange);
-  padding-left: 1.5rem;
-  margin: 2rem 0;
-  font-size: 1.25rem;
-  line-height: 1.5;
-  color: var(--color-text);
-  font-weight: 500;
-}
-.prose-stark hr {
-  border: none;
-  border-top: 1px solid var(--color-paper-2);
-  margin: 2.5rem 0;
-}
-.prose-stark code:not(pre code) {
-  font-size: 0.875em;
-  background: var(--color-paper-2);
-  border: 1px solid var(--color-paper-3);
-  padding: 0.15em 0.4em;
-  border-radius: 4px;
-  color: var(--color-orange-dim);
+/* ── Prose and MDX ────────────────────────────────
+   Everything below lives in @layer components so that a Tailwind utility on an
+   element inside .prose-stark still wins. Unlayered CSS beats any layered rule
+   regardless of specificity, so while these rules sat outside a layer, a
+   className on a <p> rendered from MDX was silently ignored. */
+@layer components {
+
+  /* ── Blog / MDX prose ────────────────────────────── */
+  .prose-stark {
+    color: var(--color-text-soft);
+    line-height: 1.75;
+  }
+  .prose-stark h2 {
+    font-size: var(--text-display-md);
+    font-weight: 700;
+    /* Without this a two-line heading inherits the 1.75 body leading and falls
+       apart. Matches the .display utility the rest of the site uses. */
+    line-height: 1.06;
+    letter-spacing: -0.02em;
+    color: var(--color-text);
+    margin-top: 3.25rem;
+    margin-bottom: 1.25rem;
+  }
+  .prose-stark h3 {
+    font-weight: 600;
+    font-size: 1.25rem;
+    line-height: 1.25;
+    color: var(--color-text);
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+  .prose-stark p {
+    margin-bottom: 1.5rem;
+    font-size: 1.125rem;
+    line-height: 1.8;
+  }
+  .prose-stark a {
+    color: var(--color-orange);
+    text-decoration: underline;
+    text-decoration-color: rgba(255,90,31,0.35);
+    text-underline-offset: 3px;
+  }
+  .prose-stark a:hover { color: var(--color-orange-dim); }
+  .prose-stark strong { color: var(--color-text); font-weight: 600; }
+  /* Markers are positioned, not flexed. A flex <li> turns every inline child
+     into a flex item, so a list item written as `**Ad spend**: the money that
+     goes to Google` came out as two ragged columns. */
+  .prose-stark ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 1.5rem;
+  }
+  .prose-stark ul li {
+    position: relative;
+    padding-left: 1.45rem;
+    margin-bottom: 0.6rem;
+    font-size: 1.0625rem;
+    line-height: 1.7;
+  }
+  .prose-stark ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.62em;
+    width: 6px; height: 6px;
+    border-radius: 999px;
+    background: var(--color-orange);
+  }
+  .prose-stark ol {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 1.5rem;
+    counter-reset: ol-counter;
+  }
+  .prose-stark ol li {
+    position: relative;
+    padding-left: 2.35rem;
+    margin-bottom: 0.85rem;
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    counter-increment: ol-counter;
+  }
+  .prose-stark ol li::before {
+    content: counter(ol-counter, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 0.3em;
+    color: var(--color-orange);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+  .prose-stark li > ul,
+  .prose-stark li > ol {
+    margin-top: 0.6rem;
+    margin-bottom: 0;
+  }
+  /* Tables live in a scrolling card (see components/blog/mdx/Table.tsx). The
+     min-width is the point of it: without one, a three-column table on a phone
+     squeezes every cell into a four-line tower and the last column falls off
+     the screen edge, where `overflow-x: hidden` on <html> hides it for good. */
+  .prose-table-wrap {
+    margin-bottom: 2rem;
+    border-radius: var(--radius-card);
+    background: var(--color-paper-2);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+  }
+  .prose-stark table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+    font-size: 0.9375rem;
+  }
+  .prose-stark .prose-table-wrap table {
+    margin-bottom: 0;
+    min-width: 32rem;
+  }
+  /* Only worth saying when the table actually overflows, which is a phone. */
+  .prose-stark .prose-table-hint {
+    display: none;
+    margin: 0;
+    padding: 0.75rem 1rem 0;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-text-faint);
+  }
+  @media (max-width: 640px) {
+    .prose-stark .prose-table-hint { display: block; }
+  }
+  .prose-stark thead th {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-text-soft);
+    border-bottom: 1px solid var(--color-paper-3);
+    padding: 0.9rem 1rem;
+    text-align: left;
+    background: var(--color-paper-3);
+    white-space: nowrap;
+  }
+  .prose-stark tbody td {
+    border-bottom: 1px solid var(--color-paper-3);
+    padding: 0.85rem 1rem;
+    color: var(--color-text-soft);
+    vertical-align: top;
+    line-height: 1.55;
+  }
+  .prose-stark tbody tr:last-child td { border-bottom: none; }
+  .prose-stark tbody td:first-child {
+    color: var(--color-text);
+    font-weight: 600;
+  }
+  .prose-stark tbody td strong { color: var(--color-text); font-weight: 600; }
+  .prose-stark blockquote {
+    border-left: 3px solid var(--color-orange);
+    padding-left: 1.5rem;
+    margin: 2rem 0;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    color: var(--color-text);
+    font-weight: 500;
+  }
+  .prose-stark hr {
+    border: none;
+    border-top: 1px solid var(--color-paper-2);
+    margin: 2.5rem 0;
+  }
+  .prose-stark code:not(pre code) {
+    font-size: 0.875em;
+    background: var(--color-paper-2);
+    border: 1px solid var(--color-paper-3);
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+    color: var(--color-orange-dim);
+  }
+
+  /* ── Component blocks inside prose ────────────────
+     Charts, callouts, stat grids and figure panels are rendered as components
+     from inside the MDX, so they land inside .prose-stark and inherit its
+     paragraph, list and table styling. Anything that should not, in
+     components/case-study and components/blog/mdx alike, carries .prose-block
+     on its root so that styling can be undone here.
+
+     This is a baseline, not a lock: it sits in the same layer as the prose
+     rules, so a utility class on the element still overrides it. */
+  .prose-stark .prose-block p,
+  .prose-stark .prose-block li {
+    margin: 0;
+    padding-left: 0;
+    font-size: inherit;
+    line-height: inherit;
+    display: block;
+  }
+  .prose-stark .prose-block ul,
+  .prose-stark .prose-block ol {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+    counter-reset: none;
+  }
+  .prose-stark .prose-block li::before { content: none; }
+  .prose-stark .prose-block figure { margin: 0; }
+  .prose-stark .prose-block a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* ── Case-study data table ────────────────────────
+     Written as one block rather than as utility classes on every cell, because
+     a table is the one place where that gets unreadable fast. */
+  .cs-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 34rem;
+  }
+  .prose-stark .cs-table { margin: 0; font-size: inherit; }
+  /* Each selector here is deliberately two elements deep. `.prose-stark tbody
+     td` is the same specificity and would otherwise win on source order for
+     half the cells, which showed up as two different border colours in one
+     row. */
+  .cs-table thead th,
+  .cs-table tbody th,
+  .cs-table tbody td {
+    padding: 0.85rem 1rem;
+    text-align: right;
+    border-bottom: 1px solid var(--color-paper-3);
+    background: none;
+    vertical-align: middle;
+    font-variant-numeric: tabular-nums;
+  }
+  .cs-table thead th {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-text-soft);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  .cs-table th:first-child,
+  .cs-table td:first-child {
+    text-align: left;
+    white-space: nowrap;
+  }
+  .cs-table tbody th {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--color-text);
+    text-transform: none;
+    letter-spacing: normal;
+  }
+  .cs-table tbody td {
+    font-size: 15px;
+    color: var(--color-text-soft);
+  }
+  .cs-table td.cs-lead {
+    font-weight: 600;
+    color: var(--color-text);
+  }
+  .cs-table td.cs-best { color: var(--color-orange); }
+  .cs-table tr.cs-total th,
+  .cs-table tr.cs-total td {
+    background: var(--color-paper-3);
+    border-bottom: none;
+    color: var(--color-text);
+    font-weight: 600;
+    padding-top: 1.05rem;
+    padding-bottom: 1.05rem;
+  }
+
 }
 
 /* ── Mobile ──────────────────────────────────────── */

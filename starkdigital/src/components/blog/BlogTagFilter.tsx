@@ -22,11 +22,13 @@ function TagButtons({ tags }: BlogTagFilterProps) {
     router.push(`/blog${params.size > 0 ? `?${params.toString()}` : ''}`, { scroll: false })
   }
 
+  // Fourteen tags wrapped onto five rows on a phone and pushed every post below
+  // the fold. One scrolling row instead, wrapping again once there is width.
   return (
-    <div className="flex flex-wrap gap-2">
+    <div className="flex gap-2 overflow-x-auto pb-1 -mx-3 px-3 sm:mx-0 sm:px-0 sm:flex-wrap sm:overflow-visible [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
       <button
         onClick={() => setTag('')}
-        className={`label px-4 py-2 rounded-full border transition-colors duration-200 ${
+        className={`label shrink-0 px-4 py-2 rounded-full border transition-colors duration-200 ${
           active === ''
             ? 'border-orange text-orange'
             : 'border-paper-3 text-text-soft hover:border-ink hover:text-text'
@@ -38,7 +40,7 @@ function TagButtons({ tags }: BlogTagFilterProps) {
         <button
           key={tag}
           onClick={() => setTag(tag)}
-          className={`label px-4 py-2 rounded-full border transition-colors duration-200 ${
+          className={`label shrink-0 px-4 py-2 rounded-full border transition-colors duration-200 ${
             active === tag
               ? 'border-orange text-orange'
               : 'border-paper-3 text-text-soft hover:border-ink hover:text-text'

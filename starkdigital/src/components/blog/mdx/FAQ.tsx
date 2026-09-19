@@ -11,32 +11,44 @@ interface FAQProps {
   items: FAQItem[]
 }
 
+/**
+ * Restyled onto the paper/ink palette, and given a real tap target: the rows
+ * were 'text-sm' with tight padding, which is awkward on a phone. Questions now
+ * sit at 16px with generous vertical padding.
+ */
 export default function FAQ({ items }: FAQProps) {
-  const [open, setOpen] = useState<number | null>(null)
+  const [open, setOpen] = useState<number | null>(0)
 
   return (
-    <div className="my-8 border border-surface-2 rounded-sm divide-y divide-surface-2">
+    <div
+      className="prose-block my-9 bg-paper-2 overflow-hidden"
+      style={{ borderRadius: 'var(--radius-card)' }}
+    >
       {items.map((item, i) => (
-        <div key={i}>
+        <div
+          key={i}
+          style={{ borderTop: i === 0 ? 'none' : '1px solid var(--color-paper-3)' }}
+        >
           <button
-            className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left group"
+            className="w-full flex items-start justify-between gap-4 px-6 py-5 text-left group"
             onClick={() => setOpen(open === i ? null : i)}
             aria-expanded={open === i}
           >
-            <span className="text-sm font-semibold text-white group-hover:text-amber transition-colors duration-200 leading-snug">
+            <span className="text-[16px] font-semibold text-text group-hover:text-orange transition-colors duration-200 leading-snug">
               {item.question}
             </span>
             <span
-              className={`flex-shrink-0 text-amber font-mono text-sm transition-transform duration-200 ${
+              className={`shrink-0 text-orange text-xl leading-none mt-0.5 transition-transform duration-200 ${
                 open === i ? 'rotate-45' : ''
               }`}
+              aria-hidden
             >
               +
             </span>
           </button>
           {open === i && (
-            <div className="px-5 pb-5">
-              <p className="text-sm text-text-secondary leading-relaxed">{item.answer}</p>
+            <div className="px-6 pb-5 -mt-1">
+              <p className="text-[15px] text-text-soft leading-relaxed">{item.answer}</p>
             </div>
           )}
         </div>
