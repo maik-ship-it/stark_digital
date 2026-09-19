@@ -37,7 +37,7 @@ export const claims = {
     value: '3.4x',
     label: 'Return on ad spend',
     basis:
-      'Anthony Joyce Solicitors. Signed cases attributed to Google Ads, valued at the firm’s own average case value, divided by ad spend over the same period. Not a modelled figure and not an account-wide average across clients.',
+      'Anthony Joyce Solicitors. Signed cases attributed to Google Ads, valued at the firm’s own average case value, divided by ad spend over the same period. A modelled figure, not measured revenue, and not an account-wide average across clients.',
     confirmed: false,
   },
   responseTime: {
