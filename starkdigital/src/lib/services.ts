@@ -329,7 +329,7 @@ export const googleAds: Service = {
     },
     {
       q: 'How much should I spend on ads themselves?',
-      a: 'For most Dublin professional services firms, somewhere between EUR 800 and EUR 2,500 a month makes the data readable and the results steady rather than lumpy. Below about EUR 500 there is rarely enough volume for anyone to optimise anything, and the money is usually better spent on your site first.',
+      a: 'Enough that a month produces readable data rather than a handful of scattered conversions, which is a different number for a firm competing on medical negligence than for one competing on conveyancing. I will give you the figure for your own sector and your own radius once I have looked at both, rather than quoting an Irish average I cannot stand over. Below the point where anything can be optimised, the money is usually better spent on your site first.',
     },
     {
       q: 'How long before it works?',

@@ -317,6 +317,16 @@
     font-size: 1.125rem;
     line-height: 1.8;
   }
+  /* Charts arrive as SVG at their own intrinsic size. Without this a 1200px
+     wide chart pushes the article sideways on a phone. */
+  .prose-stark img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 2rem 0 2.5rem;
+    border: 1px solid var(--color-paper-3);
+    border-radius: 6px;
+  }
   .prose-stark a {
     color: var(--color-orange);
     text-decoration: underline;

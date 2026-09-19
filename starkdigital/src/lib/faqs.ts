@@ -12,7 +12,7 @@ export const homeFaqs: Faq[] = [
   },
   {
     q: 'What should I be spending on ads?',
-    a: 'It depends on what a customer is worth to you. As a rough starting point, a Dublin professional services firm needs somewhere between €800 and €2,500 a month in spend for the data to be readable and the results to be steady rather than lumpy. Below about €500 a month you are usually better off putting the money into your site and your SEO first, because there is not enough traffic for anyone to optimise anything.',
+    a: 'It depends on what a customer is worth to you, and I would rather work that out with you than print a range that fits nobody. The floor is set by learning rather than by a figure: enough conversions in a month that a good keyword can be told from a bad one. Below that the account never leaves the learning phase, the reporting describes noise, and the money is usually better spent on your site and your SEO first, because there is not enough traffic for anyone to optimise anything.',
   },
   {
     q: 'How quickly will I see something?',
