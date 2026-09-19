@@ -78,7 +78,7 @@ export const industries: Industry[] = [
     faqs: [
       {
         q: 'What should a Dublin law firm budget for Google Ads?',
-        a: 'For most practices, EUR 800 to EUR 2,000 a month in ad spend is a workable starting point. Legal clicks are expensive by Irish standards, often EUR 4 to EUR 15 depending on the practice area, but a single conveyancing or probate file is worth enough that the arithmetic still works comfortably. What matters more than the number is whether you can answer the phone when it rings.',
+        a: 'Legal clicks are expensive by Irish standards and the practice area decides how expensive. In the one account I can publish figures for, clicks averaged EUR 2.37 over ten months, from about EUR 1.91 on immigration work to EUR 6.89 on medical negligence, where every firm in the country is bidding on the same searches. Basis: Anthony Joyce and Co. Solicitors, 25 November 2025 to 19 September 2026. What a budget has to clear is the point where enough enquiries arrive each month to tell a good keyword from a bad one, and a single conveyancing or probate file is usually worth enough that the arithmetic works long before the enquiry is cheap. What matters more than the number is whether you can answer the phone when it rings.',
       },
       {
         q: 'Which practice areas work best?',
@@ -164,7 +164,7 @@ export const industries: Industry[] = [
       },
       {
         q: 'What does an enquiry cost?',
-        a: 'For most Dublin practices, somewhere between EUR 40 and EUR 120 per enquiry depending on the service and the time of year. The figure on its own means nothing until you put it next to what a client is worth over the years they stay with you, which for a retained company client is usually a comfortable multiple of it.',
+        a: 'It moves with the service and with the time of year, and I would rather quote you a figure after looking at your own mix than print an Irish average I cannot stand over. The number means nothing on its own in any case. What makes it readable is what a client is worth over the years they stay, and for a retained company client that is usually a comfortable multiple of whatever the enquiry cost.',
       },
       {
         q: 'Is Google Ads better than referrals for us?',
@@ -250,7 +250,7 @@ export const industries: Industry[] = [
       },
       {
         q: 'What budget makes sense?',
-        a: 'EUR 600 to EUR 1,500 a month in ad spend suits most advisory firms. Clicks in this sector are among the most expensive in Ireland, frequently EUR 8 to EUR 20, so the budget buys fewer visitors than you would expect. That is the correct shape for this market rather than a sign something is wrong.',
+        a: 'Clicks in this sector are among the most expensive in Ireland, so the budget buys far fewer visitors than the same money would anywhere else. That is the correct shape for this market rather than a sign something is wrong. The floor is set by learning rather than by a figure: enough enquiries in a month to judge the account by. Given what one pension or protection client is worth over the life of the relationship, that floor is lower than most advisors expect, and I will give you the number for your own service lines rather than a range that fits nobody.',
       },
       {
         q: 'Can we mention returns or past performance in an ad?',
@@ -328,7 +328,7 @@ export const industries: Industry[] = [
       },
       {
         q: 'What do dental clicks cost in Dublin?',
-        a: 'Emergency and general terms typically EUR 2 to EUR 6. Implant and cosmetic terms are considerably higher, often EUR 8 to EUR 20, because everyone bidding on them knows what the patient is worth. That is normal and it is why the two sides need separate budgets rather than one pot.',
+        a: 'Emergency and general terms sit at the cheaper end, implant and cosmetic terms considerably above them, because everybody bidding on those knows what the patient is worth. I do not have Irish dental figures I can publish with a basis attached, so I am not going to print a range that looks more certain than it is. The point it would make is the one that matters anyway: the two sides of the practice need separate budgets, or the expensive half quietly eats the cheap half.',
       },
       {
         q: 'Can you work with our booking system?',
@@ -406,7 +406,7 @@ export const industries: Industry[] = [
       },
       {
         q: 'What is the smallest budget that makes sense?',
-        a: 'Around EUR 400 to EUR 600 a month works for a single-van business covering part of Dublin, mainly because trade clicks are cheaper than professional services and the radius is small. Below that there is not enough volume to learn anything, and you would be better off with a decent website and your Google Business Profile sorted first.',
+        a: 'Less than most trades expect, because the clicks are cheaper than professional services and the radius is small. The floor is set by learning rather than by a figure: enough calls in a month that you can tell which searches are worth keeping and which are costing you for nothing. Below that you are better off with a decent website and your Google Business Profile sorted first, neither of which charges you per click while you are up a ladder.',
       },
       {
         q: 'I already get plenty of work by word of mouth. Why bother?',
