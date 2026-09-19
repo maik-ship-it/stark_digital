@@ -17,7 +17,17 @@ export type Industry = {
    */
   observation: { heading: string; body: string[] }
   /** Varying count on purpose. Some markets need six points, some need three. */
-  specifics: { title: string; body: string }[]
+  specifics: {
+    title: string
+    body: string
+    /**
+     * Figures printed under the body. Same rule as src/lib/proof.ts: a number
+     * only goes on the page with its basis beside it, so the two fields travel
+     * together or neither is set.
+     */
+    figures?: { value: string; label: string }[]
+    basis?: string
+  }[]
   faqs: Faq[]
   caseStudy: string | null
   blogLinks: { slug: string; title: string }[]
@@ -106,6 +116,7 @@ export const industries: Industry[] = [
       body: [
         'The first is the calendar. Accounting demand is not flat and pretending otherwise wastes money. Searches climb through September and October ahead of the income tax deadline, spike again around company filing dates, and go quiet in the stretches between. An account running the same daily budget all year underspends when it matters and overspends when nothing is happening. Budget should move with the calendar, and it can be scheduled months ahead because the dates do not change.',
         'The second is which searches are worth having. "Cheap accountant Dublin" and "accountant near me" attract people optimising for price, which is a race you can only win by charging less. The searches worth owning are the ones that signal a business is already moving: changing accountant, setting up a limited company, needing someone who handles a specific thing their current accountant does not. Lower volume, considerably better clients, and most accounts ignore them because a keyword tool ranks them near the bottom.',
+        'The third is the clock. Someone searching for an accountant is usually still comparing rather than buying. The search happens in February, the phone call in April, and in between sit the website, the credentials and a conversation with somebody they trust. That is not an argument against paid search. It is an argument for building the account so the practice is still in front of them at the end of the gap, instead of paying for a first visit and hoping it finds its own way back.',
       ],
     },
     specifics: [
@@ -125,6 +136,26 @@ export const industries: Industry[] = [
         title: 'Enquiry value, not enquiry count',
         body: 'A retained limited company client and a one-off tax return are both one conversion in a standard setup. Where the practice can put a value on them, the account optimises toward the ones worth having.',
       },
+      {
+        title: 'The searches worth paying for',
+        body: 'Four groups earn their place: service terms such as company accounts or VAT returns, seasonal triggers around the filing dates, problem searches from people who have missed a deadline or are facing an audit, and business milestones like a first company formation. Phrase and exact match only, with jobs, courses, software and free excluded from the start, because broad match in this market finds students and job seekers long before it finds a business owner.',
+      },
+      {
+        title: 'The months between the search and the call',
+        body: 'A business owner who searches in February often makes contact in April, after reading the site, checking the credentials and asking someone they trust. An account built on search campaigns alone pays for that first visit and never sees what became of it. Remarketing carries the practice across the gap, and the search budget rises ahead of the October and January deadlines rather than during them.',
+      },
+      {
+        title: 'What a click costs, and what a budget has to clear',
+        body: 'Accountancy clicks sit below legal ones, and they climb from general searches to tax and VAT terms to company formation, which is the dearest of the three. The floor for a budget is not a figure I can quote for every practice: it is whatever produces enough conversions in a month to tell a good keyword from a bad one. Below that the account never leaves the learning phase and the reporting describes noise.',
+        // Keyword Planner figures go here once Maik has pulled them. Both
+        // fields are set together, never one without the other:
+        // figures: [
+        //   { value: '', label: 'CPC: general terms' },
+        //   { value: '', label: 'CPC: tax and VAT terms' },
+        //   { value: '', label: 'CPC: company formation' },
+        // ],
+        // basis: 'Google Ads Keyword Planner, Ireland, September 2025 to August 2026.',
+      },
     ],
     faqs: [
       {
@@ -139,10 +170,22 @@ export const industries: Industry[] = [
         q: 'Is Google Ads better than referrals for us?',
         a: 'It is not competing with referrals, it is filling the months when referrals do not arrive. Most practices I speak to have a good year and a bad year and no real idea why. Paid search is the part of the pipeline you can actually turn up or down, which makes the rest of it easier to plan around.',
       },
+      {
+        q: 'How long before we see anything?',
+        a: 'First enquiries usually arrive within a week or two of launch, because paid search does not have to build anything before it starts. Judging the account properly takes sixty to ninety days, which is how long it takes to gather enough conversions to tell a keyword worth keeping from one that is quietly spending. Anyone promising you a settled cost per enquiry in month one is describing luck.',
+      },
+      {
+        q: 'Could we run this ourselves?',
+        a: 'You can, and some practices do it adequately. It goes wrong in two ways: spending on searches that were never going to become clients, or setting the budget so low that nothing ever gathers enough data to improve. Both are fixable and both tend to cost more in wasted spend than the management would have, which is the only honest argument for handing it over.',
+      },
+      {
+        q: 'Should we be doing SEO instead?',
+        a: 'They run on different clocks rather than against each other. Paid search produces enquiries within weeks and stops when the budget stops. SEO takes six to twelve months and then keeps working. For a practice that needs pipeline this quarter, paid search first with SEO built alongside it is usually the right order. The comparison under further reading goes through the case for each.',
+      },
     ],
     caseStudy: null,
     blogLinks: [
-      { slug: 'google-ads-for-accountants-dublin', title: 'Google Ads for Accountants in Dublin' },
+      { slug: 'google-ads-vs-seo-ireland', title: 'Google Ads vs SEO for Irish Businesses' },
       { slug: 'how-much-do-google-ads-cost-ireland', title: 'What Google Ads Actually Costs in Ireland' },
     ],
   },

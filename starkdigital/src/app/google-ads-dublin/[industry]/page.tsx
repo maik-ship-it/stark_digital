@@ -171,6 +171,27 @@ export default async function IndustryPage({ params }: Props) {
                   <p className="text-on-ink-soft text-sm md:text-[15px] leading-relaxed">
                     {sp.body}
                   </p>
+                  {sp.figures && sp.figures.length > 0 && (
+                    <div className="mt-6">
+                      <div className="flex flex-wrap gap-x-10 gap-y-4">
+                        {sp.figures.map((f) => (
+                          <div key={f.label}>
+                            <div className="display text-on-ink" style={{ fontSize: 'clamp(19px, 2vw, 25px)' }}>
+                              {f.value}
+                            </div>
+                            <div className="label" style={{ color: 'var(--color-on-ink-faint)' }}>
+                              {f.label}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      {sp.basis && (
+                        <p className="mt-4 text-xs leading-relaxed" style={{ color: 'var(--color-on-ink-faint)' }}>
+                          {sp.basis}
+                        </p>
+                      )}
+                    </div>
+                  )}
                 </div>
               ))}
             </Reveal>
