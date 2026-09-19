@@ -280,7 +280,7 @@ export const industries: Industry[] = [
     caseStudy: null,
     blogLinks: [
       { slug: 'how-much-do-google-ads-cost-ireland', title: 'What Google Ads Actually Costs in Ireland' },
-      { slug: 'google-ads-vs-facebook-ads-professional-services-dublin', title: 'Google Ads or Facebook Ads for Professional Services' },
+      { slug: 'google-ads-vs-seo-ireland', title: 'Google Ads vs SEO for Irish Businesses' },
     ],
   },
 

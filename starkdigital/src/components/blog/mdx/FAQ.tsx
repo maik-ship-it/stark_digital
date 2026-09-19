@@ -19,7 +19,24 @@ interface FAQProps {
 export default function FAQ({ items }: FAQProps) {
   const [open, setOpen] = useState<number | null>(0)
 
+  // The same block the reader sees is the one the schema describes, so the two
+  // cannot drift. Rendered server-side despite the client component.
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: items.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: { '@type': 'Answer', text: item.answer },
+    })),
+  }
+
   return (
+    <>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
     <div
       className="prose-block my-9 bg-paper-2 overflow-hidden"
       style={{ borderRadius: 'var(--radius-card)' }}
@@ -54,5 +71,6 @@ export default function FAQ({ items }: FAQProps) {
         </div>
       ))}
     </div>
+    </>
   )
 }

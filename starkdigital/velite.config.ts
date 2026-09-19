@@ -7,6 +7,8 @@ const blog = defineCollection({
     title: s.string(),
     description: s.string(),
     date: s.isodate(),
+    /** Set when a post is substantially rewritten. Feeds dateModified. */
+    updated: s.isodate().optional(),
     slug: s.slug('blog'),
     tags: s.array(s.string()).optional(),
     published: s.boolean().default(true),

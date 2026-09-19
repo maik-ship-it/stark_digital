@@ -35,6 +35,13 @@ const nextConfig: NextConfig = {
         destination: '/google-ads-dublin/solicitors',
         permanent: true,
       },
+      // The Facebook comparison: near-zero search demand in Ireland, and what
+      // carried has been folded into the Ads-versus-SEO piece.
+      {
+        source: '/blog/google-ads-vs-facebook-ads-professional-services-dublin',
+        destination: '/blog/google-ads-vs-seo-ireland',
+        permanent: true,
+      },
     ]
   },
 }

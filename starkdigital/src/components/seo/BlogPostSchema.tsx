@@ -4,6 +4,7 @@ interface BlogPostSchemaProps {
   title: string
   description: string
   date: string
+  updated?: string
   slug: string
   readingTime?: number
 }
@@ -12,6 +13,7 @@ export default function BlogPostSchema({
   title,
   description,
   date,
+  updated,
   slug,
   readingTime,
 }: BlogPostSchemaProps) {
@@ -21,6 +23,7 @@ export default function BlogPostSchema({
     headline: title,
     description,
     datePublished: date,
+    dateModified: updated ?? date,
     url: `${SITE_URL}/blog/${slug}`,
     author: {
       '@type': 'Person',
