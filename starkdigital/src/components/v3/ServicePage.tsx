@@ -10,6 +10,7 @@ import CTA from './CTA'
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
 import ServiceSchema from '@/components/seo/ServiceSchema'
 import FAQSchema from '@/components/seo/FAQSchema'
+import RichText from './RichText'
 import { SITE_URL } from '@/lib/seo'
 
 const BASE = SITE_URL
@@ -129,7 +130,7 @@ export default function ServicePage({ service }: { service: Service }) {
                       : 'text-text-soft text-base md:text-lg'
                   }`}
                 >
-                  {p}
+                  <RichText text={p} />
                 </p>
               ))}
             </div>
@@ -177,7 +178,7 @@ export default function ServicePage({ service }: { service: Service }) {
                     </h3>
                   </div>
                   <p className="text-on-ink-soft text-sm md:text-[15px] leading-relaxed">
-                    {w.body}
+                    <RichText text={w.body} />
                   </p>
                 </div>
               ))}
@@ -208,12 +209,32 @@ export default function ServicePage({ service }: { service: Service }) {
                 >
                   {l.title}
                 </h3>
-                <p className="text-text-soft text-[15px] leading-relaxed">{l.body}</p>
+                <p className="text-text-soft text-[15px] leading-relaxed"><RichText text={l.body} /></p>
               </div>
             ))}
           </Reveal>
         </div>
       </section>
+
+      {service.local && (
+        <section className="px-3 sm:px-4 pb-16 md:pb-24">
+          <div className="max-w-7xl mx-auto px-3 sm:px-6">
+            <Reveal className="panel bg-paper-2 p-8 md:p-12 lg:p-16">
+              <p className="eyebrow mb-6">Local search</p>
+              <h2 className="display mb-8 max-w-[18ch]" style={{ fontSize: 'var(--text-display-md)' }}>
+                {service.local.heading}
+              </h2>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-14">
+                {service.local.body.map((para, i) => (
+                  <p key={i} className="text-text-soft text-base md:text-lg leading-relaxed">
+                    <RichText text={para} />
+                  </p>
+                ))}
+              </div>
+            </Reveal>
+          </div>
+        </section>
+      )}
 
       {/* ── FAQ ──────────────────────────────────────── */}
       <section className="px-3 sm:px-4 py-16 md:py-24">

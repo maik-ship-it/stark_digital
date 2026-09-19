@@ -9,6 +9,7 @@ import ServiceSchema from '@/components/seo/ServiceSchema'
 import CTA from '@/components/v3/CTA'
 import Reveal from '@/components/v3/Reveal'
 import FAQList from '@/components/v3/FAQList'
+import RichText from '@/components/v3/RichText'
 import { buildMetadata, SITE_URL } from '@/lib/seo'
 import { claims } from '@/lib/proof'
 
@@ -130,7 +131,7 @@ export default async function IndustryPage({ params }: Props) {
                       : 'text-text-soft text-base md:text-lg'
                   }`}
                 >
-                  {p}
+                  <RichText text={p} />
                 </p>
               ))}
             </div>
@@ -169,7 +170,7 @@ export default async function IndustryPage({ params }: Props) {
                     </h3>
                   </div>
                   <p className="text-on-ink-soft text-sm md:text-[15px] leading-relaxed">
-                    {sp.body}
+                    <RichText text={sp.body} />
                   </p>
                   {sp.figures && sp.figures.length > 0 && (
                     <div className="mt-6">
@@ -219,6 +220,11 @@ export default async function IndustryPage({ params }: Props) {
                   </div>
                 ))}
               </div>
+              {ind.caseStudyNote && (
+                <p className="text-text-soft text-base md:text-lg leading-relaxed max-w-3xl mb-9">
+                  {ind.caseStudyNote}
+                </p>
+              )}
               <Link href={`/case-studies/${ind.caseStudy}`} className="btn btn-ink">
                 Read the full breakdown
                 <span aria-hidden>→</span>
@@ -248,6 +254,19 @@ export default async function IndustryPage({ params }: Props) {
         <div className="max-w-7xl mx-auto px-3 sm:px-6 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
           <Reveal>
             <p className="eyebrow mb-6">Further reading</p>
+            {/* Every industry page points back at both services by name. The
+                anchor is the thing being linked to, not "learn more". */}
+            <p className="text-text-soft text-base leading-relaxed mb-8">
+              This page is the paid side of the work. The same firms usually want{' '}
+              <Link href="/seo-dublin" className="underline underline-offset-4 decoration-orange/40 hover:decoration-orange transition-colors">
+                SEO in Dublin
+              </Link>{' '}
+              running underneath it, and the wider picture on{' '}
+              <Link href="/google-ads-dublin" className="underline underline-offset-4 decoration-orange/40 hover:decoration-orange transition-colors">
+                Google Ads in Dublin
+              </Link>{' '}
+              sits one level up from here.
+            </p>
             <ul className="space-y-px">
               {ind.blogLinks.map((b) => (
                 <li key={b.slug}>

@@ -2,6 +2,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import Reveal from './Reveal'
+import RichText from './RichText'
 
 const WORK = [
   {
@@ -14,7 +15,7 @@ const WORK = [
     num: '02',
     title: 'SEO',
     lede: 'Rankings that bring enquiries, not just impressions.',
-    body: 'Technical fixes, the pages you are missing, and content built around what people actually type when they are ready to hire someone. Slower than ads and cheaper per lead once it lands. Worth starting early for exactly that reason.',
+    body: 'Technical fixes, the pages you are missing, and content built around what people actually type when they are ready to hire someone. Slower than ads and cheaper per lead once it lands, which is the argument for starting [SEO in Dublin](/seo-dublin) before you think you need it.',
   },
   {
     num: '03',
@@ -103,7 +104,7 @@ export default function Services() {
                   {w.lede}
                 </p>
                 <p className="text-on-ink-soft text-sm md:text-[15px] leading-relaxed">
-                  {w.body}
+                  <RichText text={w.body} />
                 </p>
               </div>
             ))}

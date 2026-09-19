@@ -30,6 +30,8 @@ export type Industry = {
   }[]
   faqs: Faq[]
   caseStudy: string | null
+  /** Printed under the case study figures, where a market has more to say. */
+  caseStudyNote?: string
   blogLinks: { slug: string; title: string }[]
 }
 
@@ -74,6 +76,14 @@ export const industries: Industry[] = [
         title: 'Negatives for a noisy market',
         body: 'Legal terms attract people looking for law jobs, law courses, free advice and the Citizens Information website. That list is maintained weekly, not written once.',
       },
+      {
+        title: 'Three kinds of search, priced very differently',
+        body: 'Service terms like conveyancing solicitor Dublin are the dearest and convert best. Problem searches, the ones that describe the situation rather than the service, cost a fraction of that and reach the same person a week earlier. Local searches carry the firm name and the area and are the cheapest of the lot. All three are worth having and they should never share a budget.',
+      },
+      {
+        title: 'A radius set around the office, not the county',
+        body: 'Most clients come from a drive or a short journey, so the targeting is built around the practice rather than around Dublin as a whole. The exception is specialist work people will travel for, which gets its own campaign and its own wider geography.',
+      },
     ],
     faqs: [
       {
@@ -94,8 +104,10 @@ export const industries: Industry[] = [
       },
     ],
     caseStudy: 'anthony-joyce-solicitors',
+    caseStudyNote:
+      'Ten months in, the same account had produced 596 tracked enquiries and the cost of each one had fallen from over EUR 100 in the first month to under EUR 22 in September. The write-up covers all of it, including April, when a scaling attempt pushed the cost per enquiry back up and the honest thing to do was say so.',
     blogLinks: [
-      { slug: 'google-ads-for-solicitors-ireland', title: 'Google Ads for Solicitors in Ireland' },
+      { slug: 'real-google-ads-costs-irish-law-firm', title: 'What Google Ads Actually Cost an Irish Law Firm' },
       { slug: 'how-to-choose-google-ads-agency-dublin', title: 'How to Choose a Google Ads Agency in Dublin' },
     ],
   },

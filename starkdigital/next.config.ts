@@ -30,6 +30,11 @@ const nextConfig: NextConfig = {
         destination: '/google-ads-dublin/financial-advisors',
         permanent: true,
       },
+      {
+        source: '/blog/google-ads-for-solicitors-ireland',
+        destination: '/google-ads-dublin/solicitors',
+        permanent: true,
+      },
     ]
   },
 }

@@ -18,8 +18,14 @@ export type Service = {
   limits: { title: string; body: string }[]
   faqs: Faq[]
   image: string
-  /** Render the five industry pages as a grid. Only the Google Ads page does. */
+  /** Render the five industry pages as a grid. Paid search and SEO both do. */
   showIndustries?: boolean
+  /**
+   * A section of its own for local search. Only the SEO page sets it: "local
+   * seo dublin" is its own search with its own intent, and burying it in a
+   * grid item was underselling the part of the work most Dublin firms need.
+   */
+  local?: { heading: string; body: string[] }
 }
 
 export const services: Service[] = [
@@ -28,10 +34,10 @@ export const services: Service[] = [
     nav: 'SEO',
     metaTitle: 'SEO Agency Dublin',
     metaDescription:
-      'SEO for businesses in Dublin and across Ireland. Technical fixes, the pages you are missing, and content built around the searches people make when they are ready to hire someone.',
+      'SEO services in Dublin and across Ireland: technical fixes, the pages you are missing, local search, and content built around what people type when they are ready to hire. Two new clients a month, so the work is done by the person you spoke to.',
     eyebrow: 'SEO · Dublin & Ireland',
-    headline: ['The rankings worth', 'having are the', 'boring ones.'],
-    accent: 'boring ones.',
+    headline: ['SEO in Dublin,', 'for the ten searches', 'that end in a call.'],
+    accent: 'that end in a call.',
     intro:
       'Search engine optimisation for businesses in Dublin and across Ireland. Slower than advertising and cheaper per enquiry once it lands, which is the whole argument for starting it before you think you need it.',
     take: {
@@ -65,7 +71,7 @@ export const services: Service[] = [
       },
       {
         title: 'Measurement you can read',
-        body: 'Rankings for the agreed list, organic enquiries, and which pages produce them. Not a forty-page PDF nobody opens.',
+        body: 'Rankings for the agreed list, organic enquiries, and which pages produce them. A worked example: the cheapest wins in Search Console are the searches sitting between position eight and twenty, because they already rank and nobody has to be persuaded you exist. That report gets filtered to exactly those, we pick the three worth the work, and the following month you can see whether they moved. Not a forty-page PDF nobody opens.',
       },
     ],
     limits: [
@@ -82,6 +88,15 @@ export const services: Service[] = [
         body: 'The fastest way to lose a year of SEO is a new website launched without redirects. If you are planning a rebuild, tell me before it happens rather than after.',
       },
     ],
+    local: {
+      heading: 'Local SEO is a different job from the rest of it.',
+      body: [
+        'For a business with an office and a catchment, the map pack is usually worth more than any page on the website. It is a separate ranking system with separate inputs: the Google Business Profile itself, the categories chosen on it, how consistently the name, address and phone number appear elsewhere on the web, and the reviews, which are the part most Dublin firms leave to chance.',
+        'The work is unglamorous and it moves fast compared with the rest of SEO. Categories and services filled in properly rather than left at the default. Photographs that are actually of the premises. Opening hours that are right, including the bank holidays. A steady trickle of reviews with replies to them, because the replies are read by people deciding whether to ring.',
+        'Then the citations: the directories and listings that already mention you, half of them with an old address or a number that stopped working three years ago. Cleaning those up is tedious and it is often the thing that moves a business from the edge of the map pack into it.',
+        'This runs alongside the rest rather than instead of it, and it pairs naturally with [Google Ads in Dublin](/google-ads-dublin) while the organic side takes its months to land.',
+      ],
+    },
     faqs: [
       {
         q: 'How long until SEO pays for itself?',
@@ -99,8 +114,17 @@ export const services: Service[] = [
         q: 'Should I do SEO or Google Ads?',
         a: 'Most businesses that can afford both should run both, because they answer different problems. Ads buy you the top of the page today and stop the moment you stop paying. SEO takes months and then keeps working. If you can only afford one and you need enquiries soon, start with ads. If you have patience and a long sales cycle, start with SEO.',
       },
+      {
+        q: 'What does an SEO agency actually do?',
+        a: 'In this case: agree the list of searches worth owning, fix the technical things genuinely holding those pages back, build the pages you are missing, write the ones that exist properly, sort out the local side, and report against the list every month. What it does not involve is a monthly audit of four hundred tool-generated issues, a link package, or a blog post a week written to hit a word count.',
+      },
+      {
+        q: 'What does SEO cost in Ireland?',
+        a: 'Here it starts at EUR 1,500 a month and moves with how much there is to do, the same way the paid search work does. I take on two new clients a month, so what you are buying is the time of the person you spoke to rather than an account handed to somebody junior. Agencies in Dublin quote a wide range for SEO, and a good deal of the spread is the difference between work being done and work being reported.',
+      },
     ],
     image: '/images/v3/services.jpg',
+    showIndustries: true,
   },
   {
     slug: 'geo-ai-search',
@@ -118,7 +142,7 @@ export const services: Service[] = [
       body: [
         'AI search optimisation, or GEO, is roughly two years old as a discipline. Nobody has five years of data because there are not five years to have. Anyone selling you a guaranteed method here is selling you a guess with a price attached, and quite a few people are doing exactly that right now.',
         'What is genuinely known is narrower but not nothing. Assistants build answers from sources they can read and from sites they already trust. Being named depends heavily on being mentioned somewhere the model was trained on or can retrieve from, on having pages that state plainly what you do and where you do it, and on the same reputation signals that have always mattered.',
-        'Which means most of the useful work here overlaps with good SEO and good content, done with a slightly different reader in mind. I would rather tell you that than invent a new service category with a new fee attached to it.',
+        'Which means most of the useful work here overlaps with [SEO in Dublin](/seo-dublin) and with good content, done with a slightly different reader in mind. I would rather tell you that than invent a new service category with a new fee attached to it.',
       ],
     },
     work: [
