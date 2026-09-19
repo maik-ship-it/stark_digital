@@ -1,3 +1,5 @@
+import { SITE_URL, SITE_NAME } from '@/lib/seo'
+
 interface BlogPostSchemaProps {
   title: string
   description: string
@@ -19,16 +21,16 @@ export default function BlogPostSchema({
     headline: title,
     description,
     datePublished: date,
-    url: `https://starkdigital.ie/blog/${slug}`,
+    url: `${SITE_URL}/blog/${slug}`,
     author: {
       '@type': 'Person',
       name: 'Maik Stark',
-      url: 'https://starkdigital.ie/about',
+      url: `${SITE_URL}/about`,
     },
     publisher: {
       '@type': 'Organization',
-      name: 'Stark Digital',
-      url: 'https://starkdigital.ie',
+      name: SITE_NAME,
+      url: SITE_URL,
     },
     ...(readingTime
       ? { timeRequired: `PT${readingTime}M` }

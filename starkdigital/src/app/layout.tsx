@@ -5,6 +5,7 @@ import Nav from '@/components/layout/Nav'
 import Footer from '@/components/layout/Footer'
 import SmoothScroll from '@/components/layout/SmoothScroll'
 import LocalBusinessSchema from '@/components/seo/LocalBusinessSchema'
+import { SITE_URL, SITE_NAME } from '@/lib/seo'
 import './globals.css'
 
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID ?? ''
@@ -18,7 +19,7 @@ const bricolage = Bricolage_Grotesque({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://starkdigital.ie'),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: 'Google Ads & SEO Agency Dublin | Stark Digital',
     template: '%s | Stark Digital',
@@ -28,13 +29,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_IE',
-    url: 'https://starkdigital.ie',
-    siteName: 'Stark Digital',
+    url: '/',
+    siteName: SITE_NAME,
     images: [{ url: '/images/og-default.jpg', width: 1200, height: 630 }],
   },
   twitter: { card: 'summary_large_image' },
   robots: { index: true, follow: true },
-  alternates: { canonical: 'https://starkdigital.ie' },
+  alternates: { canonical: '/' },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

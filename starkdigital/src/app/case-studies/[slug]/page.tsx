@@ -7,7 +7,7 @@ import { caseStudies } from '../../../../.velite'
 import CTA from '@/components/v3/CTA'
 import Testimonial from '@/components/v3/Testimonial'
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
-import { buildMetadata } from '@/lib/seo'
+import { buildMetadata, SITE_URL } from '@/lib/seo'
 
 type Props = { params: Promise<{ slug: string }> }
 
@@ -43,9 +43,9 @@ export default async function CaseStudyPage({ params }: Props) {
     <article>
       <BreadcrumbSchema
         crumbs={[
-          { name: 'Home', url: 'https://starkdigital.ie' },
-          { name: 'Case Studies', url: 'https://starkdigital.ie/case-studies' },
-          { name: cs.client, url: `https://starkdigital.ie/case-studies/${cs.slug}` },
+          { name: 'Home', url: SITE_URL },
+          { name: 'Case Studies', url: `${SITE_URL}/case-studies` },
+          { name: cs.client, url: `${SITE_URL}/case-studies/${cs.slug}` },
         ]}
       />
 

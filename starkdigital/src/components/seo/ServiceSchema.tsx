@@ -1,3 +1,5 @@
+import { SITE_URL, SITE_NAME } from '@/lib/seo'
+
 type ServiceSchemaProps = {
   name: string
   description: string
@@ -20,8 +22,8 @@ export default function ServiceSchema({
     areaServed,
     provider: {
       '@type': 'LocalBusiness',
-      name: 'Stark Digital',
-      url: 'https://starkdigital.ie',
+      name: SITE_NAME,
+      url: SITE_URL,
       email: 'maik@starkdigital.ie',
       address: {
         '@type': 'PostalAddress',

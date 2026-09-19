@@ -2,8 +2,9 @@ import type { MetadataRoute } from 'next'
 import { blog as posts } from '../../.velite'
 import { industries } from '@/lib/industries'
 import { services } from '@/lib/services'
+import { SITE_URL } from '@/lib/seo'
 
-const BASE = 'https://starkdigital.ie'
+const BASE = SITE_URL
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date()

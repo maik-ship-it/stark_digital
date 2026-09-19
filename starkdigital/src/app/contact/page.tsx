@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import ContactForm from '@/components/v3/ContactForm'
 import Reveal from '@/components/v3/Reveal'
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
-import { buildMetadata } from '@/lib/seo'
+import { buildMetadata, SITE_URL } from '@/lib/seo'
 import { terms } from '@/lib/proof'
 
 export const metadata: Metadata = buildMetadata({
@@ -40,8 +40,8 @@ export default function ContactPage() {
     <>
       <BreadcrumbSchema
         crumbs={[
-          { name: 'Home', url: 'https://starkdigital.ie' },
-          { name: 'Contact', url: 'https://starkdigital.ie/contact' },
+          { name: 'Home', url: SITE_URL },
+          { name: 'Contact', url: `${SITE_URL}/contact` },
         ]}
       />
 

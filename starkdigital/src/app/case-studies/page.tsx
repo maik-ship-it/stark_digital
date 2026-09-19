@@ -5,7 +5,7 @@ import CTA from '@/components/v3/CTA'
 import Reveal from '@/components/v3/Reveal'
 import Testimonial from '@/components/v3/Testimonial'
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
-import { buildMetadata } from '@/lib/seo'
+import { buildMetadata, SITE_URL } from '@/lib/seo'
 import { claims } from '@/lib/proof'
 
 export const metadata: Metadata = buildMetadata({
@@ -22,8 +22,8 @@ export default function CaseStudiesPage() {
     <>
       <BreadcrumbSchema
         crumbs={[
-          { name: 'Home', url: 'https://starkdigital.ie' },
-          { name: 'Case Studies', url: 'https://starkdigital.ie/case-studies' },
+          { name: 'Home', url: SITE_URL },
+          { name: 'Case Studies', url: `${SITE_URL}/case-studies` },
         ]}
       />
 

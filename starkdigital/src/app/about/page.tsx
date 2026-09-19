@@ -4,7 +4,7 @@ import Link from 'next/link'
 import CTA from '@/components/v3/CTA'
 import Reveal from '@/components/v3/Reveal'
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
-import { buildMetadata } from '@/lib/seo'
+import { buildMetadata, SITE_URL } from '@/lib/seo'
 import { terms } from '@/lib/proof'
 
 export const metadata: Metadata = buildMetadata({
@@ -55,8 +55,8 @@ export default function AboutPage() {
     <>
       <BreadcrumbSchema
         crumbs={[
-          { name: 'Home', url: 'https://starkdigital.ie' },
-          { name: 'About', url: 'https://starkdigital.ie/about' },
+          { name: 'Home', url: SITE_URL },
+          { name: 'About', url: `${SITE_URL}/about` },
         ]}
       />
 

@@ -4,7 +4,7 @@ import BlogGrid from '@/components/blog/BlogGrid'
 import BlogTagFilter from '@/components/blog/BlogTagFilter'
 import CTA from '@/components/v3/CTA'
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
-import { buildMetadata } from '@/lib/seo'
+import { buildMetadata, SITE_URL } from '@/lib/seo'
 
 export const metadata: Metadata = buildMetadata({
   title: 'Blog, Search Marketing for Irish Businesses',
@@ -24,8 +24,8 @@ export default async function BlogPage({ searchParams }: Props) {
     <>
       <BreadcrumbSchema
         crumbs={[
-          { name: 'Home', url: 'https://starkdigital.ie' },
-          { name: 'Blog', url: 'https://starkdigital.ie/blog' },
+          { name: 'Home', url: SITE_URL },
+          { name: 'Blog', url: `${SITE_URL}/blog` },
         ]}
       />
 

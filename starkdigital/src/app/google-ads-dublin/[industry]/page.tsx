@@ -9,12 +9,12 @@ import ServiceSchema from '@/components/seo/ServiceSchema'
 import CTA from '@/components/v3/CTA'
 import Reveal from '@/components/v3/Reveal'
 import FAQList from '@/components/v3/FAQList'
-import { buildMetadata } from '@/lib/seo'
+import { buildMetadata, SITE_URL } from '@/lib/seo'
 import { claims } from '@/lib/proof'
 
 type Props = { params: Promise<{ industry: string }> }
 
-const BASE = 'https://starkdigital.ie'
+const BASE = SITE_URL
 
 export function generateStaticParams() {
   return industries.map((ind) => ({ industry: ind.slug }))

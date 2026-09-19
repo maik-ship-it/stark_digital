@@ -1,7 +1,12 @@
 import type { Metadata } from 'next'
 
-const BASE_URL = 'https://starkdigital.ie'
-const SITE_NAME = 'Stark Digital'
+/**
+ * The canonical host, with www, because that is what the server actually
+ * serves. Everything that prints an absolute URL, metadata or JSON-LD,
+ * derives it from here so the two cannot drift apart again.
+ */
+export const SITE_URL = 'https://www.starkdigital.ie'
+export const SITE_NAME = 'Stark Digital'
 
 export function buildMetadata({
   title,
@@ -16,7 +21,7 @@ export function buildMetadata({
   type?: 'website' | 'article'
   publishedTime?: string
 }): Metadata {
-  const url = `${BASE_URL}${path}`
+  const url = path === '/' ? SITE_URL : `${SITE_URL}${path}`
   return {
     title,
     description,

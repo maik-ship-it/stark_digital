@@ -10,8 +10,9 @@ import CTA from './CTA'
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema'
 import ServiceSchema from '@/components/seo/ServiceSchema'
 import FAQSchema from '@/components/seo/FAQSchema'
+import { SITE_URL } from '@/lib/seo'
 
-const BASE = 'https://starkdigital.ie'
+const BASE = SITE_URL
 
 export default function ServicePage({ service }: { service: Service }) {
   const others = allServices.filter((s) => s.slug !== service.slug)

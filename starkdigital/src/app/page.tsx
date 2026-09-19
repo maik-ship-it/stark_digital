@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   title: 'Google Ads & SEO Agency Dublin | Stark Digital',
   description:
     'Search advertising, SEO, AI search and landing pages for businesses in Dublin and across Ireland. One specialist owns the whole path from the search to the enquiry.',
-  alternates: { canonical: 'https://starkdigital.ie' },
+  alternates: { canonical: '/' },
 }
 
 export default function HomePage() {

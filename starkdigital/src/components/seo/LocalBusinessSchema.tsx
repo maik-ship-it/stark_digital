@@ -1,11 +1,13 @@
+import { SITE_URL, SITE_NAME } from '@/lib/seo'
+
 export default function LocalBusinessSchema() {
   const schema = {
     '@context': 'https://schema.org',
     '@type': ['LocalBusiness', 'ProfessionalService'],
-    name: 'Stark Digital',
+    name: SITE_NAME,
     description:
       'Google Ads agency in Dublin specialising in performance marketing for professional service businesses across Ireland.',
-    url: 'https://starkdigital.ie',
+    url: SITE_URL,
     email: 'maik@starkdigital.ie',
     address: {
       '@type': 'PostalAddress',
