@@ -44,7 +44,8 @@ export type Figure = {
  *
  * Fourteen monthly figures for clients attributed to Google Ads, taken from the
  * firm's own reports, followed by the two months the campaigns were switched
- * off. Roughly €42,000 of spend sits behind the whole series.
+ * off. Not drawn on the page: the client counts and the historical spend stay
+ * internal, and the page says only that the old campaigns could not be measured.
  *
  * ⚠️ The reports gave fourteen values for a sixteen-month window. They are laid
  * out here from May 2024 with July and August 2025 as the switched-off months,
@@ -105,12 +106,16 @@ export const months: Month[] = [
   { label: 'Apr 2026', short: 'A', spend: 2054, clicks: 562, enquiries: 24, cpe: 86, note: 'The bad month. We were rebalancing the personal injury campaign and got it wrong for about three weeks.' },
   { label: 'May 2026', short: 'M', spend: 2651, clicks: 882, enquiries: 42, cpe: 63 },
   { label: 'Jun 2026', short: 'J', spend: 3836, clicks: 2076, enquiries: 41, cpe: 94 },
-  { label: 'Jul 2026', short: 'J', spend: 6978, clicks: 2347, enquiries: 130, cpe: 54, note: 'Peak. 130 enquiries, and more than the firm could answer the same day, so they asked us to slow down.' },
+  { label: 'Jul 2026', short: 'J', spend: 6978, clicks: 2347, enquiries: 130, cpe: 54, note: 'Peak. 130 enquiries. From August the firm chose to scale the budget back.' },
   { label: 'Aug 2026', short: 'A', spend: 3590, clicks: 1163, enquiries: 70, cpe: 51 },
   { label: 'Sep 2026', short: 'S', spend: 1668, clicks: 902, enquiries: 77, cpe: 22, note: 'To the 19th. Half the budget of July, and the cheapest enquiries of the engagement.' },
 ]
 
-/** Stated by the account for the whole period, not re-derived from the column. */
+/**
+ * Stated by the account for the whole period, not re-derived from the column.
+ * `spend` and the monthly `spend` values drive the bar heights only. Euro
+ * budgets are the firm's internal figures and are never printed on the page.
+ */
 export const totals = {
   spend: 30969,
   clicks: 13083,
@@ -127,12 +132,6 @@ export const ahpra: Figure[] = [
     value: '46',
     label: 'Clicks in ten months',
     basis: 'Google Ads, AHPRA notarial campaign, full period. A tiny market, deliberately.',
-  },
-  {
-    value: '84%',
-    label: 'Impression share',
-    basis:
-      'Search impression share for the campaign over the full period. When somebody in Ireland searches for this, the firm appears almost every time.',
   },
   {
     value: '€10.90',

@@ -11,6 +11,9 @@ const num = (n: number) => n.toLocaleString('en-IE')
  * beside the figures rather than only in the prose, so somebody who scrolls
  * straight to the numbers still gets the caveats.
  *
+ * No spend column: the firm's monthly budgets are its own business. The
+ * chart above shows how the budget moved without putting a figure on it.
+ *
  * Styling comes from .cs-table in globals.css, not from utility classes,
  * because .prose-stark's own table rules would beat them.
  */
@@ -26,13 +29,12 @@ export default function MonthTable() {
         <div className="panel bg-paper-2 overflow-x-auto">
           <table className="cs-table">
             <caption className="sr-only">
-              Google Ads spend, clicks, tracked enquiries and cost per enquiry by
+              Clicks, tracked enquiries and cost per enquiry by
               month, November 2025 to September 2026.
             </caption>
             <thead>
               <tr>
                 <th scope="col">Month</th>
-                <th scope="col">Spend</th>
                 <th scope="col">Clicks</th>
                 <th scope="col">Enquiries</th>
                 <th scope="col">Cost / enquiry</th>
@@ -49,7 +51,6 @@ export default function MonthTable() {
                       </span>
                     )}
                   </th>
-                  <td>{euro(m.spend)}</td>
                   <td>{num(m.clicks)}</td>
                   <td>{num(m.enquiries)}</td>
                   <td className={m.cpe <= 30 ? 'cs-lead cs-best' : 'cs-lead'}>{euro(m.cpe)}</td>
@@ -57,7 +58,6 @@ export default function MonthTable() {
               ))}
               <tr className="cs-total">
                 <th scope="row">Ten months</th>
-                <td>{euro(totals.spend)}</td>
                 <td>{num(totals.clicks)}</td>
                 <td>{num(totals.enquiries)}</td>
                 <td>{euro(totals.cpe)}</td>

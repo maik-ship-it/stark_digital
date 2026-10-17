@@ -192,7 +192,7 @@ export default async function CaseStudyPage({ params }: Props) {
               {
                 src: '/images/v3/case-notary.jpg',
                 url: 'notary.anthonyjoyce.ie',
-                line: 'AHPRA document certification for nurses and doctors registering to practise in Australia. A tiny market, and the firm holds 84 per cent of it.',
+                line: 'AHPRA document certification for nurses and doctors registering to practise in Australia. A tiny market, with very few firms serving it.',
               },
             ].map((s) => (
               <figure key={s.url}>

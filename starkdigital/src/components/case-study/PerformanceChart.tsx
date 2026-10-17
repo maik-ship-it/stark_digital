@@ -8,8 +8,9 @@ import Reveal from '@/components/v3/Reveal'
  * here: the story is that the bars went up because the firm asked for more,
  * and the line came down anyway. Separating them loses that.
  *
- * Every value is also in the table underneath, so nobody has to read a pixel
- * to check a number.
+ * The spend bars carry no axis. The firm's budgets are internal, so the bars
+ * show how spend moved relative to itself and nothing more. Cost per enquiry
+ * is in the table underneath, so nobody has to read a pixel to check it.
  */
 
 const W = 880
@@ -51,7 +52,7 @@ export default function PerformanceChart() {
             <div className="flex items-center gap-5">
               <span className="flex items-center gap-2 text-[11px] font-semibold tracking-[0.14em] uppercase" style={{ color: 'var(--color-on-ink-faint)' }}>
                 <span className="w-3 h-3 rounded-[2px]" style={{ background: 'rgba(242,240,235,0.32)' }} />
-                Spend
+                Relative spend
               </span>
               <span className="flex items-center gap-2 text-[11px] font-semibold tracking-[0.14em] uppercase" style={{ color: 'var(--color-on-ink-faint)' }}>
                 <span className="w-3 h-[3px] rounded-full bg-orange" />
@@ -64,31 +65,20 @@ export default function PerformanceChart() {
             viewBox={`0 0 ${W} ${H}`}
             width="100%"
             role="img"
-            aria-label="Combined chart, November 2025 to September 2026. Monthly Google Ads spend rises from 643 euro to a peak of 6,978 euro in July 2026 and then falls by half. Cost per tracked enquiry starts at 107 euro, sits between 42 and 94 euro through the middle of the period, and ends at 22 euro in September 2026."
+            aria-label="Combined chart, November 2025 to September 2026. Relative monthly Google Ads spend rises to a peak in July 2026, more than four times the March level, and then falls by half. Cost per tracked enquiry starts at 107 euro, sits between 42 and 94 euro through the middle of the period, and ends at 22 euro in September 2026."
             style={{ display: 'block', overflow: 'visible' }}
           >
-            {/* Left axis, spend */}
-            {[0, 3500, 7000].map((v) => (
-              <g key={`s${v}`}>
-                <line
-                  x1={PAD_L}
-                  x2={W - PAD_R}
-                  y1={spendY(v)}
-                  y2={spendY(v)}
-                  stroke="var(--color-ink-line)"
-                  strokeWidth={1}
-                />
-                <text
-                  x={PAD_L - 12}
-                  y={spendY(v) + 4}
-                  textAnchor="end"
-                  fontSize={13}
-                  fontWeight={600}
-                  fill="var(--color-on-ink-faint)"
-                >
-                  {v === 0 ? '€0' : `€${(v / 1000).toFixed(1).replace('.0', '')}k`}
-                </text>
-              </g>
+            {/* Gridlines only. No euro labels on the spend side. */}
+            {[0, 0.5, 1].map((f) => (
+              <line
+                key={`g${f}`}
+                x1={PAD_L}
+                x2={W - PAD_R}
+                y1={spendY(f * SPEND_MAX)}
+                y2={spendY(f * SPEND_MAX)}
+                stroke="var(--color-ink-line)"
+                strokeWidth={1}
+              />
             ))}
 
             {/* Right axis, cost per enquiry */}
@@ -194,9 +184,9 @@ export default function PerformanceChart() {
             us to stop.
           </p>
           <p className="text-text-faint text-[13px] leading-relaxed">
-            Google Ads account, November 2025 to 19 September 2026. Bars read
-            against the left axis, the line against the right. Every value is in
-            the table below.
+            Google Ads account, November 2025 to 19 September 2026. Bars show
+            relative spend, the line reads against the right axis. Every cost per
+            enquiry is in the table below.
           </p>
         </figcaption>
       </figure>
