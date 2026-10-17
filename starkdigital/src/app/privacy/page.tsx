@@ -21,15 +21,16 @@ export default function PrivacyPage() {
     >
       <h2>Who you are dealing with</h2>
       <p>
-        {legal.tradingName} is a one-person marketing practice run by {legal.owner} as a{' '}
-        {legal.structure} in {legal.city}, {legal.country}. For personal data collected through
-        starkdigital.ie and through the internal tool Stark Digital Ads Brain, I am the data
-        controller under the GDPR.
+        {legal.site} is the website of {legal.business}, a one-person marketing practice in Dublin.
+        For personal data collected through starkdigital.ie and through the internal tool Stark
+        Digital Ads Brain, {legal.business} is the data controller under the GDPR.
       </p>
       <p>
         Email: <a href={`mailto:${legal.email}`}>{legal.email}</a>
         <br />
-        Address: {legal.address}, {legal.city}, {legal.country}
+        Address: {legal.address}, {legal.country}
+        <br />
+        VAT number: {legal.vat}
       </p>
 
       <h2>The website</h2>
