@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { terms } from '@/lib/proof'
 import { allServices } from '@/lib/services'
+import { legalPages } from '@/lib/legal'
 
 const FOOTER_LINKS = [
   {
@@ -76,7 +77,18 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-paper-3 pt-7 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-          <p className="label-muted">© {new Date().getFullYear()} Stark Digital</p>
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+            <p className="label-muted">© {new Date().getFullYear()} Stark Digital</p>
+            {legalPages.map((p) => (
+              <Link
+                key={p.href}
+                href={p.href}
+                className="label-muted hover:text-orange transition-colors duration-200"
+              >
+                {p.label}
+              </Link>
+            ))}
+          </div>
           <p className="label-muted">{terms.location}</p>
         </div>
       </div>
